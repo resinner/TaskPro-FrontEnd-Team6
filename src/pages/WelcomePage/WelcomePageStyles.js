@@ -1,10 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logoImage from '../../images/logo.png';
-import iconImage from '../../images/welcome-icon.png';
+import { Link } from 'react-router-dom';
 
-const WelcomeWrapper = styled.div`
+export const WelcomeWrapper = styled.div`
     height: 100vh;
     background: linear-gradient(180deg, rgba(196, 196, 196, 0) 25%, #BEDBB0 92.19%);
     display: flex;
@@ -12,7 +9,7 @@ const WelcomeWrapper = styled.div`
     align-items: center;
 `;
 
-const WelcomeContainer = styled.div`
+export const WelcomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +24,7 @@ const WelcomeContainer = styled.div`
     }
 `;
 
-const WelcomeIcon = styled.img`
+export const WelcomeIcon = styled.img`
     width: 124px;
     height: 124px;
 
@@ -37,7 +34,7 @@ const WelcomeIcon = styled.img`
     }
 `;
 
-const WelcomeLogo = styled.div`
+export const WelcomeLogo = styled.div`
     margin-top: 14px;
     display: flex;
     align-items: center;
@@ -50,7 +47,7 @@ const WelcomeLogo = styled.div`
     }
 `;
 
-const WelcomeLogoIcon = styled.img`
+export const WelcomeLogoIcon = styled.img`
     width: 40px;
     height: 40px;
 
@@ -60,7 +57,7 @@ const WelcomeLogoIcon = styled.img`
     }
 `;
 
-const WelcomeLogoTitle = styled.h1`
+export const WelcomeLogoTitle = styled.h1`
     margin: 0;
     font-weight: 600;
     font-size: 28px;
@@ -74,7 +71,7 @@ const WelcomeLogoTitle = styled.h1`
     }
 `;
 
-const WelcomeDescription = styled.p`
+export const WelcomeDescription = styled.p`
     margin-top: 24px;
     margin-bottom: 48px;
     text-align: center;
@@ -85,7 +82,7 @@ const WelcomeDescription = styled.p`
     color: #161616;
 `;
 
-const WelcomeRegisterButton = styled(Link)`
+export const WelcomeRegisterButton = styled(Link)`
     width: calc(100% - 40px);
     padding: 14px;
     margin-bottom: 14px;
@@ -105,7 +102,7 @@ const WelcomeRegisterButton = styled(Link)`
     }
 `;
 
-const WelcomeLoginButton = styled(Link)`
+export const WelcomeLoginButton = styled(Link)`
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 14px;
@@ -116,27 +113,3 @@ const WelcomeLoginButton = styled(Link)`
     background: none;
     border: none;
 `;
-
-const WelcomePage = () => {
-    return (
-        <WelcomeWrapper>
-            <WelcomeContainer>
-                <WelcomeIcon src={iconImage} alt="man with macbook" />
-
-                <WelcomeLogo>
-                    <WelcomeLogoIcon src={logoImage} alt="logo" />
-                    <WelcomeLogoTitle>Task Pro</WelcomeLogoTitle>
-                </WelcomeLogo>
-
-                <WelcomeDescription>
-                    Supercharge your productivity and take control of your tasks with Task Pro - Don't wait, start achieving your goals now!
-                </WelcomeDescription>
-
-                <WelcomeRegisterButton to="/auth/register">Registration</WelcomeRegisterButton>
-                <WelcomeLoginButton to="/auth/login">Log In</WelcomeLoginButton>
-            </WelcomeContainer>
-        </WelcomeWrapper>
-    );
-};
-
-export default WelcomePage;
