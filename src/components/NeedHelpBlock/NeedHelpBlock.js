@@ -10,7 +10,6 @@ import {
   ButtonWrapper,
   ButtonText,
   CircleIcon,
-  Container,
 } from './NeedHelpBlock.styled';
 // import AddBoardModal from 'components/Modals/BoardModal/AddBoardModal';
 
@@ -21,7 +20,6 @@ const NeedHelpBlock = () => {
   // const handleClose = () => setOpen(false);
 
   return (
-    <Container>
       <Wrapper>
         <Image src={needHelpImage} alt="need help image" />
 
@@ -46,7 +44,6 @@ const NeedHelpBlock = () => {
         children={<AddBoardModal />}
       /> */}
       </Wrapper>
-    </Container>
   );
 };
 
