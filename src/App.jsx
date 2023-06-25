@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 // components
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
+import NeedHelpBlock from 'components/NeedHelpBlock/NeedHelpBlock';
 
 export const App = () => {
   const activeTheme = useSelector(selectTheme);
@@ -15,7 +16,7 @@ export const App = () => {
     <ThemeProvider theme={theme[activeTheme]}>
       <Container>
         <Header />
-
+        <NeedHelpBlock />
         {/* sidear */}
 
         {/* main */}

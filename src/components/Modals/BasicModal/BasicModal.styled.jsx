@@ -1,6 +1,5 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import Box from '@mui/material/Box';
-import { RxCross2 } from 'react-icons/rx';
 import Modal from '@mui/material/Modal';
 
 export const ModalWindow = styled(Modal)`
@@ -16,9 +15,9 @@ export const ModalField = styled(Box)`
   width: 335px;
   width: ${props => (props.value === true ? `300px` : `335px`)};
   border-radius: 8px;
-  border: 1px solid rgba(190, 219, 176, 0.5);
-  background: #151515;
-  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
+  border: 1px solid ${props => props.theme.modal.border};
+  background: ${props => props.theme.modal.backgroundMain};
+  outline: none;
 
   @media screen and (min-width: 768px) {
     max-width: 350px;
@@ -38,6 +37,7 @@ export const ModalField = styled(Box)`
 
   &.editProfile {
     width: 335px;
+    box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
 
     @media screen and (min-width: 768px) {
       width: 400px;
@@ -45,11 +45,11 @@ export const ModalField = styled(Box)`
   }
 `;
 
-export const CloseModal = styled(RxCross2)`
+export const CloseModal = styled.svg`
   position: absolute;
   top: 14px;
   right: 14px;
-  color: #fff;
+  stroke: ${props => props.theme.modal.iconClose};
   width: 18px;
   height: 18px;
 

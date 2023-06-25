@@ -1,6 +1,9 @@
 export const theme = [
   {
     name: 'Dark',
+    container: {
+      background: 'rgba(31, 31, 31, 1)',
+    },
     header: {
       background: 'rgba(22, 22, 22, 1)',
     },
@@ -19,9 +22,28 @@ export const theme = [
       textAccent: 'rgba(190, 219, 176, 1)',
       icon: 'rgba(255, 255, 255, 1)',
     },
+    modal: {
+      backgroundMain: 'rgba(21, 21, 21, 1)',
+      backgroundSecondary: 'rgba(31, 31, 31, 1)',
+      backgeoundAvatar: 'rgba(190, 219, 176, 1)',
+      textMain: 'rgba(255, 255, 255, 1)',
+      textSecondary: 'rgba(255, 255, 255, 0.5)',
+      textAccent: 'rgba(190, 219, 176, 1)',
+      icon: 'rgba(255, 255, 255, 0.5)',
+      iconClose: 'rgba(255, 255, 255, 1)',
+      buttonBackground: 'rgba(190, 219, 176, 1)',
+      buttonText: 'rgba(22, 22, 22, 1)',
+      plusBackground: 'rgba(22, 22, 22, 1)',
+      plusColor: 'rgba(255, 255, 255, 1)',
+      border: 'rgba(190, 219, 176, 0.50)',
+      line: 'rgba(255, 255, 255, 0.1)',
+    },
   },
   {
     name: 'Light',
+    container: {
+      background: 'rgba(246, 246, 247, 1)',
+    },
     header: {
       background: 'rgba(252, 252, 252, 1)',
     },
@@ -40,9 +62,28 @@ export const theme = [
       textAccent: 'rgba(190, 219, 176, 1)',
       icon: 'rgba(22, 22, 22, 1)',
     },
+    modal: {
+      backgroundMain: 'rgba(252, 252, 252, 1)',
+      backgroundSecondary: 'rgba(252, 252, 252, 1)',
+      backgeoundAvatar: 'rgba(246, 246, 247, 1)',
+      textMain: 'rgba(22, 22, 22, 1)',
+      textSecondary: 'rgba(22, 22, 22, 0.5)',
+      textAccent: 'rgba(190, 219, 176, 1)',
+      icon: 'rgba(22, 22, 22, 0.5)',
+      iconClose: 'rgba(22, 22, 22, 1)',
+      buttonBackground: 'rgba(190, 219, 176, 1)',
+      buttonText: 'rgba(22, 22, 22, 1)',
+      plusBackground: 'rgba(22, 22, 22, 1)',
+      plusColor: 'rgba(255, 255, 255, 1)',
+      border: 'transparent',
+      line: 'rgba(22, 22, 22, 0.1)',
+    },
   },
   {
     name: 'Violet',
+    container: {
+      background: 'rgba(236, 237, 253, 1)',
+    },
     header: {
       background: 'rgba(252, 252, 252, 1)',
     },
@@ -60,6 +101,22 @@ export const theme = [
       textMain: 'rgba(255, 255, 255, 1)',
       textAccent: 'rgba(82, 85, 188, 1)',
       icon: 'rgba(255, 255, 255, 1)',
+    },
+    modal: {
+      backgroundMain: 'rgba(252, 252, 252, 1)',
+      backgroundSecondary: 'rgba(252, 252, 252, 1)',
+      backgeoundAvatar: 'rgba(236, 237, 253, 1)',
+      textMain: 'rgba(22, 22, 22, 1)',
+      textSecondary: 'rgba(22, 22, 22, 0.5)',
+      textAccent: 'rgba(82, 85, 188, 1)',
+      icon: 'rgba(22, 22, 22, 0.5)',
+      iconClose: 'rgba(22, 22, 22, 1)',
+      buttonBackground: 'rgba(82, 85, 188, 1)',
+      buttonText: 'rgba(255, 255, 255, 1)',
+      plusBackground: 'rgba(255, 255, 255, 1)',
+      plusColor: 'rgba(22, 22, 22, 1)',
+      border: 'transparent',
+      line: 'rgba(22, 22, 22, 0.2)',
     },
   },
 ];
