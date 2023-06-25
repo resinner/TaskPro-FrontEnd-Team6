@@ -4,13 +4,16 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store';
 import { App } from 'App';
 import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 
 const root = document.getElementById('root');
 
 createRoot(root).render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter basename="/TaskPro-FrontEnd-Team6">
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );
