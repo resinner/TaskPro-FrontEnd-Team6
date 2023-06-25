@@ -70,7 +70,7 @@ export const AuthForm = styled(Form)`
 `;
 
 export const AuthFormField = styled(Field)`
-    width: calc(100% - 36px);
+    width: calc(100%);
     padding: 14px 18px;
     margin-bottom: 14px;
     background: #1f1f1f;
@@ -88,7 +88,7 @@ export const AuthFormField = styled(Field)`
 
 export const AuthFormPasswordIcon = styled.span`
     position: absolute;
-    bottom: 30px;
+    top: 16px;
     right: 18px;
     color: #ffffff;
     opacity: 0.4;
