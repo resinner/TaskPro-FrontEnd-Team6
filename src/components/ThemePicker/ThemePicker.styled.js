@@ -6,18 +6,14 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 4px;
+  margin-right: 14px;
   cursor: pointer;
-  background-color: #000;
-  width: 100%;
-  height: 80px;
-
-  margin-top: 14px;
 `;
 
 export const Text = styled.p`
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
   font-family: Poppins;
+  color: ${props => props.theme.themePopup.textMain};
+  font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.28px;
 `;
@@ -25,7 +21,7 @@ export const Text = styled.p`
 export const Icon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: rgba(255, 255, 255, 0.8);
+  stroke: ${props => props.theme.themePopup.icon};
   transition: all 250ms linear;
   fill: transparent;
 
@@ -42,20 +38,20 @@ export const PopupBlock = styled.ul`
   flex-direction: column;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme.popupAccent};
-  background: ${props => props.theme.popupBG};
-  box-shadow: 0px 4px 16px 0px ${props => props.theme.popupShadow};
-  gap: 10px;
+  border: 1px solid ${props => props.theme.themePopup.border};
+  background: ${props => props.theme.themePopup.background};
+  box-shadow: 0px 4px 16px 0px ${props => props.theme.themePopup.boxShadow};
+  gap: 4px;
 `;
 
 export const PopupItem = styled.li`
-  color: ${props => props.theme.popupSecondaryText};
-  font-size: 14px;
   font-family: Poppins;
+  color: ${props => props.theme.themePopup.textSecondary};
+  font-size: 14px;
   letter-spacing: -0.28px;
 
   &.active {
-    color: ${props => props.theme.popupAccent};
+    color: ${props => props.theme.themePopup.textAccent};
   }
 
   cursor: pointer;
