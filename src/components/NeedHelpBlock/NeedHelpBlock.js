@@ -1,5 +1,7 @@
+
 // import { useState } from 'react';
 // import BasicModal from 'components/Modals/BasicModal/BasicModal';
+
 import needHelpImage from '../../images/2.svg';
 import sprite from '../../images/sprite.svg';
 import {
@@ -10,6 +12,7 @@ import {
   ButtonWrapper,
   ButtonText,
   CircleIcon,
+
   // Container,
 } from './NeedHelpBlock.styled';
 // import AddBoardModal from 'components/Modals/BoardModal/AddBoardModal';
@@ -22,6 +25,7 @@ const NeedHelpBlock = () => {
 
   return (
     // <Container>
+
       <Wrapper>
         <Image src={needHelpImage} alt="need help image" />
 
@@ -30,15 +34,18 @@ const NeedHelpBlock = () => {
           support resources or reach out to our customer support team.
         </Text>
 
+
         <ButtonWrapper
         //  onClick={handleOpen}
         >
+
           <CircleIcon>
             <use href={sprite + '#icon-help-circle'} />
           </CircleIcon>
 
           <ButtonText>Need help?</ButtonText>
         </ButtonWrapper>
+
 
         {/* <BasicModal
         open={open}
@@ -47,6 +54,7 @@ const NeedHelpBlock = () => {
       /> */}
       </Wrapper>
     // </Container>
+
   );
 };
 
