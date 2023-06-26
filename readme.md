@@ -11,3 +11,6 @@
 8. переробити pages
 9. прогнати іноку icon-logo-violet через icon moon
 10. зробити drag and drop на projects list
+
+11. problems with vh (sidebar) --> media and screen (max-height ...) {margin /
+    padding}
