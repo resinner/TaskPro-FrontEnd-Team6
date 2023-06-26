@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 
 export const Section = styled.form`

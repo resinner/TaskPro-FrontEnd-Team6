@@ -12,7 +12,6 @@ import {
 } from './NeedHelpBlock.styled';
 import BasicModal from 'components/Modals/BasicModal';
 import NeedHelpModal from 'components/Modals/NeedHelpModal';
-import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 
 const NeedHelpBlock = () => {
   const [open, setOpen] = useState(false);
@@ -41,7 +40,7 @@ const NeedHelpBlock = () => {
         name="NeedHelp"
         open={open}
         closeModal={handleClose}
-        children={<EditProfileModal />}
+        children={<NeedHelpModal />}
       />
     </Wrapper>
   );
