@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { toast } from 'react-toastify';
 import {
   FormWrapper,
   Section,
@@ -8,6 +8,7 @@ import {
   SectionTitle,
   Textarea,
   LabelInput,
+  StyledContainer,
 } from './NeedHelpModal.styled';
 
 const NeedHelpModal = () => {
@@ -16,9 +17,19 @@ const NeedHelpModal = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log([title, comment]);
+
+    if (title.trim() !== '' && comment.trim() !== '') {
+      console.log([title, comment]);
+      resetForm();
+    } else {
+      toast.error('All fields must be completed');
+    }
   };
 
+  const resetForm = () => {
+    setTitle('');
+    setComment('');
+  };
   return (
     <Section>
       <SectionTitle>Need help</SectionTitle>
@@ -47,6 +58,18 @@ const NeedHelpModal = () => {
       <AuthFormSubmitButton onClick={handleSubmit} type="submit">
         Send
       </AuthFormSubmitButton>
+      <StyledContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Section>
   );
 };
