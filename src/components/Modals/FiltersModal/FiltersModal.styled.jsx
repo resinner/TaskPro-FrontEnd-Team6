@@ -123,11 +123,13 @@ export const RadioBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
 `;
 
 export const Label = styled.label`
+  display: flex;
+  align-items: center;
   position: relative;
   width: 14px;
   height: 14px;
@@ -174,14 +176,21 @@ export const LabelItem = styled.div`
 `;
 
 export const LabetlText = styled.p`
-  width: 88px;
+  display: block;
+  width: 100%;
   color: ${props => props.theme.modal.textSecondary};
   font-size: 12px;
   font-family: Poppins;
   letter-spacing: -0.24px;
-  margin-left: 26px;
+  /* margin-left: 26px; */
 
   &.active {
     color: ${props => props.theme.modal.textMain};
   }
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
 `;

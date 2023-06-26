@@ -10,7 +10,7 @@ const BasicModal = ({ children, name, open, closeModal }) => {
   const handleBtnClick = name => {
     if (name === 'NeedHelp') {
       setModalClass('needHelp');
-    } else if (name === 'Filter') {
+    } else if (name === 'Filters') {
       setModalClass('filter');
     } else if (name === 'EditProfile') {
       setModalClass('editProfile');

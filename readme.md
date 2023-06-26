@@ -4,7 +4,7 @@
 2. full vierport width header yes/no ?
 3. full vewiport width sidebar yes/no ?
 
-4. фікс вибора пріорітета
+4. фікс вибора пріорітета (svg(filter modal/ card))
 5. фікс вибора бекграунда
 6. провалідувати модалки
 7. заглушка на фото юзера на три теми
@@ -16,3 +16,7 @@
     padding}
 
 12. заглушка на бекграунд модалки (свг ??)
+
+13. active icon rotate
+
+14. toast

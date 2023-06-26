@@ -10,6 +10,8 @@ import {
   IconEdit,
   IconDel,
 } from './ProjectList.styled';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import EdidBoardModal from 'components/Modals/BoardModal/EdidBoardModal/EditBoardModal';
 
 const options = [
   'Project_1 Project_1',
@@ -24,6 +26,12 @@ const options = [
 export const ProjectList = () => {
   const [activePojectIndex, setActivePojectIndex] = useState(0);
   const switchActiveProject = index => setActivePojectIndex(index);
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <List>
@@ -48,10 +56,7 @@ export const ProjectList = () => {
           </ProjectBlock>
 
           <IconsBlock>
-            <IconEdit
-              aria-label="edit icon"
-              //onClick={}
-            >
+            <IconEdit aria-label="edit icon" onClick={handleOpen}>
               <use href={sprite + `#icon-pencil`} />
             </IconEdit>
 
@@ -64,6 +69,12 @@ export const ProjectList = () => {
           </IconsBlock>
         </Item>
       ))}
+
+      <BasicModal
+        open={open}
+        closeModal={handleClose}
+        children={<EdidBoardModal />}
+      />
     </List>
   );
 };

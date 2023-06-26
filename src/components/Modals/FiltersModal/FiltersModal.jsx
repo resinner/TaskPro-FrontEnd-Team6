@@ -13,6 +13,7 @@ import {
   BgcWrapper,
   ShowAllLabel,
   LabetlText,
+  Wrapper,
 } from './FiltersModal.styled';
 
 import defaultImg from '../defImg.png';
@@ -34,7 +35,7 @@ const FiltersModal = () => {
 
   return (
     <Section>
-      <SectionTitle>Edit board</SectionTitle>
+      <SectionTitle>Filters</SectionTitle>
 
       <FormWrapper>
         <FormTitle>Background </FormTitle>
@@ -67,22 +68,23 @@ const FiltersModal = () => {
 
         <RadioBtnWrapper>
           {options.map((el, idx) => (
-            <Label
-              key={idx}
-              value={el}
-              className={selectedLabel === el ? 'active' : ''}
-            >
-              <LabelItem
-                onClick={() => handleLabelSelection(el)}
+            <Wrapper>
+              <Label
+                key={idx}
                 value={el}
                 className={selectedLabel === el ? 'active' : ''}
-              />
+              >
+                <LabelItem
+                  onClick={() => handleLabelSelection(el)}
+                  value={el}
+                  className={selectedLabel === el ? 'active' : ''}
+                />
+                <DefaultRadioBtn type="radio" value={el} name="bgc" />
+              </Label>
               <LabetlText className={selectedLabel === el ? 'active' : ''}>
                 {el === 'Without' ? `${el} priority` : el}
               </LabetlText>
-
-              <DefaultRadioBtn type="radio" value={el} name="bgc" />
-            </Label>
+            </Wrapper>
           ))}
         </RadioBtnWrapper>
       </FormWrapper>
