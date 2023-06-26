@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components'
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
 
 export const WelcomeWrapper = styled.div`
     height: 100vh;
@@ -69,6 +69,13 @@ export const AuthForm = styled(Form)`
     flex-direction: column;
 `;
 
+export const ErrorSection = styled(ErrorMessage)`
+    margin-top: 3px;
+    padding-left: 14px;
+    color: #c04d4d;
+    font-size: 12px;
+`;
+
 export const AuthFormField = styled(Field)`
     width: calc(100%);
     padding: 14px 18px;
@@ -87,12 +94,14 @@ export const AuthFormField = styled(Field)`
 `;
 
 export const AuthFormPasswordIcon = styled.span`
-    position: absolute;
-    top: 16px;
-    right: 18px;
-    color: #ffffff;
-    opacity: 0.4;
+  position: absolute;
+  bottom: 26px;
+  right: 18px;
+  color: #fff;
+  opacity: 0.4;
+  cursor: pointer;
 `;
+
 
 export const AuthFormSubmitButton = styled.button`
     margin-top: 10px;
