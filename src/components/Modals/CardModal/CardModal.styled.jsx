@@ -1,5 +1,27 @@
 import styled from '@emotion/styled';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+export const StyledContainer = styled(ToastContainer)`
+  width: 300px;
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+
+  .Toastify__toast {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    background-color: #f7432392;
+    border-radius: 8px;
+  }
+`;
 
 export const Section = styled.form`
   display: flex;

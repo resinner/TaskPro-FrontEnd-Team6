@@ -1,4 +1,24 @@
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+export const StyledContainer = styled(ToastContainer)`
+  width: 300px;
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .Toastify__toast {
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    background-color: #f7432392;
+    border-radius: 8px;
+  }
+`;
 
 export const Section = styled.form`
   display: flex;
@@ -89,7 +109,8 @@ export const Icon = styled.svg`
   transition: all 250ms linear;
 
   &.active {
-    scale: 1.1;
+    scale: 1.3;
+    transform: rotate(360deg);
   }
 `;
 

@@ -17,9 +17,11 @@ import {
   FormTitle,
   Wrapper,
   DateTitle,
+  StyledContainer,
 } from '../CardModal.styled';
+import { toast } from 'react-toastify';
 
-const options = ['without', 'low', 'medium', 'high'];
+const options = ['low', 'medium', 'high', 'without'];
 const months = [
   'January',
   'February',
@@ -34,6 +36,7 @@ const months = [
   'November',
   'December',
 ];
+
 const today = new Date();
 const month = months[today.getMonth()];
 const day = today.getDate();
@@ -42,7 +45,7 @@ const formattedDate = `${month} ${day}`;
 const AddCardModal = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [selectedLabel, setSelectedLabel] = useState('');
+  const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
 
   const customDate =
@@ -54,8 +57,13 @@ const AddCardModal = () => {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log([title, description, selectedLabel, customDate]);
-    resetForm();
+
+    if (title.trim() !== '' && description.trim() !== '') {
+      console.log([title, description, selectedLabel, customDate]);
+      resetForm();
+    } else {
+      toast.error('All fields must be completed');
+    }
   };
 
   const resetForm = () => {
@@ -133,6 +141,18 @@ const AddCardModal = () => {
         <PlusIcon />
         Add
       </AuthFormSubmitButton>
+      <StyledContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Section>
   );
 };

@@ -15,10 +15,12 @@ import {
   Icon,
   IconWrapper,
   ButtonPlus,
+  StyledContainer,
 } from '../BoardModal.styled';
 import defaultImg from '../../defImg.png';
 import data from '../../background.json';
 import sprite from '../../../../images/sprite.svg';
+import { toast } from 'react-toastify';
 
 const options = [
   '#icon-Project',
@@ -33,12 +35,16 @@ const options = [
 
 const AddBoardModal = () => {
   const [selectedBgc, setSelectedBgc] = useState('');
-  const [setIcon, setSetIcon] = useState('');
+  const [setIcon, setSetIcon] = useState(options[0]);
   const [title, setTitle] = useState('');
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log([title, selectedBgc, setIcon]);
+    if (title.trim() !== '') {
+      console.log([title, selectedBgc, setIcon]);
+    } else {
+      toast.error('Title is required!');
+    }
   };
 
   const handleBgcSelection = url => {
@@ -52,10 +58,10 @@ const AddBoardModal = () => {
   return (
     <Section>
       <SectionTitle>New board</SectionTitle>
-
       <FormWrapper>
         <LabelInput>
           <TitleInput
+            required
             placeholder="Title"
             type="text"
             name="title"
@@ -85,7 +91,6 @@ const AddBoardModal = () => {
           ))}
         </RadioBtnWrapper>
       </FormWrapper>
-
       <FormWrapper>
         <FormTitle>Background </FormTitle>
 
@@ -111,7 +116,6 @@ const AddBoardModal = () => {
           ))}
         </RadioBtnWrapper>
       </FormWrapper>
-
       <AuthFormSubmitButton onClick={handleSubmit} type="submit">
         <ButtonPlus>
           <PlusIcon>
@@ -120,6 +124,18 @@ const AddBoardModal = () => {
         </ButtonPlus>
         Create
       </AuthFormSubmitButton>
+      <StyledContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </Section>
   );
 };

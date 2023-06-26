@@ -51,6 +51,11 @@ export const CloseModal = styled.svg`
   stroke: ${props => props.theme.modal.iconClose};
   width: 18px;
   height: 18px;
-
   cursor: pointer;
+  transition: all 250ms linear;
+
+  &:hover {
+    opacity: 0.8;
+    scale: 1.2;
+  }
 `;
