@@ -1,116 +1,135 @@
 import styled from 'styled-components';
-//import styled from "@emotion/styled";
+import { NavLink } from 'react-router-dom';
 
-export const Aside = styled.aside`
-position:relative;
- background-color: #121212;
-  width: 260px; 
-  //height: 770px;
-  padding: 24px; 
- /*tab*/
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
-    width: 260px;
-    //height: 1024px;
-  } 
-/*mob*/
+export const Aside = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${props => props.theme.sidebar.background};
+  width: 260px;
+  padding: 24px;
+
+  z-index: 99;
+  max-height: 100vh;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
   @media screen and (max-width: 767px) {
     width: 225px;
-    //height:812px;
     padding: 14px 14px 24px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    width: 260px;
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled(NavLink)`
   display: flex;
+  justify-content: start;
+  align-items: center;
   text-decoration: none;
   margin-bottom: 60px;
+  gap: 8px;
 `;
+
 export const IconLogo = styled.svg`
-height: 32px;
-width: 32px;
-//stroke: rgba(31, 31, 31, 1);
-fill:rgba(255, 255, 255, 1);
+  height: 32px;
+  width: 32px;
 `;
 
 export const LogoText = styled.h1`
-color: #fff;
-font-size: 16px;
-font-family: Poppins;
-font-weight: 600;
-letter-spacing: -0.64px;
-margin-left: 8px;
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.64px;
+  color: ${props => props.theme.sidebar.textMain};
 `;
 
 export const MyBoardsText = styled.p`
-color:rgba(255, 255, 255, 0.50);
-font-size: 12px;
-font-family: Poppins;
-letter-spacing: -0.24px;
-margin-bottom: 8px;
+  font-family: Poppins;
+  font-size: 12px;
+  letter-spacing: -0.24px;
+  margin-bottom: 8px;
+  color: ${props => props.theme.sidebar.textSecondary};
 `;
-export const AddBoardBlock = styled.div`
-display: flex;
-align-items: center;
-justify-content: space-between;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
-border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-margin-bottom: 40px;
-padding: 14px 0;
-`;
-export const CreateNewBoard = styled.p`
-  color: #fff;
-font-size: 14px;
-font-family: Poppins;
-font-weight: 500;
-letter-spacing: -0.28px;
-width: 76px;
 
+export const AddBoardBlock = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid ${props => props.theme.sidebar.border};
+  border-bottom: 1px solid ${props => props.theme.sidebar.border};
+  margin-bottom: 40px;
+  padding: 14px 0;
 `;
-export const BtnAdd = styled.button`
- width: 40px;
- height: 36px;
-  border-radius: 6px;
-  background-color: #BEDBB0;
-  border: none;
+
+export const CreateNewBoard = styled.p`
+  color: ${props => props.theme.sidebar.textMain};
+  font-size: 14px;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  width: 76px;
   cursor: pointer;
-  :hover {
-    background-color: rgba(255, 255, 255, 0.5);
-  }
- padding: 8px 10px;
 `;
+
+export const BtnAdd = styled.button`
+  width: 40px;
+  height: 36px;
+  border-radius: 6px;
+  background-color: ${props => props.theme.sidebar.addButtonBackground};
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 150ms linear;
+
+  :hover {
+    background-color: ${props => props.theme.sidebar.addButtonHover};
+  }
+`;
+
 export const IconPlus = styled.svg`
-height: 20px;
-width: 20px;
-stroke: rgba(18, 18, 18, 1);
+  height: 20px;
+  width: 20px;
+  stroke: ${props => props.theme.sidebar.addButtonColor};
 `;
 
 export const BtnLogOut = styled.button`
-    background-color: #121212;
-    display: flex;
-    column-gap: 14px;
-    justify-content: center;
-    align-items: center;
-    border: none;
-   padding-right: 7px;
-   cursor: pointer;
-    `;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 14px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
 export const IconLogOut = styled.svg`
-    height: 32px;
-    width: 32px;
-    stroke:rgba(190, 219, 176, 1);
-    fill: rgba(18, 18, 18, 1);
-     :hover{
-      stroke:rgba(255, 255, 255, 0.50);
-    }
-    `;
+  height: 32px;
+  width: 32px;
+  stroke: ${props => props.theme.sidebar.iconLogout};
+  fill: transparent;
+  transition: all 150ms linear;
+
+  :hover {
+    opacity: 0.5;
+  }
+`;
+
 export const TextLogOut = styled.p`
-  color: #FFF;
+  color: ${props => props.theme.sidebar.textMain};
   font-size: 16px;
   font-family: Poppins;
   font-weight: 500;
-   :hover{
-      color:rgba(255, 255, 255, 0.50);
-    }
-    `;
-     
-     
+  transition: all 150ms linear;
+
+  :hover {
+    opacity: 0.5;
+  }
+`;

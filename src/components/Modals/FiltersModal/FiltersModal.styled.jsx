@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 export const Section = styled.form`
   display: flex;
@@ -8,13 +8,14 @@ export const Section = styled.form`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #fff;
+  color: ${props => props.theme.modal.textMain};
   font-size: 18px;
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 14px;
 `;
+
 export const FormWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -27,8 +28,8 @@ export const FormWrapper = styled.div`
   &:first-of-type {
     padding-top: 14px;
     padding-bottom: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid ${props => props.theme.modal.line};
+    border-bottom: 1px solid ${props => props.theme.modal.line};
   }
 
   &:last-of-type {
@@ -38,7 +39,7 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.h3`
-  color: #fff;
+  color: ${props => props.theme.modal.textMain};
   font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
@@ -82,7 +83,7 @@ export const CustomRadioBtn = styled.div`
   background-size: cover;
 
   cursor: pointer;
-  background-color: #fff;
+  background-color: ${props => props.theme.modal.backgroundSecondary};
   transition: all 250ms linear;
 
   &.active {
@@ -106,7 +107,7 @@ export const DefaultRadioBtn = styled.input`
 `;
 
 export const ShowAllLabel = styled.p`
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.modal.textSecondary};
   font-size: 12px;
   font-family: Poppins;
   letter-spacing: -0.24px;
@@ -174,13 +175,13 @@ export const LabelItem = styled.div`
 
 export const LabetlText = styled.p`
   width: 88px;
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.modal.textSecondary};
   font-size: 12px;
   font-family: Poppins;
   letter-spacing: -0.24px;
   margin-left: 26px;
 
   &.active {
-    color: white;
+    color: ${props => props.theme.modal.textMain};
   }
 `;

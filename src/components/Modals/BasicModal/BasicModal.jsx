@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
-// import Modal from '@mui/material/Modal';
 import { ModalField, CloseModal, ModalWindow } from './BasicModal.styled';
+
+import sprite from '../../../images/sprite.svg';
 
 const BasicModal = ({ children, name, open, closeModal }) => {
   const [modalClass, setModalClass] = useState(``);
@@ -31,7 +32,9 @@ const BasicModal = ({ children, name, open, closeModal }) => {
         aria-describedby="modal-modal-description"
       >
         <ModalField className={modalClass}>
-          <CloseModal onClick={closeModal} type="button" />
+          <CloseModal onClick={closeModal} type="button">
+            <use href={sprite + '#icon-x-close'} width={18} height={18} />
+          </CloseModal>
           {children}
         </ModalField>
       </ModalWindow>

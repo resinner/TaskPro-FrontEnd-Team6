@@ -20,29 +20,29 @@ const NeedHelpBlock = () => {
   const handleClose = () => setOpen(false);
 
   return (
-      <Wrapper>
-        <Image src={needHelpImage} alt="need help image" />
+    <Wrapper>
+      <Image src={needHelpImage} alt="need help image" />
 
-        <Text>
-          If you need help with <AccentText>TaskPro</AccentText>, check out our
-          support resources or reach out to our customer support team.
-        </Text>
+      <Text>
+        If you need help with <AccentText>TaskPro</AccentText>, check out our
+        support resources or reach out to our customer support team.
+      </Text>
 
-        <ButtonWrapper onClick={handleOpen}>
-          <CircleIcon>
-            <use href={sprite + '#icon-help-circle'} />
-          </CircleIcon>
+      <ButtonWrapper onClick={handleOpen}>
+        <CircleIcon>
+          <use href={sprite + '#icon-help-circle'} />
+        </CircleIcon>
 
-          <ButtonText>Need help?</ButtonText>
-        </ButtonWrapper>
+        <ButtonText>Need help?</ButtonText>
+      </ButtonWrapper>
 
-        <BasicModal
-          name="NeedHelp"
-          open={open}
-          closeModal={handleClose}
-          children={<NeedHelpModal />}
-        />
-      </Wrapper>
+      <BasicModal
+        name="NeedHelp"
+        open={open}
+        closeModal={handleClose}
+        children={<NeedHelpModal />}
+      />
+    </Wrapper>
   );
 };
 

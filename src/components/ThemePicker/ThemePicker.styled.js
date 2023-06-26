@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   cursor: pointer;
 `;
 
-export const Text = styled.p`
+export const Text = styled.span`
   font-family: Poppins;
   color: ${props => props.theme.themePopup.textMain};
   font-size: 14px;

@@ -41,7 +41,12 @@ export const ButtonWrapper = styled.div`
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  transition: all 150ms linear;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 export const CircleIcon = styled.svg`

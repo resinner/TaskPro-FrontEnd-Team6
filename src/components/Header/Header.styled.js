@@ -8,18 +8,18 @@ export const HeaderWrapper = styled.header`
   align-items: center;
 
   @media screen and (min-width: 375px) {
-    width: 375px;
+    /* width: 375px; */
     height: 60px;
   }
 
   @media screen and (min-width: 768px) {
-    width: 768px;
+    /* width: 768px; */
     height: 68px;
     padding: 18px 32px;
   }
 
   @media screen and (min-width: 1280px) {
-    width: 1180px;
+    /* width: 1180px; */
     padding: 18px 24px;
   }
 `;

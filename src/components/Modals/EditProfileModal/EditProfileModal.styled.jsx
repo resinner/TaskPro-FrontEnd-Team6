@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
 
 import { Form, Field, ErrorMessage } from 'formik';
 
@@ -10,10 +10,10 @@ export const EditWrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #fff;
+  font-family: Poppins;
+  color: ${props => props.theme.modal.textMain};
   font-size: 18px;
   margin: 0;
-  /* font-family: Poppins; */
   font-weight: 500;
   letter-spacing: -0.36px;
 `;
@@ -27,7 +27,7 @@ export const ImageWrapper = styled.div`
   background-image: url(${props => props.url});
   background-position: center;
   background-size: cover;
-  background-color: #161616;
+  background-color: ${props => props.theme.modal.backgroundAvatar};
 `;
 
 export const CustomButton = styled.button`
@@ -45,7 +45,7 @@ export const CustomButton = styled.button`
   border: none;
 
   cursor: pointer;
-  background-color: rgba(190, 219, 176, 1);
+  background-color: ${props => props.theme.modal.backgeoundAvatar};
 `;
 
 export const UserImage = styled.img`
@@ -67,7 +67,7 @@ export const AuthFormWrapper = styled.div`
 export const ErrorSection = styled(ErrorMessage)`
   margin-top: 3px;
   padding-left: 14px;
-  color: rgba(255, 255, 255, 1);
+  color: #c04d4d;
   font-size: 12px;
 `;
 
@@ -82,8 +82,7 @@ export const AuthFormField = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
+  background-color: rgba(21, 21, 21, 1);
   opacity: 0.4;
   border: 1px solid #bedbb0;
   box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
@@ -93,13 +92,14 @@ export const AuthFormField = styled(Field)`
   line-height: 21px;
   letter-spacing: -0.02em;
   color: #ffffff;
+  outline: none;
 `;
 
 export const AuthFormPasswordIcon = styled.span`
   position: absolute;
   bottom: 10px;
   right: 18px;
-  color: #ffffff;
+  color: ${props => props.theme.modal.textMain};
   opacity: 0.4;
 `;
 
@@ -107,7 +107,7 @@ export const AuthFormSubmitButton = styled.button`
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #bedbb0;
+  background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
 
   font-family: 'Poppins';
