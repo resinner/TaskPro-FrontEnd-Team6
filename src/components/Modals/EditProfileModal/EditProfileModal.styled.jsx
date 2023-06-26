@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import { Form, Field, ErrorMessage } from 'formik';
 
 export const EditWrapper = styled.div`
@@ -11,11 +10,11 @@ export const EditWrapper = styled.div`
 
 export const Title = styled.h2`
   font-family: Poppins;
-  color: ${props => props.theme.modal.textMain};
   font-size: 18px;
   margin: 0;
   font-weight: 500;
   letter-spacing: -0.36px;
+  color: ${props => props.theme.editProfileModal.textMain};
 `;
 
 export const ImageWrapper = styled.div`
@@ -27,7 +26,6 @@ export const ImageWrapper = styled.div`
   background-image: url(${props => props.url});
   background-position: center;
   background-size: cover;
-  background-color: ${props => props.theme.modal.backgroundAvatar};
 `;
 
 export const CustomButton = styled.button`
@@ -43,9 +41,20 @@ export const CustomButton = styled.button`
   width: 28px;
   height: 28px;
   border: none;
+  background-color: ${props => props.theme.editProfileModal.iconPlusBackground};
 
+  transition: all 150ms linear;
   cursor: pointer;
-  background-color: ${props => props.theme.modal.backgeoundAvatar};
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
+export const PlusIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.editProfileModal.iconPlusColor};
 `;
 
 export const UserImage = styled.img`
@@ -82,39 +91,61 @@ export const AuthFormField = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background-color: rgba(21, 21, 21, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.editProfileModal.background};
+  border: 1px solid ${props => props.theme.editProfileModal.inputBorder};
   outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.editProfileModal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
+
+  &::placeholder {
+    color: ${props => props.theme.editProfileModal.textMain};
+    font-size: 14px;
+    font-family: 'Poppins';
+    letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
 `;
 
-export const AuthFormPasswordIcon = styled.span`
+export const AuthFormPasswordIcon = styled.div`
   position: absolute;
   bottom: 10px;
   right: 18px;
-  color: ${props => props.theme.modal.textMain};
+  color: ${props => props.theme.editProfileModal.textMain};
   opacity: 0.4;
+
+  cursor: pointer;
 `;
 
 export const AuthFormSubmitButton = styled.button`
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: ${props => props.theme.modal.buttonBackground};
+  background: ${props => props.theme.editProfileModal.buttonBackground};
   border-radius: 8px;
 
   font-family: 'Poppins';
-  font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #161616;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: ${props => props.theme.editProfileModal.buttonColor};
+  /* outline: none; */
+
+  transition: all 150ms linear;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;

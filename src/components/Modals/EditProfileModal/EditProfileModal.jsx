@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
-import { BsPlus } from 'react-icons/bs';
-
-import user from '../user.png';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectTheme } from 'redux/theme/themeSelectors';
 // import { useDispatch } from 'react-redux';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import userDark from '../../../images/user-dark.svg';
+import userLight from '../../..//images/user-light.svg';
+import userViolet from '../../../images/user-violet.svg';
+import sprite from '../../../images/sprite.svg';
+import { theme } from 'constants/theme';
+
 import {
   AuthFormWrapper,
   ErrorSection,
@@ -17,9 +23,9 @@ import {
   CustomButton,
   UserImage,
   HiddenInput,
+  PlusIcon,
 } from './EditProfileModal.styled';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -49,6 +55,7 @@ const initialValues = {
 const EditProfileModal = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
+  const activeTheme = useSelector(selectTheme);
 
   const handleImageUpload = event => {
     const file = event.target.files[0];
@@ -60,6 +67,16 @@ const EditProfileModal = () => {
 
     if (file) {
       reader.readAsDataURL(file);
+    }
+  };
+
+  const setDefaultAvatar = () => {
+    if (theme[activeTheme].name === 'Dark') {
+      return userDark;
+    } else if (theme[activeTheme].name === 'Light') {
+      return userLight;
+    } else if (theme[activeTheme].name === 'Violet') {
+      return userViolet;
     }
   };
 
@@ -84,12 +101,15 @@ const EditProfileModal = () => {
     <EditWrapper>
       <Title>Edit profile</Title>
 
-      <ImageWrapper url={!imageUrl && user}>
+      <ImageWrapper url={!imageUrl && setDefaultAvatar}>
         {imageUrl && <UserImage src={imageUrl} alt="user" />}
         <CustomButton
           onClick={() => document.querySelector('.input-field').click()}
         >
-          <BsPlus />
+          <PlusIcon>
+            <use href={sprite + '#icon-plus'} />
+          </PlusIcon>
+
           <HiddenInput
             className="input-field"
             type="file"
