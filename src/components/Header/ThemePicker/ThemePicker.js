@@ -11,7 +11,7 @@ import {
   Text,
   Wrapper,
 } from './ThemePicker.styled';
-import sprite from '../../images/sprite.svg';
+import sprite from '../../../images/sprite.svg';
 
 const ThemePicker = () => {
   const dispatch = useDispatch();

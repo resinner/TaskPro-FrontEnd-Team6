@@ -10,6 +10,7 @@ import {
   IconEdit,
   IconDel,
 } from './ProjectList.styled';
+
 const options = [
   'Project_1 Project_1',
   'Project_2 Project_2',
