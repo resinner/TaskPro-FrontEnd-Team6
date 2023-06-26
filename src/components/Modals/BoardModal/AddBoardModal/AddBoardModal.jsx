@@ -14,6 +14,7 @@ import {
   LabelInput,
   Icon,
   IconWrapper,
+  ButtonPlus,
 } from '../BoardModal.styled';
 import defaultImg from '../../defImg.png';
 import data from '../../background.json';
@@ -104,6 +105,7 @@ const AddBoardModal = () => {
                   />
                 )}
               </BgcItem>
+
               <DefaultRadioBtn type="radio" value={el.url} name="bgc" />
             </label>
           ))}
@@ -111,7 +113,11 @@ const AddBoardModal = () => {
       </FormWrapper>
 
       <AuthFormSubmitButton onClick={handleSubmit} type="submit">
-        <PlusIcon />
+        <ButtonPlus>
+          <PlusIcon>
+            <use href={sprite + '#icon-plus'} />
+          </PlusIcon>
+        </ButtonPlus>
         Create
       </AuthFormSubmitButton>
     </Section>

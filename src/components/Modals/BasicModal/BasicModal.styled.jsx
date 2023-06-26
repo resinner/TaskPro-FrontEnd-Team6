@@ -12,8 +12,6 @@ export const ModalField = styled(Box)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 335px;
-  width: ${props => (props.value === true ? `300px` : `335px`)};
   border-radius: 8px;
   border: 1px solid ${props => props.theme.modal.border};
   background: ${props => props.theme.modal.backgroundMain};

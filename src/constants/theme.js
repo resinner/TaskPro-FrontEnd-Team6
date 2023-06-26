@@ -43,6 +43,7 @@ export const theme = [
       plusColor: 'rgba(255, 255, 255, 1)',
       border: 'rgba(190, 219, 176, 0.50)',
       line: 'rgba(255, 255, 255, 0.1)',
+      iconDefault: 'rgba(31, 31, 31, 1)',
     },
     sidebar: {
       background: 'rgba(18, 18, 18, 1)',
@@ -60,6 +61,7 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
     },
+    boardModal: {},
   },
   {
     name: 'Light',
@@ -105,6 +107,7 @@ export const theme = [
       plusColor: 'rgba(255, 255, 255, 1)',
       border: 'transparent',
       line: 'rgba(22, 22, 22, 0.1)',
+      iconDefault: 'rgba(246, 246, 247, 1)',
     },
     sidebar: {
       background: 'rgba(255, 255, 255, 1)',
@@ -122,6 +125,7 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
     },
+    boardModal: {},
   },
   {
     name: 'Violet',
@@ -167,6 +171,7 @@ export const theme = [
       plusColor: 'rgba(22, 22, 22, 1)',
       border: 'transparent',
       line: 'rgba(22, 22, 22, 0.2)',
+      iconDefault: 'rgba(236, 237, 253, 1)',
     },
     sidebar: {
       background: 'rgba(82, 85, 188, 1)',
@@ -184,5 +189,6 @@ export const theme = [
       projectBorder: 'rgba(255, 255, 255, 1)',
       iconLogout: 'rgba(255, 255, 255, 1)',
     },
+    boardModal: {},
   },
 ];

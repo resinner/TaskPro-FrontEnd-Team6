@@ -74,13 +74,13 @@ export const Sidebar = () => {
           </BtnAdd>
 
           <ProjectList />
-
-          <BasicModal
-            open={open}
-            closeModal={handleClose}
-            children={<AddBoardModal />}
-          />
         </AddBoardBlock>
+
+        <BasicModal
+          open={open}
+          closeModal={handleClose}
+          children={<AddBoardModal />}
+        />
       </div>
 
       <div style={{ width: '100%' }}>
