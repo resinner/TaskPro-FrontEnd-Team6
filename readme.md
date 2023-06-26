@@ -14,3 +14,5 @@
 
 11. problems with vh (sidebar) --> media and screen (max-height ...) {margin /
     padding}
+
+12. заглушка на бекграунд модалки (свг ??)
