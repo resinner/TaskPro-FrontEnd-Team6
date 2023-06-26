@@ -30,7 +30,9 @@ export const Sidebar = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const setIconLogo = () => {
     if (
@@ -56,27 +58,29 @@ export const Sidebar = () => {
 
         <MyBoardsText>My boards</MyBoardsText>
 
-        <AddBoardBlock onClick={handleOpen}>
-          <CreateNewBoard>Create a new board</CreateNewBoard>
+        <AddBoardBlock>
+          <CreateNewBoard onClick={handleOpen}>
+            Create a new board
+          </CreateNewBoard>
 
           <BtnAdd
             type="button"
             //onClick={ }
+            onClick={handleOpen}
           >
             <IconPlus aria-label="add icon">
               <use href={sprite + `#icon-plus`} />
             </IconPlus>
-
-            <BasicModal
-              name="AddBoardModal"
-              open={open}
-              closeModal={handleClose}
-              children={<AddBoardModal />}
-            />
           </BtnAdd>
 
           <ProjectList />
         </AddBoardBlock>
+
+        <BasicModal
+          open={open}
+          closeModal={handleClose}
+          children={<AddBoardModal />}
+        />
       </div>
 
       <div style={{ width: '100%' }}>

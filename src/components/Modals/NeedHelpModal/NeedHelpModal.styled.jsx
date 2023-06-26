@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const SectionTitle = styled.h2`
-  color: ${props => props.theme.needHelpModal.textMain};
   font-size: 18px;
   font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
+  color: ${props => props.theme.needHelpModal.textMain};
 `;
 
 export const LabelInput = styled.label`
@@ -29,11 +29,12 @@ export const TitleInput = styled.input`
 
   opacity: 0.4;
   transition: all 250ms linear;
+  color: ${props => props.theme.needHelpModal.textMain};
 
   &::placeholder {
     color: ${props => props.theme.needHelpModal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 
@@ -105,14 +106,13 @@ export const AuthFormSubmitButton = styled.button`
   font-size: 14px;
   letter-spacing: -0.28px;
 
-  transition: all 250ms linear;
-
   color: ${props => props.theme.needHelpModal.buttonColor};
   background-color: ${props => props.theme.needHelpModal.buttonBackground};
+
+  transition: all 250ms linear;
+  cursor: pointer;
 
   &:hover {
     opacity: 0.8;
   }
-
-  cursor: pointer;
 `;

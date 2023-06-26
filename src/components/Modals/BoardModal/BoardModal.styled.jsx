@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { BsFillPlusSquareFill } from 'react-icons/bs';
 
 export const Section = styled.form`
   display: flex;
@@ -9,12 +8,12 @@ export const Section = styled.form`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #fff;
   font-size: 18px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
+  color: ${props => props.theme.needHelpModal.textMain};
 `;
 
 export const FormWrapper = styled.div`
@@ -28,11 +27,12 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormTitle = styled.h3`
-  color: #fff;
+  color: ${props => props.theme.needHelpModal.textMain};
   font-size: 14px;
-  /* font-family: Poppins; */
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.28px;
+
   margin-bottom: 14px;
 `;
 
@@ -44,23 +44,30 @@ export const TitleInput = styled.input`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.modal.backgroundSecondary};
+  border: 1px solid ${props => props.theme.needHelpModal.border};
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  outline: none;
+  border-radius: 8px;
+
+  opacity: 0.4;
+  transition: all 250ms ease;
+  color: ${props => props.theme.needHelpModal.textMain};
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.needHelpModal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
   }
 `;
 
@@ -77,7 +84,7 @@ export const IconWrapper = styled.label``;
 
 export const Icon = styled.svg`
   cursor: pointer;
-  stroke: rgba(255, 255, 255, 0.5);
+  stroke: ${props => props.theme.modal.icon};
   fill: transparent;
   transition: all 250ms linear;
 
@@ -111,7 +118,6 @@ export const CustomRadioBtn = styled.div`
   background-size: cover;
 
   cursor: pointer;
-  background-color: #fff;
   transition: all 250ms linear;
 
   &.active {
@@ -125,9 +131,9 @@ export const BgcItem = styled.div`
   outline: none;
   width: 28px;
   height: 28px;
-  background-image: url(${props => props.url});
   background-position: center;
   background-size: contain;
+  background-color: ${props => props.theme.modal.iconDefault};
 
   cursor: pointer;
   transition: all 250ms linear;
@@ -142,23 +148,41 @@ export const AuthFormSubmitButton = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #bedbb0;
   border-radius: 8px;
 
   font-family: 'Poppins';
   font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #161616;
+  letter-spacing: -0.28px;
+
+  color: ${props => props.theme.needHelpModal.buttonColor};
+  background-color: ${props => props.theme.needHelpModal.buttonBackground};
+
+  transition: all 250ms linear;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
-export const PlusIcon = styled(BsFillPlusSquareFill)`
+export const ButtonPlus = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
   width: 28px;
   height: 28px;
+  background-color: ${props => props.theme.modal.plusBackground};
   margin-right: 8px;
+  padding: 7px;
+`;
+
+export const PlusIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.modal.plusColor};
 `;
