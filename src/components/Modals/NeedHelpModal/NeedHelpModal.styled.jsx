@@ -81,6 +81,7 @@ export const Textarea = styled.textarea`
   outline: none;
   opacity: 0.4;
   transition: all 250ms linear;
+  color: ${props => props.theme.needHelpModal.textMain};
 
   &::placeholder {
     color: ${props => props.theme.needHelpModal.textMain};
