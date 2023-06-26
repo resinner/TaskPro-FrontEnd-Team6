@@ -1,5 +1,25 @@
-import styled from '@emotion/styled';
-import { BsFillPlusSquareFill } from 'react-icons/bs';
+import styled from 'styled-components';
+
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
+export const StyledContainer = styled(ToastContainer)`
+  width: 300px;
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  .Toastify__toast {
+    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    letter-spacing: -0.28px;
+    background-color: #f7432392;
+    border-radius: 8px;
+  }
+`;
 
 export const Section = styled.form`
   display: flex;
@@ -74,9 +94,21 @@ export const AuthFormSubmitButton = styled.button`
   letter-spacing: -0.02em;
   color: #161616;
 `;
+export const ButtonPlus = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 
-export const PlusIcon = styled(BsFillPlusSquareFill)`
   width: 28px;
   height: 28px;
+  background-color: ${props => props.theme.modal.plusBackground};
   margin-right: 8px;
+  padding: 7px;
+`;
+
+export const PlusIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.modal.plusColor};
 `;

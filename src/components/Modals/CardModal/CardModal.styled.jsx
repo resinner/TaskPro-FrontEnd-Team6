@@ -5,12 +5,12 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const StyledContainer = styled(ToastContainer)`
-  width: 300px;
+  /* width: 300px;
   position: absolute;
   top: -20%;
   left: 50%;
   transform: translateX(-50%);
-  color: #fff;
+  color: #fff; */
 
   .Toastify__toast {
     color: #fff;

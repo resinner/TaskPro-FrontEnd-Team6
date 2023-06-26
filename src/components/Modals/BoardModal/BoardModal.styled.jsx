@@ -4,11 +4,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const StyledContainer = styled(ToastContainer)`
-  width: 300px;
+  /* width: 300px;
   position: absolute;
-  top: -20%;
+  top: -40%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 
   .Toastify__toast {
     font-size: 14px;
@@ -61,6 +61,7 @@ export const LabelInput = styled.label`
 `;
 
 export const TitleInput = styled.input`
+  position: relative;
   width: 100%;
   height: 49px;
   padding: 14px 18px;

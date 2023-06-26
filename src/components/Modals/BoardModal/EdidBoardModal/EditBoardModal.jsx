@@ -8,6 +8,7 @@ import {
   FormTitle,
   Section,
   AuthFormSubmitButton,
+  ButtonPlus,
   PlusIcon,
   TitleInput,
   SectionTitle,
@@ -116,9 +117,14 @@ const EdidBoardModal = () => {
       </FormWrapper>
 
       <AuthFormSubmitButton onClick={handleSubmit} type="submit">
-        <PlusIcon />
+        <ButtonPlus>
+          <PlusIcon>
+            <use href={sprite + '#icon-plus'} />
+          </PlusIcon>
+        </ButtonPlus>
         Edit
       </AuthFormSubmitButton>
+
       <StyledContainer
         position="top-center"
         autoClose={2000}
