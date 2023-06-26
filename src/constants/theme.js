@@ -6,6 +6,7 @@ export const theme = [
     },
     header: {
       background: 'rgba(22, 22, 22, 1)',
+      userName: 'rgba(255, 255, 255, 1)',
     },
     themePopup: {
       textMain: 'rgba(255, 255, 255, 0.8)',
@@ -61,7 +62,6 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
     },
-    boardModal: {},
   },
   {
     name: 'Light',
@@ -70,6 +70,7 @@ export const theme = [
     },
     header: {
       background: 'rgba(252, 252, 252, 1)',
+      userName: 'rgba(22, 22, 22, 1)',
     },
     themePopup: {
       textMain: 'rgba(22, 22, 22, 0.8)',
@@ -125,7 +126,6 @@ export const theme = [
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
     },
-    boardModal: {},
   },
   {
     name: 'Violet',
@@ -134,6 +134,7 @@ export const theme = [
     },
     header: {
       background: 'rgba(252, 252, 252, 1)',
+      userName: 'rgba(22, 22, 22, 1)',
     },
     themePopup: {
       textMain: 'rgba(22, 22, 22, 0.8)',
@@ -189,6 +190,5 @@ export const theme = [
       projectBorder: 'rgba(255, 255, 255, 1)',
       iconLogout: 'rgba(255, 255, 255, 1)',
     },
-    boardModal: {},
   },
 ];
