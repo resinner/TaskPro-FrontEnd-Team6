@@ -33,7 +33,7 @@ const UserBlock = () => {
   return (
     <>
       <Wrapper>
-        <UserName>{userName}</UserName>
+        <UserName>{userName[0].toUpperCase() + userName.slice(1)}</UserName>
 
         <UserAvatar
           src={
