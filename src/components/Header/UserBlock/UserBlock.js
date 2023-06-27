@@ -9,9 +9,11 @@ import userLight from '../../..//images/user-light.svg';
 import userViolet from '../../../images/user-violet.svg';
 import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import { selectUserName } from 'redux/auth/authSelectors';
 
 const UserBlock = () => {
   const activeTheme = useSelector(selectTheme);
+  const userName = useSelector(selectUserName);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -32,7 +34,7 @@ const UserBlock = () => {
   return (
     <>
       <Wrapper>
-        <UserName>nickname</UserName>
+        <UserName>{userName}</UserName>
 
         <UserAvatar
           src={

@@ -1,34 +1,39 @@
-import { register, logIn, logOut } from "./authOperations";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
+import { register, logIn, logOut } from './authOperations';
 
 const initialState = {
-    user: { name: null, email: null },
-    token: null,
-    isLoggedIn: false,
-    isRefreshing: false,
-}
+  user: {
+    name: null,
+    email: null,
+    theme: null,
+  },
+  token: null,
+  isLoggedIn: false,
+};
 
 const authSlice = createSlice({
-    name: 'auth',
-    initialState,
-    extraReducers: {
-        [register.fulfilled](state, action) {
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
-        },
-        [logIn.fulfilled](state, action) {
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
-        },
-        [logOut.fulfilled](state) {
-            state.user = { name: null, email: null };
-            state.token = null;
-            state.isLoggedIn = false;
-            state.isRefreshing = false;
-        }
-    }
-})
+  name: 'auth',
+  initialState,
+  extraReducers: builder => {
+    builder
+      // register
+      .addCase(register.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+      })
+      // login
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.isLoggedIn = true;
+      })
+      // logout
+      .addCase(logOut.fulfilled, state => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+      });
+  },
+});
 
 export const authReducer = authSlice.reducer;

@@ -20,3 +20,4 @@
 13. active icon rotate
 
 14. toast (position)
+15. edit profile validation scheme delete required

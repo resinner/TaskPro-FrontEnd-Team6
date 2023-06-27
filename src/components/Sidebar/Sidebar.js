@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { theme } from 'constants/theme';
-import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
+import { logOut } from 'redux/auth/authOperations';
 
 import { ProjectList } from './ProjectList';
-import NeedHelpBlock from 'components/NeedHelpBlock/NeedHelpBlock';
+import NeedHelpBlock from 'components/Sidebar/NeedHelpBlock/NeedHelpBlock';
 
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddBoardModal from 'components/Modals/BoardModal/AddBoardModal/AddBoardModal';
@@ -26,6 +27,7 @@ import {
 } from './Sidebar.styled';
 
 export const Sidebar = () => {
+  const dispatch = useDispatch();
   const activeTheme = useSelector(selectTheme);
   const [open, setOpen] = useState(false);
 
@@ -86,7 +88,7 @@ export const Sidebar = () => {
       <div style={{ width: '100%' }}>
         <NeedHelpBlock />
 
-        <BtnLogOut>
+        <BtnLogOut type="button" onClick={() => dispatch(logOut())}>
           <IconLogOut aria-label="logout icon">
             <use href={sprite + `#icon-login`} />
           </IconLogOut>
