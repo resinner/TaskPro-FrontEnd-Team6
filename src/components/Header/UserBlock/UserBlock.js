@@ -1,8 +1,6 @@
 import { useState } from 'react';
-import { theme } from 'constants/theme';
 import { useSelector } from 'react-redux';
-import { selectUserName } from 'redux/auth/authSelectors';
-import { selectTheme } from 'redux/theme/themeSelectors';
+import { selectUserName, selectUserTheme } from 'redux/auth/authSelectors';
 
 import userDark from '../../../images/user-dark.svg';
 import userLight from '../../..//images/user-light.svg';
@@ -14,9 +12,8 @@ import { UserAvatar, UserName, Wrapper } from './UserBlock.styled';
 
 const UserBlock = () => {
   const [open, setOpen] = useState(false);
-  const activeTheme = useSelector(selectTheme);
+  const activeUserTheme = useSelector(selectUserTheme);
   const userName = useSelector(selectUserName);
-  console.log(userName);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -24,11 +21,11 @@ const UserBlock = () => {
   };
 
   const setDefaultAvatar = () => {
-    if (theme[activeTheme].name === 'Dark') {
+    if (activeUserTheme === 'dark') {
       return userDark;
-    } else if (theme[activeTheme].name === 'Light') {
+    } else if (activeUserTheme === 'light') {
       return userLight;
-    } else if (theme[activeTheme].name === 'Violet') {
+    } else if (activeUserTheme === 'violet') {
       return userViolet;
     }
   };

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut } from './authOperations';
+import { register, logIn, logOut, changeTheme } from './authOperations';
 
 const initialState = {
   user: {
@@ -14,6 +14,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    setUserTheme: (state, action) => {
+      state.user.theme = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // register
@@ -32,8 +37,13 @@ const authSlice = createSlice({
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
+      })
+      .addCase(changeTheme.fulfilled, (state, action) => {
+        state.user.theme = action.payload.theme;
       });
   },
 });
+
+export const { setUserTheme } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

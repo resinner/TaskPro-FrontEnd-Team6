@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { theme } from 'constants/theme';
-import { selectTheme } from 'redux/theme/themeSelectors';
 import { logOut } from 'redux/auth/authOperations';
+import { selectUserTheme } from 'redux/auth/authSelectors';
 
 import { ProjectList } from './ProjectList';
 import NeedHelpBlock from 'components/Sidebar/NeedHelpBlock/NeedHelpBlock';
@@ -28,7 +27,7 @@ import {
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
-  const activeTheme = useSelector(selectTheme);
+  const activeUserTheme = useSelector(selectUserTheme);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -37,12 +36,9 @@ export const Sidebar = () => {
   };
 
   const setIconLogo = () => {
-    if (
-      theme[activeTheme].name === 'Dark' ||
-      theme[activeTheme].name === 'Light'
-    ) {
+    if (activeUserTheme === 'dark' || activeUserTheme === 'light') {
       return '#icon-logo';
-    } else if (theme[activeTheme].name === 'Violet') {
+    } else if (activeUserTheme === 'violet') {
       return '#icon-logo-violet';
     }
   };

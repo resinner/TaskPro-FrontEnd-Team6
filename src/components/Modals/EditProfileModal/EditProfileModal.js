@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectTheme } from 'redux/theme/themeSelectors';
+import { selectUserTheme } from 'redux/auth/authSelectors';
 // import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import userDark from '../../../images/user-dark.svg';
-import userLight from '../../..//images/user-light.svg';
-import userViolet from '../../../images/user-violet.svg';
-import sprite from '../../../images/sprite.svg';
-import { theme } from 'constants/theme';
 
 import {
   AuthFormWrapper,
@@ -26,6 +21,11 @@ import {
   PlusIcon,
 } from './EditProfileModal.styled';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+
+import dark from '../../../images/user-dark.svg';
+import light from '../../..//images/user-light.svg';
+import violet from '../../../images/user-violet.svg';
+import sprite from '../../../images/sprite.svg';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,7 +55,7 @@ const initialValues = {
 const EditProfileModal = ({ closeModal }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
-  const activeTheme = useSelector(selectTheme);
+  const activeUserTheme = useSelector(selectUserTheme);
 
   const handleImageUpload = event => {
     const file = event.target.files[0];
@@ -71,12 +71,12 @@ const EditProfileModal = ({ closeModal }) => {
   };
 
   const setDefaultAvatar = () => {
-    if (theme[activeTheme].name === 'Dark') {
-      return userDark;
-    } else if (theme[activeTheme].name === 'Light') {
-      return userLight;
-    } else if (theme[activeTheme].name === 'Violet') {
-      return userViolet;
+    if (activeUserTheme === 'dark') {
+      return dark;
+    } else if (activeUserTheme === 'light') {
+      return light;
+    } else if (activeUserTheme === 'violet') {
+      return violet;
     }
   };
 

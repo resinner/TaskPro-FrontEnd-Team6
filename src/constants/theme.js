@@ -1,6 +1,6 @@
 export const theme = [
   {
-    name: 'Dark',
+    name: 'dark',
     container: {
       background: 'rgba(31, 31, 31, 1)',
     },
@@ -74,7 +74,7 @@ export const theme = [
     },
   },
   {
-    name: 'Light',
+    name: 'light',
     container: {
       background: 'rgba(246, 246, 247, 1)',
     },
@@ -148,7 +148,7 @@ export const theme = [
     },
   },
   {
-    name: 'Violet',
+    name: 'violet',
     container: {
       background: 'rgba(236, 237, 253, 1)',
     },
