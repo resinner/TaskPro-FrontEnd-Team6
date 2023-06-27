@@ -6,9 +6,9 @@
 
 4. фікс вибора пріорітета (svg(filter modal/ card))
 5. фікс вибора бекграунда
-6. провалідувати модалки (+/-)
-7. заглушка на фото юзера на три теми (+)
-8. переробити pages
+6. 💚 провалідувати модалки (+/-)
+7. 💚 заглушка на фото юзера на три теми (+)
+8. 💚 переробити pages
 9. прогнати іноку icon-logo-violet через icon moon
 10. зробити drag and drop на projects list
 
@@ -19,5 +19,6 @@
 
 13. active icon rotate
 
-14. toast (position)
+14. 💚 toast (position)
 15. edit profile validation scheme delete required
+16. styles for auth page

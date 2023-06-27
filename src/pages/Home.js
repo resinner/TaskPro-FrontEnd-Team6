@@ -1,8 +1,8 @@
 // theme
 import { useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { selectTheme } from 'redux/theme/themeSelectors';
 import { theme } from 'constants/theme';
+import { selectUserTheme } from 'redux/auth/authSelectors';
 
 // components
 import Header from 'components/Header/Header';
@@ -10,10 +10,20 @@ import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 
 const Home = () => {
-  const activeTheme = useSelector(selectTheme);
+  const activeUserTheme = useSelector(selectUserTheme);
+
+  const selectThemeIndex = () => {
+    if (activeUserTheme === 'dark') {
+      return 0;
+    } else if (activeUserTheme === 'light') {
+      return 1;
+    } else if (activeUserTheme === 'violet') {
+      return 2;
+    }
+  };
 
   return (
-    <ThemeProvider theme={theme[activeTheme]}>
+    <ThemeProvider theme={theme[selectThemeIndex()]}>
       <Container>
         <Header />
 
