@@ -38,7 +38,7 @@ const options = [
   '#icon-hexagon',
 ];
 
-const AddBoardModal = () => {
+const AddBoardModal = ({ closeModal }) => {
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
 
@@ -51,6 +51,7 @@ const AddBoardModal = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    closeModal();
   };
 
   const handleBgSelection = url => {
@@ -64,6 +65,7 @@ const AddBoardModal = () => {
   return (
     <Section>
       <SectionTitle>New board</SectionTitle>
+
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -76,7 +78,7 @@ const AddBoardModal = () => {
               type="text"
               id="title"
               name="title"
-              placeholder="Title aga"
+              placeholder="Title"
             />
           </FormWrapper>
 

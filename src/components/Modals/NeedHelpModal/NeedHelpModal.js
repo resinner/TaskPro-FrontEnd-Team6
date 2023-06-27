@@ -24,10 +24,11 @@ const initialValues = {
   comment: '',
 };
 
-const NeedHelpModal = () => {
+const NeedHelpModal = ({ closeModal }) => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    closeModal();
   };
 
   return (

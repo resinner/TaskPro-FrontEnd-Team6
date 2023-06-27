@@ -50,7 +50,7 @@ const UserBlock = () => {
         name="EditProfile"
         open={open}
         closeModal={handleClose}
-        children={<EditProfileModal />}
+        children={<EditProfileModal closeModal={handleClose} />}
       />
     </>
   );

@@ -40,7 +40,7 @@ const NeedHelpBlock = () => {
         name="NeedHelp"
         open={open}
         closeModal={handleClose}
-        children={<NeedHelpModal />}
+        children={<NeedHelpModal closeModal={handleClose} />}
       />
     </Wrapper>
   );

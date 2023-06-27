@@ -73,7 +73,7 @@ export const ProjectList = () => {
       <BasicModal
         open={open}
         closeModal={handleClose}
-        children={<EditBoardModal />}
+        children={<EditBoardModal closeModal={handleClose} />}
       />
     </List>
   );

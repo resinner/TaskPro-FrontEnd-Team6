@@ -39,7 +39,7 @@ const options = [
   '#icon-hexagon',
 ];
 
-const EditBoardModal = () => {
+const EditBoardModal = ({ closeModal }) => {
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
 
@@ -52,6 +52,7 @@ const EditBoardModal = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
     resetForm();
+    closeModal();
   };
 
   const handleBgSelection = url => {
