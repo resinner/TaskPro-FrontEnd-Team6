@@ -124,6 +124,7 @@ const AddBoardModal = () => {
         </ButtonPlus>
         Create
       </AuthFormSubmitButton>
+      
       <StyledContainer
         position="top-center"
         autoClose={2000}
