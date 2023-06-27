@@ -1,4 +1,4 @@
-// import { useAuth } from '../hooks';
+import { useAuth } from '../hooks';
 import { Navigate } from 'react-router-dom';
 
 /**
@@ -6,9 +6,9 @@ import { Navigate } from 'react-router-dom';
  * - Otherwise render the component
  */
 
-const RestrictedRoute = ({ component: Component, redirectTo = '/home' }) => {
-//   const { isLoggedIn } = useAuth();
-  const { isLoggedIn } = true; // delete this string after adding useAuth();
+const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
+  const { isLoggedIn } = useAuth();
+  // const { isLoggedIn } = true; // delete this string after adding useAuth();
 
   return (isLoggedIn ? <Navigate to={redirectTo} /> : Component);
 };
