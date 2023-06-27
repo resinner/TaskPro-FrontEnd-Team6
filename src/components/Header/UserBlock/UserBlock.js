@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { theme } from 'constants/theme';
 import { useSelector } from 'react-redux';
 import { selectTheme } from 'redux/theme/themeSelectors';
-import { UserAvatar, UserName, Wrapper } from './UserBlock.styled';
+import { selectUserName } from 'redux/auth/authSelectors';
 
 import userDark from '../../../images/user-dark.svg';
 import userLight from '../../..//images/user-light.svg';
@@ -10,9 +10,12 @@ import userViolet from '../../../images/user-violet.svg';
 import EditProfileModal from 'components/Modals/EditProfileModal/EditProfileModal';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 
+import { UserAvatar, UserName, Wrapper } from './UserBlock.styled';
+
 const UserBlock = () => {
-  const activeTheme = useSelector(selectTheme);
   const [open, setOpen] = useState(false);
+  const activeTheme = useSelector(selectTheme);
+  const userName = useSelector(selectUserName);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -32,7 +35,7 @@ const UserBlock = () => {
   return (
     <>
       <Wrapper>
-        <UserName>nickname</UserName>
+        <UserName>{userName}</UserName>
 
         <UserAvatar
           src={
