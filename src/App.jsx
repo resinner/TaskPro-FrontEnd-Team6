@@ -1,46 +1,40 @@
-import React from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import WelcomePage from './pages/WelcomePage/WelcomePage';
-import AuthPage from './pages/AuthPage/AuthPage';
 import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/RegisterForm/RegisterForm';
-import HomePage from './pages/HomePage/HomePage';
 import PrivateRoute from './components/PrivateRoute';
 import RestrictedRoute from './components/RestrictedRoute';
+import Layout from 'components/Layout/Layout';
 
-// import { lazy } from 'react';
-// const WelcomePage = lazy(() => import('../components/WelcomePage/WelcomePage'));
-// const AuthPage = lazy(() => import('../components/AuthPage/AuthPage'));
-// const LoginForm = lazy(() => import('../components/LoginForm/LoginForm'));
-// const RegisterForm = lazy(() => import('../components/RegisterForm/RegisterForm'));
+const HomePage = lazy(() => import('./pages/Home'));
+const AuthPage = lazy(() => import('./pages/Auth'));
+const WelcomePage = lazy(() => import('./pages/Welcome'));
 
 export const App = () => {
   return (
     <Routes>
-      <Route
-        index
-        element={
-          <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
-        }
-      />
-      {/* <Route path="home/:boardName" element={<Board />} /> */}
-      {/* </Route> */}
-      <Route path="/welcome" element={<WelcomePage />} />
-      <Route path="auth/:id" element={<AuthPage />}>
+      <Route path="/" element={<Layout />}>
         <Route
-          path="login"
+          index
           element={
-            <RestrictedRoute redirectTo="/" component={<LoginForm />} />
+            <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
           }
         />
+
+        <Route path="/welcome" element={<WelcomePage />} />
+
         <Route
-          path="register"
-          element={
-            <RestrictedRoute redirectTo="/" component={<RegisterForm />} />
-          }
-        />
+          path="auth/:id"
+          element={<RestrictedRoute redirectTo="/" component={<AuthPage />} />}
+        >
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegisterForm />} />
+        </Route>
       </Route>
     </Routes>
   );
 };
+
+/* <Route path="home/:boardName" element={<Board />} /> */
+/* </Route> */
