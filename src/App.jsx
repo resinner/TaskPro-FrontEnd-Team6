@@ -1,7 +1,5 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/authSelectors';
 
 import LoginForm from './components/LoginForm/LoginForm';
 import RegisterForm from './components/RegisterForm/RegisterForm';
@@ -14,8 +12,6 @@ const AuthPage = lazy(() => import('./pages/Auth'));
 const WelcomePage = lazy(() => import('./pages/Welcome'));
 
 export const App = () => {
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
