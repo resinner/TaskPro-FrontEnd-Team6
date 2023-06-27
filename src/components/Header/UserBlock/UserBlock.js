@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { theme } from 'constants/theme';
 import { useSelector } from 'react-redux';
-import { selectTheme } from 'redux/theme/themeSelectors';
 import { selectUserName } from 'redux/auth/authSelectors';
+import { selectTheme } from 'redux/theme/themeSelectors';
 
 import userDark from '../../../images/user-dark.svg';
 import userLight from '../../..//images/user-light.svg';
@@ -16,6 +16,7 @@ const UserBlock = () => {
   const [open, setOpen] = useState(false);
   const activeTheme = useSelector(selectTheme);
   const userName = useSelector(selectUserName);
+  console.log(userName);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
