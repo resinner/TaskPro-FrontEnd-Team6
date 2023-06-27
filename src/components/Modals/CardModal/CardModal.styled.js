@@ -1,29 +1,7 @@
-import styled from '@emotion/styled';
-import { BsFillPlusSquareFill } from 'react-icons/bs';
-import { ToastContainer } from 'react-toastify';
+import styled from 'styled-components';
+import { Form, Field, ErrorMessage } from 'formik';
 
-import 'react-toastify/dist/ReactToastify.css';
-
-export const StyledContainer = styled(ToastContainer)`
-  /* width: 300px;
-  position: absolute;
-  top: -20%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff; */
-
-  .Toastify__toast {
-    color: #fff;
-    font-size: 14px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    letter-spacing: -0.28px;
-    background-color: #f7432392;
-    border-radius: 8px;
-  }
-`;
-
-export const Section = styled.form`
+export const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -57,7 +35,7 @@ export const LabelInput = styled.label`
   width: 100%;
 `;
 
-export const TitleInput = styled.input`
+export const TitleInput = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
@@ -81,7 +59,7 @@ export const TitleInput = styled.input`
   }
 `;
 
-export const Textarea = styled.textarea`
+export const Textarea = styled(Field)`
   resize: none;
   width: 100%;
   height: 154px;
@@ -127,7 +105,7 @@ export const AuthFormSubmitButton = styled.button`
   color: #161616;
 `;
 
-export const DefaultRadioBtn = styled.input`
+export const DefaultRadioBtn = styled(Field)`
   appearance: none;
   position: absolute;
   width: 1px;
@@ -204,10 +182,35 @@ export const LabelItem = styled.div`
   }
 `;
 
-export const PlusIcon = styled(BsFillPlusSquareFill)`
+export const ButtonPlus = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
   width: 28px;
   height: 28px;
+  background-color: ${props => props.theme.modal.plusBackground};
   margin-right: 8px;
+  padding: 7px;
+`;
+export const PlusIcon = styled.svg`
+  width: 14px;
+  height: 14px;
+  stroke: ${props => props.theme.modal.plusColor};
+`;
+
+export const ErrorSection = styled(ErrorMessage)`
+  margin-top: 3px;
+  padding-left: 14px;
+  color: #c04d4d;
+  font-size: 12px;
+`;
+export const ModalForm = styled(Form)`
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Wrapper = styled.div`

@@ -1,26 +1,10 @@
 import styled from 'styled-components';
-import { ToastContainer } from 'react-toastify';
+
+import { Form, Field, ErrorMessage } from 'formik';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-export const StyledContainer = styled(ToastContainer)`
-  /* width: 300px;
-  position: absolute;
-  top: -40%;
-  left: 50%;
-  transform: translateX(-50%); */
-
-  .Toastify__toast {
-    font-size: 14px;
-    font-family: 'Poppins';
-    font-weight: 500;
-    letter-spacing: -0.28px;
-    background-color: #f7432392;
-    border-radius: 8px;
-  }
-`;
-
-export const Section = styled.form`
+export const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,6 +28,10 @@ export const FormWrapper = styled.div`
   align-items: start;
 
   margin-bottom: 24px;
+
+  &:last-of-type {
+    margin-bottom: 40px;
+  }
 `;
 
 export const FormTitle = styled.h3`
@@ -56,11 +44,7 @@ export const FormTitle = styled.h3`
   margin-bottom: 14px;
 `;
 
-export const LabelInput = styled.label`
-  width: 100%;
-`;
-
-export const TitleInput = styled.input`
+export const TitleInput = styled(Field)`
   position: relative;
   width: 100%;
   height: 49px;
@@ -115,7 +99,7 @@ export const Icon = styled.svg`
   }
 `;
 
-export const DefaultRadioBtn = styled.input`
+export const DefaultRadioBtn = styled(Field)`
   appearance: none;
   position: absolute;
   width: 1px;
@@ -207,4 +191,18 @@ export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
   stroke: ${props => props.theme.modal.plusColor};
+`;
+
+export const ErrorSection = styled(ErrorMessage)`
+  margin-top: 3px;
+  padding-left: 14px;
+  color: #c04d4d;
+  font-size: 12px;
+`;
+
+export const ModalForm = styled(Form)`
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
