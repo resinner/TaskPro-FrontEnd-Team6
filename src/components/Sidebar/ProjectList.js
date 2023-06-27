@@ -11,7 +11,7 @@ import {
   IconDel,
 } from './ProjectList.styled';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
-import EdidBoardModal from 'components/Modals/BoardModal/EdidBoardModal/EditBoardModal';
+import EditBoardModal from 'components/Modals/BoardModal/EditBoardModal/EditBoardModal';
 
 const options = [
   'Project_1 Project_1',
@@ -73,7 +73,7 @@ export const ProjectList = () => {
       <BasicModal
         open={open}
         closeModal={handleClose}
-        children={<EdidBoardModal />}
+        children={<EditBoardModal closeModal={handleClose} />}
       />
     </List>
   );

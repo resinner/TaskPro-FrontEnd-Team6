@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Section = styled.form`
+import { Form, Field } from 'formik';
+
+export const Section = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,7 +49,7 @@ export const FormTitle = styled.h3`
   margin-bottom: 14px;
 `;
 
-export const BgcWrapper = styled.div`
+export const BgWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -55,7 +57,7 @@ export const BgcWrapper = styled.div`
   gap: 4px;
 `;
 
-export const BgcItem = styled.div`
+export const BgItem = styled.div`
   border-radius: 8px;
   border: none;
   outline: none;
@@ -91,7 +93,7 @@ export const CustomRadioBtn = styled.div`
   }
 `;
 
-export const DefaultRadioBtn = styled.input`
+export const DefaultRadioBtn = styled(Field)`
   appearance: none;
   position: absolute;
   width: 1px;
@@ -193,4 +195,11 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+export const ModalForm = styled(Form)`
+  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;

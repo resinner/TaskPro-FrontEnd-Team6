@@ -13,12 +13,13 @@ export const ModalField = styled(Box)`
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 8px;
+
   border: 1px solid ${props => props.theme.modal.border};
   background: ${props => props.theme.modal.backgroundMain};
   outline: none;
 
   @media screen and (min-width: 768px) {
-    max-width: 350px;
+    width: 350px;
   }
 
   &.filter {

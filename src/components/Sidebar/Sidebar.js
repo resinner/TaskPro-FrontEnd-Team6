@@ -81,7 +81,7 @@ export const Sidebar = () => {
         <BasicModal
           open={open}
           closeModal={handleClose}
-          children={<AddBoardModal />}
+          children={<AddBoardModal closeModal={handleClose} />}
         />
       </div>
 

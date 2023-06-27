@@ -52,7 +52,7 @@ const initialValues = {
   showPassword: false,
 };
 
-const EditProfileModal = () => {
+const EditProfileModal = ({ closeModal }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const activeTheme = useSelector(selectTheme);
@@ -95,6 +95,7 @@ const EditProfileModal = () => {
     resetForm();
     setImageUrl('');
     console.log({ ...values, image: imageUrl });
+    closeModal();
   };
 
   return (
