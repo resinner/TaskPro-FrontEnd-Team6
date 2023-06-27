@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Form, Field, ErrorMessage } from 'formik';
+import { Form, Field } from 'formik';
 
 export const Section = styled.div`
   display: flex;
