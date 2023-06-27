@@ -11,19 +11,13 @@ export const List = styled.ul`
   margin-bottom: 40px;
   overflow-y: scroll;
   scroll-behavior: auto;
-  width: 260px;
-  //scrollbar-width: none;
-  //scrollbar-color: rgba(255, 255, 255, 1) #1F1F1F; /* «цвет ползунка» «цвет полосы скроллбара» */
-  //scrollbar-width: 8px;
-  //position: relative;
-  /*tab*/
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
-    /* height: 380px; */
+  width: 225px;
+
+  @media screen and (min-width: 768px) {
+    width: 260px;
   }
 
-  /*mob*/
   @media screen and (min-width: 768px) {
-    /* height: 202px; */
   }
 
   ::-webkit-scrollbar {

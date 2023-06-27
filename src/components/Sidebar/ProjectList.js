@@ -33,6 +33,16 @@ export const ProjectList = () => {
     setOpen(false);
   };
 
+  const checkTextLength = text => {
+    const str = text.split('');
+
+    if (str.length <= 10) {
+      return str.join('');
+    }
+
+    return str.splice(0, 10).join('') + '...';
+  };
+
   return (
     <List>
       {options.map((item, index) => (
@@ -51,7 +61,7 @@ export const ProjectList = () => {
             <ProjectTitle
               className={activePojectIndex === index ? 'active' : ''}
             >
-              {item}
+              {checkTextLength(item)}
             </ProjectTitle>
           </ProjectBlock>
 

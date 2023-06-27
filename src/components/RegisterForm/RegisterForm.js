@@ -12,6 +12,7 @@ import {
   AuthFormSubmitButton,
   ErrorSection,
 } from './RegisterForm.styled';
+
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 const validationSchema = Yup.object().shape({
@@ -75,6 +76,7 @@ const RegisterForm = () => {
             id="name"
             name="name"
             placeholder="Enter your name"
+            autoComplete="off"
           />
         </AuthFormWrapper>
 
@@ -85,6 +87,7 @@ const RegisterForm = () => {
             id="email"
             name="email"
             placeholder="Enter your email"
+            autoComplete="off"
           />
         </AuthFormWrapper>
 
@@ -95,6 +98,7 @@ const RegisterForm = () => {
             id="password"
             name="password"
             placeholder="Create a password"
+            autoComplete="off"
           />
           <AuthFormPasswordIcon onClick={handleTogglePassword}>
             {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}

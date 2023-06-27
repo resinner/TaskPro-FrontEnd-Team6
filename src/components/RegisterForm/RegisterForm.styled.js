@@ -3,7 +3,6 @@ import { Form, Field, ErrorMessage } from 'formik';
 
 export const AuthFormWrapper = styled.div`
   position: relative;
-  margin-bottom: 14px;
 
   .auth-form__error-message {
     margin: 0;
@@ -13,9 +12,9 @@ export const AuthFormWrapper = styled.div`
 `;
 
 export const AuthForm = styled(Form)`
-  margin: 0;
   display: flex;
   flex-direction: column;
+  gap: 14px;
 `;
 
 export const ErrorSection = styled(ErrorMessage)`
@@ -27,34 +26,50 @@ export const ErrorSection = styled(ErrorMessage)`
 
 export const AuthFormField = styled(Field)`
   width: calc(100%);
+  height: 49px;
   padding: 14px 18px;
-  margin-bottom: 14px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
+  font-family: Poppins;
+  letter-spacing: -0.28px;
+
   color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #bedbb0;
+  background: #1f1f1f;
+  box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.08);
+  outline: none;
+  transition: all 150ms ease;
+
+  opacity: 0.4;
+
+  &::placeholder {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Poppins';
+    letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
+  }
 `;
 
 export const AuthFormPasswordIcon = styled.span`
   position: absolute;
-  bottom: 26px;
+
+  top: 50%;
   right: 18px;
+  transform: translateY(-50%);
   color: #fff;
   opacity: 0.4;
   cursor: pointer;
 `;
 
 export const AuthFormSubmitButton = styled.button`
-  margin-top: 10px;
   padding: 14px;
   border: none;
+  margin-top: 10px;
   background: #bedbb0;
   border-radius: 8px;
 
@@ -65,4 +80,12 @@ export const AuthFormSubmitButton = styled.button`
   text-align: center;
   letter-spacing: -0.02em;
   color: #161616;
+
+  transition: all 150ms linear;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  cursor: pointer;
 `;

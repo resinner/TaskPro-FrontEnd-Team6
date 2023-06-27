@@ -7,6 +7,7 @@ export const theme = [
     header: {
       background: 'rgba(22, 22, 22, 1)',
       userName: 'rgba(255, 255, 255, 1)',
+      menuIcon: 'rgba(255, 255, 255, 1)',
     },
     themePopup: {
       textMain: 'rgba(255, 255, 255, 0.8)',
@@ -81,6 +82,7 @@ export const theme = [
     header: {
       background: 'rgba(252, 252, 252, 1)',
       userName: 'rgba(22, 22, 22, 1)',
+      menuIcon: 'rgba(22, 22, 22, 1)',
     },
     themePopup: {
       textMain: 'rgba(22, 22, 22, 0.8)',
@@ -155,6 +157,7 @@ export const theme = [
     header: {
       background: 'rgba(252, 252, 252, 1)',
       userName: 'rgba(22, 22, 22, 1)',
+      menuIcon: 'rgba(22, 22, 22, 1)',
     },
     themePopup: {
       textMain: 'rgba(22, 22, 22, 0.8)',

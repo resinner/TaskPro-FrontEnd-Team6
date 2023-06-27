@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/authOperations';
 import { selectUserTheme } from 'redux/auth/authSelectors';
+import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
 
 import { ProjectList } from './ProjectList';
 import NeedHelpBlock from 'components/Sidebar/NeedHelpBlock/NeedHelpBlock';
-
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddBoardModal from 'components/Modals/BoardModal/AddBoardModal/AddBoardModal';
 
@@ -28,6 +28,7 @@ import {
 export const Sidebar = () => {
   const dispatch = useDispatch();
   const activeUserTheme = useSelector(selectUserTheme);
+  const menuMode = useSelector(selectIsMenuOpen);
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -44,7 +45,7 @@ export const Sidebar = () => {
   };
 
   return (
-    <Aside>
+    <Aside isOpen={menuMode}>
       <div style={{ width: '100%' }}>
         <Logo to="/">
           <IconLogo aria-label="logo icon">
