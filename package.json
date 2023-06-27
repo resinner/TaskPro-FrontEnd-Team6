@@ -5,7 +5,6 @@
   "homepage": "https://resinner.github.io/TaskPro-FrontEnd-Team6/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.13.6",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.16.3",
@@ -22,6 +21,7 @@
     "react-router-dom": "^6.13.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.3",
+    "redux-persist": "^6.0.0",
     "styled-components": "^5.3.10",
     "web-vitals": "^2.1.3",
     "yup": "^1.2.0"
