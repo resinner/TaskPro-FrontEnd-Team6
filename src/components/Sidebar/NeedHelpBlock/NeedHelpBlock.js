@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import needHelpImage from '../../images/2.svg';
-import sprite from '../../images/sprite.svg';
+import needHelpImage from '../../../images/2.svg';
+import sprite from '../../../images/sprite.svg';
 import {
   AccentText,
   Image,
