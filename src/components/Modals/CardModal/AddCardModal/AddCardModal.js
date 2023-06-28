@@ -32,7 +32,11 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
-const options = ['low', 'medium', 'high', 'without'];
+const options = ['Without', 'Low', 'Medium', 'High'];
+const cardLabelsoptions = options.push(options.shift());
+
+console.log(cardLabelsoptions);
+
 const months = [
   'January',
   'February',
