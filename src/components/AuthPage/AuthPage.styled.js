@@ -21,13 +21,13 @@ export const Modal = styled.div`
   border-radius: 8px;
 
   @media (min-width: 375px) {
-    width: 290px;
+    width: 335px;
   }
 
   @media (min-width: 768px) {
     border: 1px solid black;
     padding: 40px;
-    width: 345px;
+    width: 424px;
   }
 `;
 

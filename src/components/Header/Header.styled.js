@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   background-color: ${props => props.theme.header.background};
   padding: 14px 20px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
   @media screen and (min-width: 375px) {
@@ -22,4 +22,10 @@ export const HeaderWrapper = styled.header`
     /* width: 1180px; */
     padding: 18px 24px;
   }
+`;
+
+export const UserWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

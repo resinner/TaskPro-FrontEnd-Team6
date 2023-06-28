@@ -17,6 +17,14 @@ export const Aside = styled.div`
   align-items: center;
   flex-direction: column;
 
+  transform: translateX(-100%);
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+  ${props =>
+    props.isOpen
+      ? 'transform: translateX(0);'
+      : 'transform: translateX(-110%);'}
+
   @media screen and (max-width: 767px) {
     width: 225px;
     padding: 14px 14px 24px;
@@ -24,6 +32,7 @@ export const Aside = styled.div`
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     width: 260px;
+    transform: translateX(0);
   }
 `;
 

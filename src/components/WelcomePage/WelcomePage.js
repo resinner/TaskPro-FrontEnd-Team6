@@ -1,6 +1,7 @@
 import React from 'react';
-import logoImage from '../../images/logo.png';
 import iconImage from '../../images/welcome-icon.png';
+
+import sprite from '../../images/sprite.svg';
 
 import {
   WelcomeWrapper,
@@ -21,7 +22,10 @@ const WelcomePage = () => {
         <WelcomeIcon src={iconImage} alt="man with macbook" />
 
         <WelcomeLogo>
-          <WelcomeLogoIcon src={logoImage} alt="logo" />
+          <WelcomeLogoIcon>
+            <use href={sprite + '#icon-logo'} />
+          </WelcomeLogoIcon>
+
           <WelcomeLogoTitle>Task Pro</WelcomeLogoTitle>
         </WelcomeLogo>
 
