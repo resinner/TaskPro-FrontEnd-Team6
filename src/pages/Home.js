@@ -1,5 +1,5 @@
 // theme
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'constants/theme';
 import { selectUserTheme } from 'redux/auth/authSelectors';
@@ -9,8 +9,11 @@ import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 import ScreensPage from 'components/ScreensPage/ScreensPage';
+import { useEffect } from 'react';
+import { getUser } from 'redux/user/userOperations';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const activeUserTheme = useSelector(selectUserTheme);
 
   const selectThemeIndex = () => {
@@ -22,6 +25,10 @@ const Home = () => {
       return 2;
     }
   };
+
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
   return (
     <ThemeProvider theme={theme[selectThemeIndex()]}>
