@@ -18,6 +18,8 @@ export const ModalField = styled(Box)`
   background: ${props => props.theme.modal.backgroundMain};
   outline: none;
 
+  width: 335px;
+
   @media screen and (min-width: 768px) {
     width: 350px;
   }
@@ -27,7 +29,6 @@ export const ModalField = styled(Box)`
   }
 
   &.needHelp {
-    width: 335px;
     box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
 
     @media screen and (min-width: 768px) {
@@ -36,7 +37,6 @@ export const ModalField = styled(Box)`
   }
 
   &.editProfile {
-    width: 335px;
     box-shadow: 0px 4px 16px 0px rgba(22, 22, 22, 0.05);
 
     @media screen and (min-width: 768px) {

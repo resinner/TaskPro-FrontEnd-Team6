@@ -61,7 +61,7 @@ const NeedHelpModal = ({ closeModal }) => {
             />
           </FormWrapper>
 
-          <AuthFormSubmitButton type="submit">Create</AuthFormSubmitButton>
+          <AuthFormSubmitButton type="submit">Send</AuthFormSubmitButton>
         </ModalForm>
       </Formik>
     </Section>
