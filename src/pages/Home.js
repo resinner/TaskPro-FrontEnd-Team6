@@ -11,6 +11,7 @@ import { Sidebar } from 'components/Sidebar/Sidebar';
 import ScreensPage from 'components/ScreensPage/ScreensPage';
 import { useEffect } from 'react';
 import { getUser } from 'redux/user/userOperations';
+import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getUser());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllDashboards());
   }, [dispatch]);
 
   return (

@@ -1,4 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
+import { addDashboard } from 'redux/dashboards/dashboardsOperations';
+
+// import { Notify } from 'notiflix';
+
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import {
   DefaultRadioBtn,
   CustomRadioBtn,
@@ -17,11 +25,10 @@ import {
   ErrorSection,
   ModalForm,
 } from '../BoardModal.styled';
+
 import defaultImg from '../../defImg.png';
 import data from '../../background.json';
 import sprite from '../../../../images/sprite.svg';
-import { Formik } from 'formik';
-import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -39,6 +46,9 @@ const options = [
 ];
 
 const AddBoardModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
+  const dashboards = useSelector(selectAllDashboards);
   const [selectedBg, setSelectedBg] = useState('');
   const [setIcon, setSetIcon] = useState(options[0]);
 
@@ -49,7 +59,26 @@ const AddBoardModal = ({ closeModal }) => {
   };
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { bg, icon, title } = values;
+
+    const dashboard = {
+      name: title,
+      backgroundURL: bg,
+      icon,
+    };
+
+    const alreadyExists = dashboards.findIndex(item => {
+      const name = item.name.toLowerCase();
+      const newName = dashboard.name.toLowerCase();
+      return name === newName;
+    });
+
+    if (alreadyExists >= 0) {
+      return `${dashboard.name} is already added to contact list`;
+    } else {
+      dispatch(addDashboard(dashboard));
+    }
+
     resetForm();
     closeModal();
   };
@@ -79,6 +108,7 @@ const AddBoardModal = ({ closeModal }) => {
               id="title"
               name="title"
               placeholder="Title"
+              autoComplete="off"
             />
           </FormWrapper>
 
