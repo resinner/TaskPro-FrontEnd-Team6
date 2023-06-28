@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { logOut } from 'redux/auth/authOperations';
 
 export const menuModeSlice = createSlice({
   name: 'menuMode',
@@ -12,6 +13,13 @@ export const menuModeSlice = createSlice({
     closeMenuMode: state => {
       state.isMenuOpen = false;
     },
+  },
+  extraReducers: builder => {
+    builder
+      // logout
+      .addCase(logOut.fulfilled, state => {
+        state.isMenuOpen = false;
+      });
   },
 });
 

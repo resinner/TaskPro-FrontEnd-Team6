@@ -4,7 +4,7 @@ import { logOut } from 'redux/auth/authOperations';
 import { selectUserTheme } from 'redux/auth/authSelectors';
 import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
 
-import { ProjectList } from './ProjectList';
+import BoardList from './BoardList';
 import NeedHelpBlock from 'components/Sidebar/NeedHelpBlock/NeedHelpBlock';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddBoardModal from 'components/Modals/BoardModal/AddBoardModal/AddBoardModal';
@@ -62,17 +62,13 @@ export const Sidebar = () => {
             Create a new board
           </CreateNewBoard>
 
-          <BtnAdd
-            type="button"
-            //onClick={ }
-            onClick={handleOpen}
-          >
+          <BtnAdd type="button" onClick={handleOpen}>
             <IconPlus aria-label="add icon">
               <use href={sprite + `#icon-plus`} />
             </IconPlus>
           </BtnAdd>
 
-          <ProjectList />
+          <BoardList />
         </AddBoardBlock>
 
         <BasicModal
