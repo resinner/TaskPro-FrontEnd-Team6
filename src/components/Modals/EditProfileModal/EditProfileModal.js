@@ -26,6 +26,7 @@ import light from '../../..//images/user-light.svg';
 import violet from '../../../images/user-violet.svg';
 import sprite from '../../../images/sprite.svg';
 import { selectUser } from 'redux/user/userSelectors';
+// import { useDispatch } from 'react-redux';
 // import { updateUser } from 'redux/user/userOperations';
 
 const validationSchema = Yup.object().shape({
@@ -46,6 +47,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const EditProfileModal = ({ closeModal }) => {
+  // const dispatch = useDispatch();
   const { name, email } = useSelector(selectUser);
   const [showPassword, setShowPassword] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
@@ -87,7 +89,7 @@ const EditProfileModal = ({ closeModal }) => {
   };
 
   const onSubmit = values => {
-    const { name, email, image, password } = values;
+    const { name, email, password } = values;
 
     // dispatch(
     //     register({ name, email, password})
@@ -96,13 +98,13 @@ const EditProfileModal = ({ closeModal }) => {
     // const formData = new FormData();
     // formData.append('name', name);
     // formData.append('email', email);
-    // formData.append('image', imageUrl);
+    // formData.append('avatarURL', imageUrl);
     // formData.append('password', password);
 
-    // // console.log('Form data:', formData);
+    // console.log('Form data:', formData);
 
     // dispatch(updateUser(formData));
-    console.log({ name, email, image, password });
+    console.log({ name, email, password });
 
     closeModal();
   };

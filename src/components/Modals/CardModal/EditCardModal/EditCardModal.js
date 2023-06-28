@@ -33,6 +33,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const options = ['Without', 'Low', 'Medium', 'High'];
+
 const months = [
   'January',
   'February',

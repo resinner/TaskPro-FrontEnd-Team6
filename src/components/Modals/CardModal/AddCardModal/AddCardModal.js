@@ -33,9 +33,6 @@ const validationSchema = Yup.object().shape({
 });
 
 const options = ['Without', 'Low', 'Medium', 'High'];
-const cardLabelsoptions = options.push(options.shift());
-
-console.log(cardLabelsoptions);
 
 const months = [
   'January',
