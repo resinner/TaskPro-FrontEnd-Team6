@@ -6,8 +6,8 @@ export const menuModeSlice = createSlice({
     isMenuOpen: false,
   },
   reducers: {
-    toggleMenuMode: state => {
-      state.isMenuOpen = !state.isMenuOpen;
+    openMenuMode: state => {
+      state.isMenuOpen = true;
     },
     closeMenuMode: state => {
       state.isMenuOpen = false;
@@ -15,6 +15,6 @@ export const menuModeSlice = createSlice({
   },
 });
 
-export const { toggleMenuMode, closeMenuMode } = menuModeSlice.actions;
+export const { openMenuMode, closeMenuMode } = menuModeSlice.actions;
 
 export const menuModeReducer = menuModeSlice.reducer;

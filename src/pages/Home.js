@@ -8,6 +8,7 @@ import { selectUserTheme } from 'redux/auth/authSelectors';
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
+import ScreensPage from 'components/ScreensPage/ScreensPage';
 
 const Home = () => {
   const activeUserTheme = useSelector(selectUserTheme);
@@ -29,7 +30,7 @@ const Home = () => {
 
         <Sidebar />
 
-        {/* main */}
+        <ScreensPage />
       </Container>
     </ThemeProvider>
   );

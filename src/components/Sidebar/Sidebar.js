@@ -24,6 +24,7 @@ import {
   IconLogOut,
   TextLogOut,
 } from './Sidebar.styled';
+import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 export const Sidebar = () => {
   const dispatch = useDispatch();

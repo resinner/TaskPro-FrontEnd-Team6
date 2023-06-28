@@ -30,7 +30,7 @@ export const Aside = styled.div`
     padding: 14px 14px 24px;
   }
 
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
+  @media screen and (min-width: 1280px) {
     width: 260px;
     transform: translateX(0);
   }

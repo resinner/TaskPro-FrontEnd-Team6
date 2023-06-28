@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import sprite from '../../images/sprite.svg';
 import {
   List,
@@ -12,6 +12,10 @@ import {
 } from './ProjectList.styled';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import EditBoardModal from 'components/Modals/BoardModal/EditBoardModal/EditBoardModal';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
+import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 const options = [
   'Project_1 Project_1',
@@ -24,15 +28,34 @@ const options = [
 ]; // test array
 
 export const ProjectList = () => {
+  const dispatch = useDispatch();
+
+  const menuMode = useSelector(selectIsMenuOpen);
   const [activePojectIndex, setActivePojectIndex] = useState(0);
-  const switchActiveProject = index => setActivePojectIndex(index);
   const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
+  const projectRef = useRef();
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleOutsideClick = event => {
+    const path = event.composedPath();
+
+    if (path.includes(projectRef.current) && menuMode) {
+      dispatch(closeMenuMode());
+    }
   };
 
+  useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
+  }, [handleOutsideClick]);
+
+  const switchActiveProject = index => setActivePojectIndex(index);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const checkTextLength = text => {
     const str = text.split('');
 
@@ -49,7 +72,11 @@ export const ProjectList = () => {
         <Item
           key={index}
           className={activePojectIndex === index ? 'active' : ''}
-          onClick={() => switchActiveProject(index)}
+          onClick={() => {
+            dispatch(closeMenuMode());
+            switchActiveProject(index);
+          }}
+          ref={projectRef}
         >
           <ProjectBlock href="#">
             <ProjectIcon
