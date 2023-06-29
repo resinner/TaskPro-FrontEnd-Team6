@@ -1,5 +1,4 @@
 import React from 'react';
-import { useToggleModal } from '../ColumnTask/useToggleModal';
 import {
   ListItem,
   Span,
@@ -10,14 +9,11 @@ import {
   Wrap,
   PensilIcon,
   TrashIcon,
-  TitleName,
   ArrowIcon,
 } from './Task.styled';
 import sprite from '../../../images/sprite.svg';
 
 const Task = () => {
-  const { open } = useToggleModal();
-
   return (
     <ListItem>
       <Title>The Watch Spot Design</Title>
