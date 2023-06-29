@@ -33,10 +33,10 @@ export const App = () => {
         >
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegisterForm />} />
-          <Route
+          {/* <Route
             path="*"
             element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
-          />
+          /> */}
         </Route>
       </Route>
     </Routes>

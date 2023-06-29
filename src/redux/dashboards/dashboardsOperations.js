@@ -48,7 +48,6 @@ export const deleteDashboard = createAsyncThunk(
 export const getDashboardById = createAsyncThunk(
   'dashboards/getById',
   async (dashboardId, thunkAPI) => {
-    console.log(dashboardId);
     try {
       const { data } = await axios.get(`api/dashboard/${dashboardId}`);
 

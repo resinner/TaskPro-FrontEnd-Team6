@@ -1,23 +1,21 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import {
-  deleteDashboard,
-  getDashboardById,
-} from 'redux/dashboards/dashboardsOperations';
+import { deleteDashboard } from 'redux/dashboards/dashboardsOperations';
+import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 import sprite from '../../../images/sprite.svg';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import EditBoardModal from 'components/Modals/BoardModal/EditBoardModal/EditBoardModal';
 import {
+  Board,
+  BoardIcon,
+  BoardTitle,
   IconDel,
   IconEdit,
   IconsBlock,
   Item,
-  ProjectBlock,
-  ProjectIcon,
-  ProjectTitle,
+  StyledLink,
 } from './BoardItem.styled';
-import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   const dispatch = useDispatch();
@@ -38,37 +36,37 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   return (
     <>
       <Item className={activePojectIndex === index ? 'active' : ''}>
-        <ProjectBlock
-          to={`${item._id}`}
-          onClick={() => {
-            onActive(index);
-            dispatch(closeMenuMode());
-            dispatch(getDashboardById(item._id));
-          }}
-        >
-          <ProjectIcon className={activePojectIndex === index ? 'active' : ''}>
-            <use href={sprite + item.icon} />
-          </ProjectIcon>
+        <StyledLink to={`${item._id}`}>
+          <Board>
+            <BoardIcon className={activePojectIndex === index ? 'active' : ''}>
+              <use href={sprite + item.icon} />
+            </BoardIcon>
 
-          <ProjectTitle className={activePojectIndex === index ? 'active' : ''}>
-            {checkTextLength(item.name)}
-          </ProjectTitle>
-        </ProjectBlock>
+            <BoardTitle
+              onClick={() => {
+                onActive(index);
+                dispatch(closeMenuMode());
+              }}
+              className={activePojectIndex === index ? 'active' : ''}
+            >
+              {checkTextLength(item.name)}
+            </BoardTitle>
+          </Board>
+          <IconsBlock>
+            <IconEdit aria-label="edit icon" onClick={handleOpen}>
+              <use href={sprite + `#icon-pencil`} />
+            </IconEdit>
 
-        <IconsBlock>
-          <IconEdit aria-label="edit icon" onClick={handleOpen}>
-            <use href={sprite + `#icon-pencil`} />
-          </IconEdit>
-
-          <IconDel
-            aria-label="delit icon"
-            onClick={() => {
-              dispatch(deleteDashboard(item._id));
-            }}
-          >
-            <use href={sprite + `#icon-trash`} />
-          </IconDel>
-        </IconsBlock>
+            <IconDel
+              aria-label="delit icon"
+              onClick={() => {
+                dispatch(deleteDashboard(item._id));
+              }}
+            >
+              <use href={sprite + `#icon-trash`} />
+            </IconDel>
+          </IconsBlock>
+        </StyledLink>
       </Item>
 
       <BasicModal
