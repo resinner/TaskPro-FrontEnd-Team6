@@ -22,7 +22,6 @@ export const TaskList = styled.ul`
   width: 350px;
   gap: 8px;
   height: 400px;
-
   padding-right: 8px;
 
   overflow-y: scroll;
@@ -32,14 +31,14 @@ export const TaskList = styled.ul`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: ${props => props.theme.column.scrollTrack};
+    border: 1px solid ${props => props.theme.column.scrollBorder};
     border-radius: 12px;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    background-color: #121212;
+    background-color: ${props => props.theme.column.scrollThumb};
   }
 `;
 
@@ -49,24 +48,20 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  border-radius: 8px;
   width: 334px;
-
   height: 56px;
-
   padding: 14px 24px;
 
-  background-color: #121212;
-  color: #ffffff;
+  border-radius: 8px;
+  background-color: ${props => props.theme.column.backgroundMain};
   font-weight: 500;
 `;
 
 export const Title = styled.h2`
-  color: #fff;
+  color: ${props => props.theme.column.textMain};
   font-size: 14px;
   font-family: 'Poppins';
   font-weight: 500;
-  line-height: normal;
   letter-spacing: -0.28px;
 `;
 
@@ -80,41 +75,41 @@ export const IconWrapper = styled.div`
 export const Icon = styled.svg`
   width: 16px;
   height: 16px;
-  stroke: ${props => props.theme.modal.plusColor};
+  stroke: ${props => props.theme.column.icon};
+  fill: transparent;
   cursor: pointer;
-
   transition: all 250ms linear;
 
   &:hover {
     opacity: 0.4;
+    transform: scale(1.4);
   }
 `;
 
-export const AuthFormSubmitButton = styled.button`
+export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 334px;
-
   padding: 14px;
-  border: none;
-  background: #bedbb0;
-  border-radius: 8px;
   margin-bottom: 16px;
-  color: #161616;
+
   font-size: 14px;
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.28px;
 
-  transition: all 250ms linear;
+  border: none;
+  color: ${props => props.theme.column.buttonColor};
+  background-color: ${props => props.theme.column.buttonBackground};
+  border-radius: 8px;
 
+  transition: all 250ms linear;
   cursor: pointer;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `;
 
@@ -126,15 +121,21 @@ export const ButtonPlus = styled.div`
 
   width: 28px;
   height: 28px;
-  background-color: ${props => props.theme.modal.plusBackground};
+  background-color: ${props => props.theme.column.plusBackground};
   margin-right: 8px;
   padding: 7px;
 
+  transition: all 250ms linear;
+
   cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: ${props => props.theme.modal.plusColor};
+  stroke: ${props => props.theme.column.plusColor};
 `;

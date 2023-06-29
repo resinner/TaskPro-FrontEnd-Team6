@@ -1,105 +1,102 @@
-import {
-  CardTitle,
-  CardWrapper,
-  CardDescription,
-  IconsGroup,
-  IconBell,
-  IconMove,
-  IconEdit,
-  IconTrash,
-  CardDivider,
-  CardTopBlock,
-  CardBottomBlock,
-  CardInfoBlock,
-  CardPriorityWrapper,
-  PriorityValueWrapper,
-  PriorityIndicator,
-  Priority,
-  PriorityValue,
-  CardDeadlineWrapper,
-  Deadline,
-  DeadlineValue,
-} from './Card.styled';
-import React, { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import sprite from '../../images/sprite.svg';
 import CardmovePopup from './Popitem';
 
-const PRIORITY_VALUES = {
-  low: 'Low',
-  medium: 'Medium',
-  high: 'High',
-  without: 'Without',
-};
+import {
+  Title,
+  CardWrapper,
+  Text,
+  IconsGroup,
+  IconBell,
+  TopWrapper,
+  BottomWrapper,
+  Stats,
+  Priority,
+  Deadline,
+  ActiveIcon,
+  MoverWrapper,
+} from './Card.styled';
 
-const PRIORITY_INDICATORS = {
-  low: '#8FA1D0',
-  medium: '#E09CB5',
-  high: '#BEDBB0',
-  without: '#FFFFFF4D',
-};
-
-const Card = ({ cards }) => {
-  const formattedDate = cards.deadline.toLocaleDateString('en-US');
-
-  const mappedPriorityValue = PRIORITY_VALUES[cards.priority];
-  const mappedPriorityIndicatorColor = PRIORITY_INDICATORS[cards.priority];
+const Card = () => {
+  // const formattedDate = cards.deadline.toLocaleDateString('en-US');
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const moveIconRef = useRef();
 
-  const handleIconMoveClick = () => {
-    setIsPopupOpen(true);
+  // toggle popup func
+  const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
+
+  // text cutting func
+  const checkTextLength = text => {
+    const str = text.split('');
+
+    if (str.length <= 88) {
+      return str.join('');
+    }
+    return str.splice(0, 88).join('') + '...';
   };
 
+  // test text DONT DELETE
+  const demoTextString =
+    "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.";
+
+  // backdrop closing popup func
+  const handleOutsideClick = event => {
+    const path = event.composedPath();
+
+    if (!path.includes(moveIconRef.current)) {
+      setIsPopupOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
   return (
-    <CardWrapper
-      style={{ borderLeft: `4px solid ${mappedPriorityIndicatorColor}` }}
-    >
-      <CardTopBlock>
-        <CardTitle>{cards.title}</CardTitle>
-        <CardDescription>{cards.description}</CardDescription>
-      </CardTopBlock>
-      <CardDivider />
-      <CardBottomBlock>
-        <CardInfoBlock>
-          <CardPriorityWrapper>
-            <Priority>Priority</Priority>
-            <PriorityValueWrapper>
-              <PriorityIndicator
-                style={{ backgroundColor: mappedPriorityIndicatorColor }}
-              />
-              <PriorityValue>{mappedPriorityValue}</PriorityValue>
-            </PriorityValueWrapper>
-          </CardPriorityWrapper>
-          <CardDeadlineWrapper>
-            <Deadline>Deadline</Deadline>
-            <DeadlineValue>{formattedDate}</DeadlineValue>
-          </CardDeadlineWrapper>
-        </CardInfoBlock>
+    <CardWrapper>
+      <TopWrapper>
+        <Title>Card Title{/* {cards.title} */}</Title>
+
+        <Text>{checkTextLength(demoTextString)}</Text>
+      </TopWrapper>
+
+      <BottomWrapper>
+        <Stats>
+          <Priority>Low</Priority>
+
+          <Deadline>12/05/2023</Deadline>
+        </Stats>
+
         <IconsGroup>
-          <IconBell
-            aria-label="bell icon"
-            //onClick={}
-          >
+          <IconBell aria-label="bell icon">
             <use href={sprite + `#icon-bell`} />
           </IconBell>
-          <IconMove aria-label="move card icon" onClick={handleIconMoveClick}>
-            <use href={sprite + `#icon-arrow-circle-broken-right`} />
-          </IconMove>
-          {isPopupOpen && <CardmovePopup />}
-          <IconEdit
-            aria-label="edit icon"
-            //onClick={}
-          >
-            <use href={sprite + `#icon-pencil`} />
-          </IconEdit>
 
-          <IconTrash
-            aria-label="edit icon"
-            //onClick={}
-          >
+          <MoverWrapper>
+            <ActiveIcon
+              ref={moveIconRef}
+              aria-label="move card icon"
+              onClick={handleIconMoveClick}
+            >
+              <use href={sprite + `#icon-arrow-circle-broken-right`} />
+            </ActiveIcon>
+
+            {isPopupOpen && <CardmovePopup />}
+          </MoverWrapper>
+
+          <ActiveIcon aria-label="edit icon">
+            <use href={sprite + `#icon-pencil`} />
+          </ActiveIcon>
+
+          <ActiveIcon aria-label="edit icon">
             <use href={sprite + `#icon-trash`} />
-          </IconTrash>
+          </ActiveIcon>
         </IconsGroup>
-      </CardBottomBlock>
+      </BottomWrapper>
     </CardWrapper>
   );
 };

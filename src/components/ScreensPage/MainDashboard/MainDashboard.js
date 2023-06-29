@@ -6,6 +6,9 @@ const MainDashboard = () => {
   return (
     <Wrapper>
       <ContentWrapper>
+        {/* {columns.map(item => (
+          <ColumnTask />
+        ))} */}
         <ColumnTask />
         <AddButton />
       </ContentWrapper>

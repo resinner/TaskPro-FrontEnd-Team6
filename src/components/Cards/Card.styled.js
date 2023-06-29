@@ -1,156 +1,165 @@
 import styled from 'styled-components';
 
+// витягнути пропси і прокинути динамічні кольори бордів (пріоритетність)
 export const CardWrapper = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 24px;
-  padding-right: 14px;
+  justify-content: space-between;
+
+  padding: 14px 20px 14px 24px;
 
   width: 100%;
-  height: 154px;
+  min-height: 154px;
   border-radius: 8px;
-  background-color: #121212;
-  justify-content: space-between;
+  background-color: ${props => props.theme.column.backgroundMain};
+  /* border-left: 4px solid rgba(143, 161, 208, 1); */
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 151px;
+    background-color: rgba(143, 161, 208, 1);
+    border-radius: 4px 0px 0px 4px;
+  }
 `;
 
-export const CardTopBlock = styled.div`
+export const TopWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
 `;
 
-export const CardTitle = styled.h4`
-  color: #ffffff;
+export const Title = styled.h4`
+  color: ${props => props.theme.column.textMain};
+  font-size: 14px;
+  font-family: 'Poppins';
   font-weight: 600;
-  text-align: left;
+  letter-spacing: -0.28px;
   font-size: 14px;
 `;
 
-export const CardDescription = styled.p`
+export const Text = styled.p`
+  position: relative;
   display: flex;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-top: 8px;
-  text-align: left;
+  color: ${props => props.theme.column.textSecondary};
+
   font-size: 12px;
-  color: #ffffff80;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: -0.24px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -18px;
+    width: 100%;
+    height: 1px;
+    background-color: ${props => props.theme.column.borderColor};
+  }
 `;
 
-export const CardDivider = styled.span`
-  width: 100%;
-  margin-top: 14px;
-  margin-bottom: 14px;
-  border: 1px solid #ffffff1a;
-  color: #ffffff1a;
-`;
-
-export const CardBottomBlock = styled.div`
+export const BottomWrapper = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
 `;
 
-export const CardInfoBlock = styled.div`
+export const Stats = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   gap: 14px;
 `;
 
-export const CardPriorityWrapper = styled.div`
+export const Priority = styled.p`
+  position: relative;
+
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-
+  align-items: flex-end;
+  padding-left: 16px;
   gap: 4px;
-`;
-export const Priority = styled.div`
-  font-size: 8px;
-  color: #ffffff80;
-`;
 
-export const PriorityValueWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 4px;
-`;
-
-export const PriorityIndicator = styled.span`
-  height: 12px;
-  width: 12px;
-  border-radius: 100%;
-`;
-
-export const PriorityValue = styled.div`
+  color: ${props => props.theme.column.textMain};
   font-size: 10px;
-  color: #ffffff;
-`;
+  font-family: 'Poppins';
+  font-weight: 400;
+  letter-spacing: -0.2px;
 
-export const CardDeadlineWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  &::before {
+    content: 'Priority';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    color: ${props => props.theme.column.textSecondary};
+    font-size: 8px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    letter-spacing: -0.16px;
+  }
 
-  gap: 4px;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(143, 161, 208, 1); // by priority
+  }
 `;
 
 export const Deadline = styled.div`
-  font-size: 8px;
-  color: #ffffff80;
-`;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-export const DeadlineValue = styled.div`
+  gap: 4px;
+
+  color: ${props => props.theme.column.textMain};
   font-size: 10px;
-  color: #ffffff;
+  font-family: 'Poppins';
+  font-weight: 400;
+  letter-spacing: -0.2px;
+
+  &::before {
+    content: 'Deadline';
+    color: ${props => props.theme.column.textSecondary};
+    font-size: 8px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    letter-spacing: -0.16px;
+  }
 `;
 
+// icons
 export const IconsGroup = styled.div`
   display: flex;
   flex-direction: row;
   align-items: end;
   gap: 8px;
 `;
-export const IconMove = styled.svg`
+
+export const ActiveIcon = styled.svg`
   height: 16px;
   width: 16px;
   fill: transparent;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  stroke: ${props => props.theme.column.icon};
 
   transition: all 150ms linear;
+  cursor: pointer;
 
-  :hover {
-    stroke: ${props => props.theme.sidebar.projectIconHover};
-    cursor: pointer;
+  &:hover {
+    stroke: ${props => props.theme.column.textSecondary};
   }
 `;
-export const IconEdit = styled.svg`
-  height: 16px;
-  width: 16px;
-  fill: transparent;
-  stroke: ${props => props.theme.sidebar.projectIcon};
 
-  transition: all 150ms linear;
-
-  :hover {
-    stroke: ${props => props.theme.sidebar.projectIconHover};
-    cursor: pointer;
-  }
-`;
-export const IconTrash = styled.svg`
-  height: 16px;
-  width: 16px;
-  fill: transparent;
-  stroke: ${props => props.theme.sidebar.projectIcon};
-
-  transition: all 150ms linear;
-
-  :hover {
-    stroke: ${props => props.theme.sidebar.projectIconHover};
-    cursor: pointer;
-  }
-`;
 export const IconBell = styled.svg`
   height: 16px;
   width: 16px;
@@ -160,31 +169,59 @@ export const IconBell = styled.svg`
   transition: all 150ms linear;
 `;
 
-// popup items
-
-export const PopupWrapper = styled.div`
-position: relative;
-  display: inline-flex;
-  justify-content: center;
+export const MoverWrapper = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: end;
   align-items: center;
-  gap: 4px;
-  background-color: ffffff;
-  cursor: pointer;
-`
-
-export const OptionPopup = styled.p`
- font-family: Poppins;
- font-size: 14px;
- font-weight: 500;
 `;
-export const PopupOpenBlock = styled.ul`
- font-family: Poppins;
- font-size: 14px;
- font-weight: 500;
- `;
 
-export const PopupOpenBlockItem = styled.li`
- font-family: Poppins;
- font-size: 14px;
- font-weight: 500;
+// popup items
+export const PopupWrapper = styled.ul`
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-55%);
+  display: inline-flex;
+  min-width: 160px;
+  padding: 18px;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid ${props => props.theme.themePopup.border};
+  background: ${props => props.theme.themePopup.background};
+  box-shadow: 0px 4px 16px 0px ${props => props.theme.themePopup.boxShadow};
+  gap: 4px;
+  z-index: 99;
+`;
+
+export const PopupItem = styled.li`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  color: ${props => props.theme.themePopup.textSecondary};
+  stroke: ${props => props.theme.themePopup.textSecondary};
+  fill: transparent;
+  transition: all 250ms linear;
+
+  &:hover {
+    color: ${props => props.theme.themePopup.textAccent};
+    stroke: ${props => props.theme.themePopup.textAccent};
+  }
+
+  cursor: pointer;
+`;
+
+export const PopupText = styled.p`
+  font-size: 14px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  letter-spacing: -0.28px;
+`;
+
+export const PopupIcon = styled.svg`
+  height: 16px;
+  width: 16px;
 `;

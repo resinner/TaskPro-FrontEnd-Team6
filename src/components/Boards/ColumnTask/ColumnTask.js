@@ -3,7 +3,7 @@ import sprite from '../../../images/sprite.svg';
 import {
   Wrapper,
   Header,
-  AuthFormSubmitButton,
+  Button,
   PlusIcon,
   ButtonPlus,
   TaskList,
@@ -13,9 +13,9 @@ import {
   Title,
 } from './ColumnTask.Styled';
 
-import Task from '../Task/Task';
+import Card from 'components/Cards/Card';
 
-export const ColumnTask = () => {
+export const ColumnTask = ({ columnsLength }) => {
   return (
     <Wrapper>
       <Content>
@@ -33,22 +33,26 @@ export const ColumnTask = () => {
           </IconWrapper>
         </Header>
 
-        <TaskList>
-          <Task />
-          <Task />
-          <Task />
-          <Task />
+        <TaskList columnsLength={columnsLength}>
+          {/* {cardsArray.map(item => (
+            <Card  />
+          ))} */}
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
         </TaskList>
       </Content>
 
-      <AuthFormSubmitButton>
+      <Button>
         <ButtonPlus>
           <PlusIcon>
             <use href={sprite + '#icon-plus'} />
           </PlusIcon>
         </ButtonPlus>
         Add another card
-      </AuthFormSubmitButton>
+      </Button>
     </Wrapper>
   );
 };

@@ -36,7 +36,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   return (
     <>
       <Item className={activePojectIndex === index ? 'active' : ''}>
-        <StyledLink to={`${item.name}`}>
+        <StyledLink to={`${item._id}`}>
           <Board>
             <BoardIcon className={activePojectIndex === index ? 'active' : ''}>
               <use href={sprite + item.icon} />
