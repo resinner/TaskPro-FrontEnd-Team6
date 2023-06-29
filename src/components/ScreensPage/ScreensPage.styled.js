@@ -7,11 +7,17 @@ export const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
   padding: 14px 20px;
+
+  margin-left: ${props => (props.isOpen ? '225px' : '0')};
+  transition: all 250ms linear;
 
   @media screen and (min-width: 768px) {
     height: calc(100vh - 68px);
     padding: 26px 32px;
+
+    margin-left: ${props => (props.isOpen ? '260px' : '0')};
   }
 
   @media screen and (min-width: 1280px) {
@@ -35,4 +41,3 @@ export const Title = styled.h2`
   line-height: normal;
   letter-spacing: -0.36px;
 `;
-

@@ -6,6 +6,7 @@ import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
+
   const menuMode = useSelector(selectIsMenuOpen);
   const screenRef = useRef();
   const currentDashboard = useSelector(
@@ -30,11 +31,13 @@ const ScreensPage = () => {
   }, [handleOutsideClick]);
 
   return (
-    <Wrapper ref={screenRef} bgcUrl={currentDashboard?.backgroundURL}>
+    <Wrapper
+      ref={screenRef}
+      bgcUrl={currentDashboard?.backgroundURL}
+      isOpen={menuMode}
+    >
       <HeaderDashboard>
         <Title>{currentDashboard?.name}</Title>
-
-        
       </HeaderDashboard>
     </Wrapper>
   );
