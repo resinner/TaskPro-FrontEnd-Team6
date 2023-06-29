@@ -35,10 +35,11 @@ export const Item = styled.li`
 
 export const ProjectBlock = styled(NavLink)`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   transition: all 150ms linear;
   text-decoration: none;
+  width: 100%;
 `;
 
 export const ProjectIcon = styled.svg`

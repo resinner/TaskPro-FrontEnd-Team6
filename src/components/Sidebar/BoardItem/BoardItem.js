@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { deleteDashboard } from 'redux/dashboards/dashboardsOperations';
+import {
+  deleteDashboard,
+  getDashboardById,
+} from 'redux/dashboards/dashboardsOperations';
 
 import sprite from '../../../images/sprite.svg';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
@@ -18,28 +21,29 @@ import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   const dispatch = useDispatch();
+
   const [open, setOpen] = useState(false);
 
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   const checkTextLength = text => {
     const str = text.split('');
 
     if (str.length <= 10) {
       return str.join('');
     }
-
     return str.splice(0, 10).join('') + '...';
   };
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <>
       <Item className={activePojectIndex === index ? 'active' : ''}>
         <ProjectBlock
+          to={`${item._id}`}
           onClick={() => {
-            dispatch(closeMenuMode());
             onActive(index);
+            dispatch(closeMenuMode());
+            dispatch(getDashboardById(item._id));
           }}
         >
           <ProjectIcon className={activePojectIndex === index ? 'active' : ''}>

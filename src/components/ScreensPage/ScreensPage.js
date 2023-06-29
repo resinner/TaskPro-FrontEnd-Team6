@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { Text, Wrapper } from './ScreensPage.styled';
+import { HeaderDashboard, Title, Wrapper } from './ScreensPage.styled';
 import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
 import { useEffect, useRef } from 'react';
 import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
@@ -8,6 +8,9 @@ const ScreensPage = () => {
   const dispatch = useDispatch();
   const menuMode = useSelector(selectIsMenuOpen);
   const screenRef = useRef();
+  const currentDashboard = useSelector(
+    state => state.dashboards.currentDashboard.dashboard
+  );
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleOutsideClick = event => {
@@ -27,8 +30,12 @@ const ScreensPage = () => {
   }, [handleOutsideClick]);
 
   return (
-    <Wrapper ref={screenRef}>
-      <Text>Попавсь ?</Text>
+    <Wrapper ref={screenRef} bgcUrl={currentDashboard?.backgroundURL}>
+      <HeaderDashboard>
+        <Title>{currentDashboard?.name}</Title>
+
+        
+      </HeaderDashboard>
     </Wrapper>
   );
 };
