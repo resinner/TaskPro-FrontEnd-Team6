@@ -4,6 +4,7 @@ import {
   addDashboard,
   deleteDashboard,
   getDashboardById,
+  editDashbord,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -26,7 +27,7 @@ const dashboardsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      // fetch contacts
+      // fetch dashboard
       .addCase(getAllDashboards.pending, handlePending)
       .addCase(getAllDashboards.rejected, handleRejected)
       .addCase(getAllDashboards.fulfilled, (state, action) => {
@@ -34,7 +35,7 @@ const dashboardsSlice = createSlice({
         state.dashboards = action.payload;
         state.error = null;
       })
-      // add contact
+      // add dashboard
       .addCase(addDashboard.pending, handlePending)
       .addCase(addDashboard.rejected, handleRejected)
       .addCase(addDashboard.fulfilled, (state, action) => {
@@ -42,7 +43,7 @@ const dashboardsSlice = createSlice({
         state.dashboards.push(action.payload);
         state.error = null;
       })
-      //  delete contact
+      //  delete dashboard
       .addCase(deleteDashboard.pending, handlePending)
       .addCase(deleteDashboard.rejected, handleRejected)
       .addCase(deleteDashboard.fulfilled, (state, action) => {
@@ -68,6 +69,23 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.currentDashboard = action.payload;
         state.error = null;
+      })
+      // edit dashboard
+      .addCase(editDashbord.pending, handlePending)
+      .addCase(editDashbord.rejected, handleRejected)
+      .addCase(editDashbord.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const { _id, name, icon, backgroundURL } = action.payload;
+        const dashboardIndex = state.dashboards.findIndex(
+          item => item._id === _id
+        );
+        state.dashboards[dashboardIndex] = {
+          ...state.dashboards[dashboardIndex],
+          name,
+          icon,
+          backgroundURL,
+        };
       });
   },
 });

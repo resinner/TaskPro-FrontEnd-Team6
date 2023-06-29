@@ -17,7 +17,7 @@ export const updateUser = createAsyncThunk(
   'users/prifile',
   async (credintials, thunkAPI) => {
     try {
-      const { data } = await axios.put('api/users/prifile', credintials);
+      const { data } = await axios.put('api/users/profile', credintials);
 
       return data;
     } catch (error) {

@@ -58,6 +58,22 @@ export const getDashboardById = createAsyncThunk(
   }
 );
 
+export const editDashbord = createAsyncThunk(
+  'dashboards/editDashbord',
+  async ({ dashboardId, updatedData }, thunkAPI) => {
+    try {
+      const { data } = await axios.put(
+        `api/dashboard/${dashboardId}`,
+        updatedData
+      );
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const addColumn = createAsyncThunk(
   'dashboards/addColumn',
   async ({ title, dashboardId, owner }, thunkAPI) => {
