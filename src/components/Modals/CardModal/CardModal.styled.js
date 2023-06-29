@@ -145,13 +145,13 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'without' && '2px solid rgba(255, 255, 255, 0.3)'};
+      props.value === 'Without' && '2px solid rgba(255, 255, 255, 0.3)'};
     border: ${props =>
-      props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
+      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
-      props.value === 'medium' && '2px solid rgba(224, 156, 181, 1)'};
+      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
     border: ${props =>
-      props.value === 'high' && '2px solid rgba(190, 219, 176, 1)'};
+      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -201,10 +201,12 @@ export const PlusIcon = styled.svg`
 `;
 
 export const ErrorSection = styled(ErrorMessage)`
-  margin-top: 3px;
   padding-left: 14px;
   color: #c04d4d;
-  font-size: 12px;
+  font-size: 18px;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.36px;
 `;
 export const ModalForm = styled(Form)`
   margin: 0;

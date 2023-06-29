@@ -14,11 +14,7 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {
-    setUserTheme: (state, action) => {
-      state.user.theme = action.payload;
-    },
-  },
+
   extraReducers: builder => {
     builder
       // register
@@ -38,12 +34,11 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
       })
+      // theme changer
       .addCase(changeTheme.fulfilled, (state, action) => {
         state.user.theme = action.payload.theme;
       });
   },
 });
-
-export const { setUserTheme } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

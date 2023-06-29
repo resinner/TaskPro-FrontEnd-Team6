@@ -73,7 +73,7 @@ export const AddBoardBlock = styled.div`
   align-items: center;
   border-top: 1px solid ${props => props.theme.sidebar.border};
   border-bottom: 1px solid ${props => props.theme.sidebar.border};
-  margin-bottom: 40px;
+
   padding: 14px 0;
 `;
 

@@ -1,34 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-//стилізувати скролл
-
-export const List = styled.ul`
-  position: absolute;
-  left: 50%;
-  top: -100%;
-  transform: translate(-50%, calc(100% + 40px));
-  max-height: 126px;
-  padding: 0;
-  margin-bottom: 40px;
-  overflow-y: scroll;
-  scroll-behavior: auto;
-  width: 225px;
-
-  @media screen and (min-width: 768px) {
-    width: 260px;
-  }
-
-  @media screen and (min-width: 768px) {
-  }
-
-  ::-webkit-scrollbar {
-    width: 0;
-  }
-`;
 
 export const Item = styled.li`
   display: flex;
   justify-content: space-between;
-  align-items: center; //горизонт
+  align-items: center;
   height: 61px;
   padding: 20px 24px;
   margin-bottom: 4px;
@@ -57,15 +33,14 @@ export const Item = styled.li`
   }
 `;
 
-export const ProjectBlock = styled.a`
+export const ProjectBlock = styled(NavLink)`
   display: flex;
   justify-content: space-between;
-  align-items: center; //горизонт
+  align-items: center;
   transition: all 150ms linear;
   text-decoration: none;
 `;
 
-//повинна міняти колір разом з назвою проекту
 export const ProjectIcon = styled.svg`
   height: 18px;
   width: 18px;

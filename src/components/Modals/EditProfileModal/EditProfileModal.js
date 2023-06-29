@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUserTheme } from 'redux/auth/authSelectors';
-// import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
@@ -26,6 +25,9 @@ import dark from '../../../images/user-dark.svg';
 import light from '../../..//images/user-light.svg';
 import violet from '../../../images/user-violet.svg';
 import sprite from '../../../images/sprite.svg';
+import { selectUser } from 'redux/user/userSelectors';
+// import { useDispatch } from 'react-redux';
+// import { updateUser } from 'redux/user/userOperations';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -44,18 +46,20 @@ const validationSchema = Yup.object().shape({
     ),
 });
 
-const initialValues = {
-  image: '',
-  name: '',
-  email: '',
-  password: '',
-  showPassword: false,
-};
-
 const EditProfileModal = ({ closeModal }) => {
+  // const dispatch = useDispatch();
+  const { name, email } = useSelector(selectUser);
   const [showPassword, setShowPassword] = useState(false);
   const [imageUrl, setImageUrl] = useState('');
   const activeUserTheme = useSelector(selectUserTheme);
+
+  const initialValues = {
+    image: imageUrl,
+    name,
+    email,
+    password: '',
+    showPassword: false,
+  };
 
   const handleImageUpload = event => {
     const file = event.target.files[0];
@@ -80,21 +84,28 @@ const EditProfileModal = ({ closeModal }) => {
     }
   };
 
-  // const dispatch = useDispatch();
-
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (values, { resetForm }) => {
-    // const { name, email, password } = values;
-    console.log(values);
+  const onSubmit = values => {
+    const { name, email, password } = values;
+
     // dispatch(
     //     register({ name, email, password})
     // );
-    resetForm();
-    setImageUrl('');
-    console.log({ ...values, image: imageUrl });
+
+    // const formData = new FormData();
+    // formData.append('name', name);
+    // formData.append('email', email);
+    // formData.append('avatarURL', imageUrl);
+    // formData.append('password', password);
+
+    // console.log('Form data:', formData);
+
+    // dispatch(updateUser(formData));
+    console.log({ name, email, password });
+
     closeModal();
   };
 
@@ -121,6 +132,7 @@ const EditProfileModal = ({ closeModal }) => {
       </ImageWrapper>
 
       <Formik
+        id="formform"
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
@@ -152,7 +164,7 @@ const EditProfileModal = ({ closeModal }) => {
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
-              placeholder="Create a password"
+              placeholder="Change a password"
             />
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}

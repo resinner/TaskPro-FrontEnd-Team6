@@ -32,7 +32,8 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
-const options = ['low', 'medium', 'high', 'without'];
+const options = ['Without', 'Low', 'Medium', 'High'];
+
 const months = [
   'January',
   'February',

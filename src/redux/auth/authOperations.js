@@ -85,7 +85,6 @@ export const changeTheme = createAsyncThunk(
 
       return data;
     } catch (error) {
-      console.log(thunkAPI.rejectWithValue(error.message));
       return thunkAPI.rejectWithValue(error.message);
     }
   }
