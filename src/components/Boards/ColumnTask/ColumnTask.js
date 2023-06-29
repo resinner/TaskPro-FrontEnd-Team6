@@ -36,7 +36,6 @@ export const ColumnTask = () => {
         <TaskList>
           <Task />
           <Task />
-
           <Task />
           <Task />
         </TaskList>

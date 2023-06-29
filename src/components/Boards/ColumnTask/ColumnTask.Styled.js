@@ -22,6 +22,7 @@ export const TaskList = styled.ul`
   width: 350px;
   gap: 8px;
   height: 400px;
+
   padding-right: 8px;
 
   overflow-y: scroll;

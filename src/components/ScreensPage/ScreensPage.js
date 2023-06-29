@@ -8,6 +8,7 @@ import { getDashboardById } from 'redux/dashboards/dashboardsOperations';
 
 import HeaderDashboard from './HeaderDashboard/HeaderDashboard';
 import MainDashboard from './MainDashboard/MainDashboard';
+import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,12 @@ const ScreensPage = () => {
     state => state.dashboards.currentDashboard.dashboard
   );
 
+  const allDash = useSelector(selectAllDashboards);
+  const boardId = allDash.filter(item => item.name === boardName);
+
   useEffect(() => {
-    dispatch(getDashboardById(boardName));
-  }, [boardName, dispatch]);
+    dispatch(getDashboardById(boardId[0]?._id));
+  }, [boardId, boardName, dispatch]);
 
   const handleScreenClick = () => {
     if (menuMode) {
