@@ -12,7 +12,6 @@ import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
-// import ScreensPage from 'components/ScreensPage/ScreensPage';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -42,8 +41,6 @@ const Home = () => {
         <Header />
 
         <Sidebar />
-
-        {/* <ScreensPage /> */}
 
         <Suspense fallback={<div>Loading...</div>}>
           <Outlet />
