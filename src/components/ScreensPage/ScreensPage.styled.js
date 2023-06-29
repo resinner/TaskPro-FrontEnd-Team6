@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+<<<<<<< HEAD
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+=======
+>>>>>>> 375fd5bc2d27d92f32632b77129ac96f1b719c3d
   height: calc(100vh - 60px);
 
   background-image: url(${props => props.bgcUrl});
