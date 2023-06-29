@@ -3,6 +3,7 @@ import { Text, Wrapper } from './ScreensPage.styled';
 import { selectIsMenuOpen } from 'redux/menuMode/menuModeSelectors';
 import { useEffect, useRef } from 'react';
 import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
+import { ColumnTask } from 'components/Boards/ColumnTask/ColumnTask';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const ScreensPage = () => {
 
   return (
     <Wrapper ref={screenRef}>
+      <ColumnTask />
       <Text>Попавсь ?</Text>
     </Wrapper>
   );
