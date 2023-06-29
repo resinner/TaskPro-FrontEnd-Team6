@@ -71,7 +71,7 @@ const LoginForm = () => {
             type={showPassword ? 'text' : 'password'}
             id="password"
             name="password"
-            placeholder="Create a password"
+            placeholder="Confirm a password"
           />
           <AuthFormPasswordIcon onClick={handleTogglePassword}>
             {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}

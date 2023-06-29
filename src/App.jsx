@@ -10,26 +10,33 @@ import Layout from 'components/Layout/Layout';
 const HomePage = lazy(() => import('./pages/Home'));
 const AuthPage = lazy(() => import('./pages/Auth'));
 const WelcomePage = lazy(() => import('./pages/Welcome'));
+const ScreenPage = lazy(() => import('./components/ScreensPage/ScreensPage'));
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          element={
-            <PrivateRoute redirectTo="/welcome" component={<HomePage />} />
-          }
-        />
+        <Route index element={<WelcomePage />} />
 
-        <Route path="/welcome" element={<WelcomePage />} />
+        <Route
+          path="/home"
+          element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
+        >
+          <Route path=":boardName" element={<ScreenPage />} />
+        </Route>
 
         <Route
           path="auth/:id"
-          element={<RestrictedRoute redirectTo="/" component={<AuthPage />} />}
+          element={
+            <RestrictedRoute redirectTo="/home" component={<AuthPage />} />
+          }
         >
           <Route path="login" element={<LoginForm />} />
           <Route path="register" element={<RegisterForm />} />
+          {/* <Route
+            path="*"
+            element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
+          /> */}
         </Route>
       </Route>
     </Routes>

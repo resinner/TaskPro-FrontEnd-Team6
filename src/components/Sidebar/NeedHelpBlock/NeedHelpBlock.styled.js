@@ -16,12 +16,20 @@ export const Wrapper = styled.div`
     width: 212px;
     padding: 20px;
   }
+
+  @media screen and (max-height: 720px) {
+    width: 160px;
+  }
 `;
 
 export const Image = styled.img`
   width: 54px;
   height: 78px;
   margin-bottom: 14px;
+
+  @media screen and (max-height: 720px) {
+    display: none;
+  }
 `;
 
 export const Text = styled.p`
@@ -31,6 +39,10 @@ export const Text = styled.p`
   letter-spacing: -0.28px;
   color: ${props => props.theme.needHelp.textMain};
   margin-bottom: 18px;
+
+  @media screen and (max-height: 720px) {
+    display: none;
+  }
 `;
 
 export const AccentText = styled.span`

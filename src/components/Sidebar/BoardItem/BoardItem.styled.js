@@ -1,15 +1,19 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Item = styled.li`
+export const Item = styled.li``;
+
+export const StyledLink = styled(NavLink)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 61px;
   padding: 20px 24px;
   margin-bottom: 4px;
-  cursor: pointer;
   transition: all 150ms linear;
+  text-decoration: none;
+
+  cursor: pointer;
 
   :hover {
     background-color: ${props => props.theme.sidebar.projectHover};
@@ -33,15 +37,16 @@ export const Item = styled.li`
   }
 `;
 
-export const ProjectBlock = styled(NavLink)`
+export const Board = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   transition: all 150ms linear;
   text-decoration: none;
+  width: 100%;
 `;
 
-export const ProjectIcon = styled.svg`
+export const BoardIcon = styled.svg`
   height: 18px;
   width: 18px;
   margin-right: 8px;
@@ -54,7 +59,10 @@ export const ProjectIcon = styled.svg`
   }
 `;
 
-export const ProjectTitle = styled.p`
+export const BoardTitle = styled.p`
+  display: block;
+  width: 100%;
+  padding: 20px 0;
   color: ${props => props.theme.sidebar.textSecondary};
   font-size: 14px;
   font-family: Poppins;
@@ -72,6 +80,7 @@ export const IconsBlock = styled.div`
 `;
 
 export const IconEdit = styled.svg`
+  z-index: 9999;
   height: 16px;
   width: 16px;
   fill: transparent;
@@ -85,6 +94,7 @@ export const IconEdit = styled.svg`
 `;
 
 export const IconDel = styled.svg`
+  z-index: 9999;
   height: 16px;
   width: 16px;
   fill: transparent;
