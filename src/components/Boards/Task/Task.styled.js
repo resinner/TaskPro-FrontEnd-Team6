@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ListItem = styled.li`
   border-left: 4px solid teal;
   border-radius: 8px;
-  width: 100%;
+  /* min-width: 334px; */
   height: 154px;
   padding: 14px 24px;
   background-color: #121212;

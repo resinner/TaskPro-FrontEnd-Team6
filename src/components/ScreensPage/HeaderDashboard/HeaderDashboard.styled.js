@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
+
+  margin-bottom: 10px;
 `;
 
 export const Title = styled.h2`
@@ -12,6 +15,5 @@ export const Title = styled.h2`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
   letter-spacing: -0.36px;
 `;

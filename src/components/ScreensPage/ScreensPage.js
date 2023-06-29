@@ -5,7 +5,9 @@ import { useEffect } from 'react';
 import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 import { useParams } from 'react-router-dom';
 import { getDashboardById } from 'redux/dashboards/dashboardsOperations';
+
 import HeaderDashboard from './HeaderDashboard/HeaderDashboard';
+import MainDashboard from './MainDashboard/MainDashboard';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
@@ -34,6 +36,8 @@ const ScreensPage = () => {
       isOpen={menuMode}
     >
       <HeaderDashboard children={currentDashboard?.name} />
+
+      <MainDashboard />
     </Wrapper>
   );
 };
