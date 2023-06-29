@@ -60,22 +60,24 @@ export const TitleInput = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.editProfileModal.background};
+  border: 1px solid ${props => props.theme.editProfileModal.inputBorder};
+  border-radius: 8px;
+  outline: none;
+
+  opacity: 0.4;
+  transition: all 250ms ease;
+  color: ${props => props.theme.editProfileModal.textMain};
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.editProfileModal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
   }
 `;
@@ -85,23 +87,30 @@ export const Textarea = styled(Field)`
   width: 100%;
   height: 154px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.editProfileModal.background};
+  border: 1px solid ${props => props.theme.editProfileModal.inputBorder};
+  outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.editProfileModal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
+
   margin-top: 14px;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.editProfileModal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
+    font-weight: 400;
+    line-height: normal;
     letter-spacing: -0.28px;
   }
 `;
@@ -132,6 +141,7 @@ export const ErrorSection = styled(ErrorMessage)`
   font-weight: 500;
   letter-spacing: -0.36px;
 `;
+
 export const ModalForm = styled(Form)`
   margin: 0;
   width: 100%;

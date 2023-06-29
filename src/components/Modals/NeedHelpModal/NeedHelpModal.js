@@ -14,10 +14,7 @@ import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
-  comment: Yup.string()
-    .min(32, 'Comment must be at least 2 characters')
-    .max(230, 'Comment must be at most 32 characters')
-    .required('Comment is required'),
+  comment: Yup.string().min(7).max(230).required('Comment is required'),
 });
 const initialValues = {
   email: '',
@@ -26,7 +23,6 @@ const initialValues = {
 
 const NeedHelpModal = ({ closeModal }) => {
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
     resetForm();
     closeModal();
   };
