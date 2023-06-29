@@ -22,7 +22,7 @@ import {
 } from './Card.styled';
 import React, { useState } from 'react';
 import sprite from '../../images/sprite.svg';
-import CardmovePopup from './Popitem1';
+import CardmovePopup from './Popitem';
 
 const PRIORITY_VALUES = {
   low: 'Low',
