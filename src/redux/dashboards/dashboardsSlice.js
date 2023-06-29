@@ -3,6 +3,7 @@ import {
   getAllDashboards,
   addDashboard,
   deleteDashboard,
+  getDashboardById,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -19,6 +20,7 @@ const dashboardsSlice = createSlice({
   name: 'dashboards',
   initialState: {
     dashboards: [],
+    currentDashboard: {},
     isLoading: false,
     error: null,
   },
@@ -39,7 +41,6 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.dashboards.push(action.payload);
         state.error = null;
-        console.log(state.dashboards);
       })
       //  delete contact
       .addCase(deleteDashboard.pending, handlePending)
@@ -49,10 +50,8 @@ const dashboardsSlice = createSlice({
         state.error = null;
 
         const index = state.dashboards.findIndex(
-          item => item._id === action.payload
+          item => item._id === action.payload._id
         );
-
-        console.log(index);
 
         state.dashboards.splice(index, 1);
       })
@@ -61,6 +60,14 @@ const dashboardsSlice = createSlice({
         state.dashboards = [];
         state.error = null;
         state.isLoading = false;
+      })
+      // get by id
+      .addCase(getDashboardById.pending, handlePending)
+      .addCase(getDashboardById.rejected, handleRejected)
+      .addCase(getDashboardById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentDashboard = action.payload;
+        state.error = null;
       });
   },
 });

@@ -47,7 +47,7 @@ export const Sidebar = () => {
   return (
     <Aside isOpen={menuMode}>
       <div style={{ width: '100%' }}>
-        <Logo to="/">
+        <Logo>
           <IconLogo aria-label="logo icon">
             <use href={sprite + setIconLogo()} />
           </IconLogo>
