@@ -11,19 +11,18 @@ const userSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      // register
+      // get user
       .addCase(getUser.fulfilled, (state, action) => {
         state.user = action.payload;
       })
+      // edit user profile
       .addCase(updateUser.fulfilled, (state, action) => {
-        // state.user.name = action.payload.name;
-        // state.user.email = action.payload.email;
-        state.user = action.payload;
+        const { name, email, password, avatarURL } = action.payload;
+        state.user.name = name;
+        state.user.email = email;
+        state.user.password = password;
+        state.user.avatarURL = avatarURL;
       });
-    // // theme changer
-    // .addCase(changeTheme.fulfilled, (state, action) => {
-    //   state.user.theme = action.payload.theme;
-    // });
   },
 });
 

@@ -72,7 +72,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
       <BasicModal
         open={open}
         closeModal={handleClose}
-        children={<EditBoardModal closeModal={handleClose} />}
+        children={<EditBoardModal item={item} closeModal={handleClose} />}
       />
     </>
   );

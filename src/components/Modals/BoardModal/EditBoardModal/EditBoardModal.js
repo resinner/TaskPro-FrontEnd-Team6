@@ -23,6 +23,8 @@ import sprite from '../../../../images/sprite.svg';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { editDashbord } from 'redux/dashboards/dashboardsOperations';
+import { useDispatch } from 'react-redux';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -39,19 +41,22 @@ const options = [
   '#icon-hexagon',
 ];
 
-const EditBoardModal = ({ closeModal }) => {
-  const [selectedBg, setSelectedBg] = useState('');
-  const [setIcon, setSetIcon] = useState(options[0]);
+const EditBoardModal = ({ closeModal, item }) => {
+  const dispatch = useDispatch();
+  const { _id, name, icon, backgroundURL } = item;
+  const [selectedBg, setSelectedBg] = useState(backgroundURL);
+  const [setIcon, setSetIcon] = useState(icon);
 
   const initialValues = {
-    title: '',
+    title: name,
     icon: setIcon,
-    bgc: selectedBg,
+    backgroundURL: selectedBg,
   };
 
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
+  const handleSubmit = values => {
+    const { title, icon, backgroundURL } = values;
+    const updatedData = { name: title, icon, backgroundURL };
+    dispatch(editDashbord({ dashboardId: _id, updatedData }));
     closeModal();
   };
 
@@ -121,7 +126,11 @@ const EditBoardModal = ({ closeModal }) => {
                     )}
                   </BgcItem>
 
-                  <DefaultRadioBtn type="radio" value={el.url} name="bgc" />
+                  <DefaultRadioBtn
+                    type="radio"
+                    value={el.url}
+                    name="backgroundURL"
+                  />
                 </label>
               ))}
             </RadioBtnWrapper>
