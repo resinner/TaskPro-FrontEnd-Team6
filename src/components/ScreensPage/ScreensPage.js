@@ -32,18 +32,13 @@ const ScreensPage = () => {
   };
 
   return (
-<<<<<<< HEAD
-    <Wrapper ref={screenRef}>
-      <ColumnTask />
-      <Text>Попавсь ?</Text>
-=======
     <Wrapper
       onClick={handleScreenClick}
       bgcUrl={currentDashboard?.backgroundURL}
       isOpen={menuMode}
     >
+      <ColumnTask />
       <HeaderDashboard children={currentDashboard?.name} />
->>>>>>> 375fd5bc2d27d92f32632b77129ac96f1b719c3d
     </Wrapper>
   );
 };
