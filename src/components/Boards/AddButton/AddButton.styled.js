@@ -4,23 +4,25 @@ export const Button = styled.button`
   position: absolute;
   top: 0;
   right: calc(-100% - 18px);
+  width: 334px;
+  height: 56px;
+  padding: 14px 79px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  width: 334px;
-  height: 56px;
+
   border-radius: 8px;
   background: #121212;
   outline: none;
   border: none;
 
-  padding: 14px 79px;
   transition: all 250ms linear;
   cursor: pointer;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 `;
 
@@ -32,6 +34,14 @@ export const IconWrapper = styled.div`
   align-items: center;
   border-radius: 8px;
   background-color: #fff;
+
+  transition: all 250ms linear;
+
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const Icon = styled.svg`

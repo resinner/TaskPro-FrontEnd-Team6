@@ -1,65 +1,46 @@
-import {IconMove,
-    PopupWrapper,
-    PopupOpenBlock,
-    PopupOpenBlockItem,
-    OptionPopup,
-  } from './Card.styled';
-  import sprite from '../../images/sprite.svg';
-  import React, { useState, useEffect, useRef} from 'react';
-  
-  
-  const CardmovePopup =()=> {
-      
-            const [isShownPop, setIsShownPop] = useState(false);
-            const themeRef = useRef();
-  
-            const handleOutsideClick=event=> {
-              const path = event.composedPath();
-          
-              if (!path.includes(themeRef.current)) {
-                setIsShownPop(false);
-              }
-            };
-          
-            const openPopup=()=> {
-              setIsShownPop(!isShownPop);
-            };
-          
-            useEffect(() => {
-              document.body.addEventListener('click', handleOutsideClick);
-          
-              return () => {
-                document.body.removeEventListener('click', handleOutsideClick);
-              };
-            }, []);
-  
-  
-      return(
-          <PopupWrapper ref={themeRef} onClick={openPopup}>
-              {/* <IconMove isOpen={isShownPop}>
+import { PopupWrapper, PopupItem, PopupText, PopupIcon } from './Card.styled';
+import sprite from '../../images/sprite.svg';
+
+const CardmovePopup = () => {
+  // text cutting func
+  const checkTextLength = text => {
+    const str = text.split('');
+
+    if (str.length <= 12) {
+      return str.join('');
+    }
+    return str.splice(0, 8).join('') + '...';
+  };
+
+  return (
+    <PopupWrapper>
+      {/* {dashboardsArra.map(item => item.name)} */}
+
+      <PopupItem>
+        <PopupText>{checkTextLength('In progress')}</PopupText>
+
+        <PopupIcon>
           <use href={sprite + '#icon-arrow-circle-broken-right'} />
-        </IconMove > */}
-        {isShownPop&&(
-          <PopupOpenBlock>
-          <PopupOpenBlockItem>
-              <OptionPopup>In progress</OptionPopup>
-          <IconMove isOpen={isShownPop}>
+        </PopupIcon>
+      </PopupItem>
+
+      <PopupItem>
+        <PopupText>{checkTextLength('Done')}</PopupText>
+
+        <PopupIcon>
           <use href={sprite + '#icon-arrow-circle-broken-right'} />
-        </IconMove>
-          </PopupOpenBlockItem>
-          
-      <PopupOpenBlockItem>
-           <OptionPopup>Done</OptionPopup>
-          <IconMove isOpen={isShownPop}>
+        </PopupIcon>
+      </PopupItem>
+
+      <PopupItem>
+        <PopupText>{checkTextLength('Future')}</PopupText>
+
+        <PopupIcon>
           <use href={sprite + '#icon-arrow-circle-broken-right'} />
-        </IconMove>
-      </PopupOpenBlockItem>
-      </PopupOpenBlock>
-        )}
-  
-          </PopupWrapper>
-  
-      )
-  }
-  
-  export default CardmovePopup;
+        </PopupIcon>
+      </PopupItem>
+    </PopupWrapper>
+  );
+};
+
+export default CardmovePopup;

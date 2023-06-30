@@ -42,6 +42,7 @@ export const PopupBlock = styled.ul`
   background: ${props => props.theme.themePopup.background};
   box-shadow: 0px 4px 16px 0px ${props => props.theme.themePopup.boxShadow};
   gap: 4px;
+  z-index: 99;
 `;
 
 export const PopupItem = styled.li`
