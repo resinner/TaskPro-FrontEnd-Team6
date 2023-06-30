@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Button = styled.button`
   position: absolute;
   top: 0;
-  right: calc(-100% - 18px);
+
+  right: ${props => (props.length === 0 ? '-334px' : '-368px')};
   width: 334px;
   height: 56px;
   padding: 14px 79px;

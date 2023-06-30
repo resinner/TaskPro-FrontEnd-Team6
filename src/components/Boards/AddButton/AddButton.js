@@ -1,9 +1,13 @@
 import { Button, Icon, IconWrapper, Text } from './AddButton.styled';
 import sprite from '../../../images/sprite.svg';
+import { useSelector } from 'react-redux';
+import { selectColumnsLength } from 'redux/dashboards/dashboardsSelectors';
 
-const AddButton = () => {
+const AddButton = ({ openModal }) => {
+  const columnsLength = useSelector(selectColumnsLength);
+
   return (
-    <Button type="button">
+    <Button length={columnsLength} onClick={openModal} type="button">
       <IconWrapper>
         <Icon>
           <use href={sprite + '#icon-plus'} />

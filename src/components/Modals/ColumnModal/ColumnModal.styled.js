@@ -66,6 +66,7 @@ export const AuthFormSubmitButton = styled.button`
   border: none;
   background: #bedbb0;
   border-radius: 8px;
+  cursor: pointer;
 
   font-family: 'Poppins';
   font-weight: 500;

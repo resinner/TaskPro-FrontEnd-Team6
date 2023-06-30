@@ -76,12 +76,38 @@ export const editDashbord = createAsyncThunk(
 
 export const addColumn = createAsyncThunk(
   'dashboards/addColumn',
-  async ({ title, dashboardId, owner }, thunkAPI) => {
+  async ({ dashboardId, title, owner }, thunkAPI) => {
     try {
       const { data } = await axios.post(`api/column/${dashboardId}`, {
         title,
         owner,
       });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteColumn = createAsyncThunk(
+  'dashboards/deleteColumn',
+  async (columnId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`api/column/${columnId}`);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editColumn = createAsyncThunk(
+  'dashboards/editColumn',
+  async ({ columnId, title }, thunkAPI) => {
+    try {
+      const { data } = await axios.put(`api/column/${columnId}`, { title });
 
       return data;
     } catch (error) {
