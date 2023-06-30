@@ -36,3 +36,5 @@
 33. 💚 стилі дял AddButton
 34. добавити кнопку закриття sidebar при ширині до 1280пх
 35. mainDashboard length
+36. add/edit column styles
+37. add another button style dowwwn

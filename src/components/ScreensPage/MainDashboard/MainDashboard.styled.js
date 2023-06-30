@@ -23,6 +23,14 @@ export const Wrapper = styled.div`
     border-radius: 12px;
     background-color: ${props => props.theme.column.scrollThumb};
   }
+
+  @media screen and (min-width: 768px) {
+    overflow-x: ${props => (props.length < 2 ? 'hidden' : 'scroll')};
+  }
+
+  @media screen and (min-width: 1280px) {
+    overflow-x: ${props => (props.length < 3 ? 'hidden' : 'scroll')};
+  }
 `;
 
 export const ContentWrapper = styled.div`
