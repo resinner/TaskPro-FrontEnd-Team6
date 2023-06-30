@@ -61,7 +61,7 @@ export const UserImage = styled.img`
   width: 68px;
   height: 68px;
   border-radius: 8px;
-  object-fit: fill;
+  object-fit: cover;
 `;
 
 export const HiddenInput = styled.input`

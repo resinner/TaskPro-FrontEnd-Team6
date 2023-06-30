@@ -4,17 +4,17 @@ import { ContentWrapper, Wrapper } from './MainDashboard.styled';
 import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddColumnModal from 'components/Modals/ColumnModal/AddColumnModal';
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   selectColumns,
   selectColumnsLength,
+  selectCurrentDashboard,
 } from 'redux/dashboards/dashboardsSelectors';
 
 const MainDashboard = () => {
   const columnLength = useSelector(selectColumnsLength);
+  const currentDashboard = useSelector(selectCurrentDashboard);
 
-  const { boardName } = useParams();
   const columns = useSelector(selectColumns);
   const [open, setOpen] = useState(false);
 
@@ -33,7 +33,10 @@ const MainDashboard = () => {
         open={open}
         closeModal={handleClose}
         children={
-          <AddColumnModal dashboardId={boardName} closeModal={handleClose} />
+          <AddColumnModal
+            dashboardId={currentDashboard?._id}
+            closeModal={handleClose}
+          />
         }
       />
     </Wrapper>

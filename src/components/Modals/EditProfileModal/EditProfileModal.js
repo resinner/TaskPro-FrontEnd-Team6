@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectUserTheme } from 'redux/auth/authSelectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectUser, selectUserTheme } from 'redux/auth/authSelectors';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { updateUser } from 'redux/auth/authOperations';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 import {
   AuthFormWrapper,
@@ -19,15 +21,11 @@ import {
   HiddenInput,
   PlusIcon,
 } from './EditProfileModal.styled';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 import dark from '../../../images/user-dark.svg';
 import light from '../../..//images/user-light.svg';
 import violet from '../../../images/user-violet.svg';
 import sprite from '../../../images/sprite.svg';
-import { selectUser } from 'redux/user/userSelectors';
-import { useDispatch } from 'react-redux';
-import { updateUser } from 'redux/user/userOperations';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -48,13 +46,14 @@ const validationSchema = Yup.object().shape({
 
 const EditProfileModal = ({ closeModal }) => {
   const dispatch = useDispatch();
-  const { name, email } = useSelector(selectUser);
-  const [showPassword, setShowPassword] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
+  const { name, email, avatarURL } = useSelector(selectUser);
   const activeUserTheme = useSelector(selectUserTheme);
+  const [showPassword, setShowPassword] = useState(false);
+  const [fileImage, setFileImage] = useState(null);
+  const [currentImageUrl, setCurrentImageUrl] = useState(avatarURL);
 
   const initialValues = {
-    image: imageUrl,
+    image: currentImageUrl,
     name,
     email,
     password: '',
@@ -63,10 +62,13 @@ const EditProfileModal = ({ closeModal }) => {
 
   const handleImageUpload = event => {
     const file = event.target.files[0];
+
+    setFileImage(file);
+
     const reader = new FileReader();
 
     reader.onload = upload => {
-      setImageUrl(upload.target.result);
+      setCurrentImageUrl(upload.target.result);
     };
 
     if (file) {
@@ -84,29 +86,39 @@ const EditProfileModal = ({ closeModal }) => {
     }
   };
 
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const handleTogglePassword = () => setShowPassword(!showPassword);
 
   const onSubmit = values => {
     const { name, email, password } = values;
 
     const formData = new FormData();
+
     formData.append('name', name);
     formData.append('email', email);
-    // formData.append('avatarURL', imageUrl);
     formData.append('password', password);
+
+    if (fileImage) {
+      formData.append('avatarURL', fileImage);
+    }
 
     dispatch(updateUser(formData));
     closeModal();
+  };
+
+  const changeImage = () => {
+    if (currentImageUrl === '') {
+      return avatarURL;
+    }
+
+    return currentImageUrl;
   };
 
   return (
     <EditWrapper>
       <Title>Edit profile</Title>
 
-      <ImageWrapper url={!imageUrl && setDefaultAvatar}>
-        {imageUrl && <UserImage src={imageUrl} alt="user" />}
+      <ImageWrapper url={!currentImageUrl && setDefaultAvatar}>
+        {currentImageUrl && <UserImage src={changeImage()} alt="user" />}
         <CustomButton
           onClick={() => document.querySelector('.input-field').click()}
         >
@@ -118,6 +130,7 @@ const EditProfileModal = ({ closeModal }) => {
             className="input-field"
             type="file"
             accept="image/*"
+            name="imageURL"
             onChange={handleImageUpload}
           />
         </CustomButton>

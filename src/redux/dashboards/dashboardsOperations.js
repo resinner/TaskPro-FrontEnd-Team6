@@ -115,3 +115,16 @@ export const editColumn = createAsyncThunk(
     }
   }
 );
+
+export const getColumnById = createAsyncThunk(
+  'dashboards/getById',
+  async (columnId, thunkAPI) => {
+    try {
+      const { data } = await axios.get(`api/column/${columnId}`);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
