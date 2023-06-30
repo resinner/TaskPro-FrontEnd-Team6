@@ -14,7 +14,7 @@ export const Button = styled.button`
   gap: 8px;
 
   border-radius: 8px;
-  background: #121212;
+  background: ${props => props.theme.addColumnButton.background};
   outline: none;
   border: none;
 
@@ -33,7 +33,7 @@ export const IconWrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  background-color: #fff;
+  background-color: ${props => props.theme.addColumnButton.plusBackground};
 
   transition: all 250ms linear;
 
@@ -47,11 +47,11 @@ export const IconWrapper = styled.div`
 export const Icon = styled.svg`
   width: 14px;
   height: 14px;
-  stroke: #000;
+  stroke: ${props => props.theme.addColumnButton.plusColor};
 `;
 
 export const Text = styled.p`
-  color: #fff;
+  color: ${props => props.theme.addColumnButton.color};
   font-size: 14px;
   font-family: Poppins;
   font-style: normal;

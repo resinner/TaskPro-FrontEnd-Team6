@@ -87,6 +87,12 @@ export const theme = [
       scrollThumb: 'rgba(18, 18, 18, 1)',
       scrollBorder: 'rgba(0, 0, 0, 0.5)',
     },
+    addColumnButton: {
+      background: 'rgba(18, 18, 18, 1)',
+      color: 'rgba(255, 255, 255, 1)',
+      plusBackground: 'rgba(255, 255, 255, 1)',
+      plusColor: 'rgba(18, 18, 18, 1)',
+    },
   },
   {
     name: 'light',
@@ -176,6 +182,12 @@ export const theme = [
       scrollThumb: 'rgba(22, 22, 22, 0.4)',
       scrollBorder: 'transparent',
     },
+    addColumnButton: {
+      background: 'rgba(255, 255, 255, 1)',
+      color: 'rgba(22, 22, 22, 1)',
+      plusBackground: 'rgba(22, 22, 22, 1)',
+      plusColor: 'rgba(255, 255, 255, 1)',
+    },
   },
   {
     name: 'violet',
@@ -264,6 +276,12 @@ export const theme = [
       scrollTrack: 'rgba(255, 255, 255, 1)',
       scrollThumb: 'rgba(184, 188, 253, 1)',
       scrollBorder: 'transparent',
+    },
+    addColumnButton: {
+      background: 'rgba(255, 255, 255, 1)',
+      color: 'rgba(22, 22, 22, 1)',
+      plusBackground: 'rgba(82, 85, 188, 1)',
+      plusColor: 'rgba(255, 255, 255, 1)',
     },
   },
 ];
