@@ -5,6 +5,7 @@ import {
   deleteDashboard,
   getDashboardById,
   editDashbord,
+  addColumn,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -86,6 +87,14 @@ const dashboardsSlice = createSlice({
           icon,
           backgroundURL,
         };
+      })
+      // add columns
+      .addCase(addColumn.pending, handlePending)
+      .addCase(addColumn.rejected, handleRejected)
+      .addCase(addColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentDashboard.columns.push(action.payload);
+        state.error = null;
       });
   },
 });

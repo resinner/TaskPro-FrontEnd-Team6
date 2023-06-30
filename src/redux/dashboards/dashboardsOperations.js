@@ -76,7 +76,7 @@ export const editDashbord = createAsyncThunk(
 
 export const addColumn = createAsyncThunk(
   'dashboards/addColumn',
-  async ({ title, dashboardId, owner }, thunkAPI) => {
+  async ({ dashboardId, title, owner }, thunkAPI) => {
     try {
       const { data } = await axios.post(`api/column/${dashboardId}`, {
         title,

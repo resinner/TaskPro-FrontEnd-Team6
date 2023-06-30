@@ -1,9 +1,9 @@
 import { Button, Icon, IconWrapper, Text } from './AddButton.styled';
 import sprite from '../../../images/sprite.svg';
 
-const AddButton = () => {
+const AddButton = ({ openModal }) => {
   return (
-    <Button type="button">
+    <Button onClick={openModal} type="button">
       <IconWrapper>
         <Icon>
           <use href={sprite + '#icon-plus'} />

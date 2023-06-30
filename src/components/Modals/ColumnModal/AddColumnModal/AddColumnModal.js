@@ -14,6 +14,8 @@ import {
 import sprite from '../../../../images/sprite.svg';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addColumn } from 'redux/dashboards/dashboardsOperations';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
@@ -22,10 +24,14 @@ const initialValues = {
   title: '',
 };
 
-const AddColumnModal = () => {
+const AddColumnModal = ({ dashboardId, closeModal }) => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { title } = values;
+    dispatch(addColumn({ dashboardId, title }));
     resetForm();
+    closeModal();
   };
 
   return (
