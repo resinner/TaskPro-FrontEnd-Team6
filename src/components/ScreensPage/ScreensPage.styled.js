@@ -30,3 +30,5 @@ export const Wrapper = styled.div`
     margin-left: 260px;
   }
 `;
+
+

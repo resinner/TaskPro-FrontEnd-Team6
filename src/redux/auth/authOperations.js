@@ -89,3 +89,16 @@ export const changeTheme = createAsyncThunk(
     }
   }
 );
+
+export const updateUser = createAsyncThunk(
+  'auth/prifile',
+  async (credintials, thunkAPI) => {
+    try {
+      const { data } = await axios.put('api/users/profile', credintials);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

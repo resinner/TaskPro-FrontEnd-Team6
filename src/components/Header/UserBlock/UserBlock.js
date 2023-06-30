@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectUserName, selectUserTheme } from 'redux/auth/authSelectors';
+import { selectUser, selectUserTheme } from 'redux/auth/authSelectors';
 
 import userDark from '../../../images/user-dark.svg';
 import userLight from '../../..//images/user-light.svg';
@@ -13,7 +13,7 @@ import { UserAvatar, UserName, Wrapper } from './UserBlock.styled';
 const UserBlock = () => {
   const [open, setOpen] = useState(false);
   const activeUserTheme = useSelector(selectUserTheme);
-  const userName = useSelector(selectUserName);
+  const { name, avatarURL } = useSelector(selectUser);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -33,13 +33,10 @@ const UserBlock = () => {
   return (
     <>
       <Wrapper>
-        <UserName>{userName[0].toUpperCase() + userName.slice(1)}</UserName>
+        <UserName>{name[0].toUpperCase() + name.slice(1)}</UserName>
 
         <UserAvatar
-          src={
-            // user.avatar ||
-            setDefaultAvatar()
-          }
+          src={avatarURL || setDefaultAvatar()}
           alt="user name"
           onClick={handleOpen}
         />

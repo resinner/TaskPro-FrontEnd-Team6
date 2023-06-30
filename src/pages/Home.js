@@ -5,7 +5,6 @@ import { theme } from 'constants/theme';
 import { selectUserTheme } from 'redux/auth/authSelectors';
 import { Outlet } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
-import { getUser } from 'redux/user/userOperations';
 import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
 
 // components
@@ -26,10 +25,6 @@ const Home = () => {
       return 2;
     }
   };
-
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllDashboards());
