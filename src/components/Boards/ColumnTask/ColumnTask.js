@@ -1,5 +1,6 @@
+import { useDispatch } from 'react-redux';
 import sprite from '../../../images/sprite.svg';
-
+import { useState } from 'react';
 import {
   Wrapper,
   Header,
@@ -12,10 +13,20 @@ import {
   Content,
   Title,
 } from './ColumnTask.Styled';
+import { deleteColumn } from 'redux/dashboards/dashboardsOperations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import EditColumnModal from 'components/Modals/ColumnModal/EditColumnModal/EditColumnModal';
 
 // import Card from 'components/Cards/Card';
 
 export const ColumnTask = ({ item }) => {
+  const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <Wrapper>
       <Content>
@@ -23,11 +34,11 @@ export const ColumnTask = ({ item }) => {
           <Title>{item.title}</Title>
 
           <IconWrapper>
-            <Icon>
+            <Icon onClick={handleOpen}>
               <use href={sprite + '#icon-pencil'} />
             </Icon>
 
-            <Icon>
+            <Icon onClick={() => dispatch(deleteColumn(item._id))}>
               <use href={sprite + '#icon-trash'} />
             </Icon>
           </IconWrapper>
@@ -48,6 +59,14 @@ export const ColumnTask = ({ item }) => {
         </ButtonPlus>
         Add another card
       </Button>
+
+      <BasicModal
+        open={open}
+        closeModal={handleClose}
+        children={
+          <EditColumnModal columnId={item._id} closeModal={handleClose} />
+        }
+      />
     </Wrapper>
   );
 };

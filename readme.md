@@ -35,3 +35,4 @@
 32. opacity: 0.4 --> transform: scale(1.4) --> hover on icons
 33. 💚 стилі дял AddButton
 34. добавити кнопку закриття sidebar при ширині до 1280пх
+35. mainDashboard length

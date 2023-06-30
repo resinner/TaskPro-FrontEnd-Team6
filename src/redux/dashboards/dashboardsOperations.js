@@ -89,3 +89,29 @@ export const addColumn = createAsyncThunk(
     }
   }
 );
+
+export const deleteColumn = createAsyncThunk(
+  'dashboards/deleteColumn',
+  async (columnId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`api/column/${columnId}`);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editColumn = createAsyncThunk(
+  'dashboards/editColumn',
+  async ({ columnId, title }, thunkAPI) => {
+    try {
+      const { data } = await axios.put(`api/column/${columnId}`, { title });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

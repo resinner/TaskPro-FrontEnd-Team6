@@ -6,6 +6,8 @@ import {
   getDashboardById,
   editDashbord,
   addColumn,
+  deleteColumn,
+  editColumn,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -25,6 +27,7 @@ const dashboardsSlice = createSlice({
     currentDashboard: {},
     isLoading: false,
     error: null,
+    columnsLength: 0,
   },
   extraReducers: builder => {
     builder
@@ -95,6 +98,36 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.currentDashboard.columns.push(action.payload);
         state.error = null;
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      //  delete dashboard
+      .addCase(deleteColumn.pending, handlePending)
+      .addCase(deleteColumn.rejected, handleRejected)
+      .addCase(deleteColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.currentDashboard.columns.findIndex(
+          item => item._id === action.payload._id
+        );
+
+        state.currentDashboard.columns.splice(index, 1);
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      // edit column
+      .addCase(editColumn.pending, handlePending)
+      .addCase(editColumn.rejected, handleRejected)
+      .addCase(editColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const { _id, title } = action.payload;
+
+        const columnIndex = state.currentDashboard.columns.findIndex(
+          item => item._id === _id
+        );
+
+        state.currentDashboard.columns[columnIndex].title = title;
       });
   },
 });
