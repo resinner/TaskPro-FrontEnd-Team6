@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 34px;
+
   overflow-x: scroll;
   width: 100%;
   height: 100%;
@@ -27,4 +27,6 @@ export const Wrapper = styled.div`
 
 export const ContentWrapper = styled.div`
   position: relative;
+  display: flex;
+  gap: 34px;
 `;

@@ -5,9 +5,13 @@ import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddColumnModal from 'components/Modals/ColumnModal/AddColumnModal/AddColumnModal';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectColumns } from 'redux/dashboards/dashboardsSelectors';
 
 const MainDashboard = () => {
   const { boardName } = useParams();
+  const columns = useSelector(selectColumns);
+  const length = columns.length;
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -18,11 +22,10 @@ const MainDashboard = () => {
   return (
     <Wrapper>
       <ContentWrapper>
-        {/* {columns.map(item => (
-          <ColumnTask />
-        ))} */}
-        <ColumnTask />
-        <AddButton openModal={handleOpen} />
+        {columns &&
+          columns.map(item => <ColumnTask key={item._id} item={item} />)}
+        {/* <ColumnTask /> */}
+        <AddButton length={length} openModal={handleOpen} />
       </ContentWrapper>
 
       <BasicModal

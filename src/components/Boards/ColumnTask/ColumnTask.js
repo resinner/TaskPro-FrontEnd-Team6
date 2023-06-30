@@ -13,14 +13,14 @@ import {
   Title,
 } from './ColumnTask.Styled';
 
-import Card from 'components/Cards/Card';
+// import Card from 'components/Cards/Card';
 
-export const ColumnTask = ({ columnsLength }) => {
+export const ColumnTask = ({ item }) => {
   return (
     <Wrapper>
       <Content>
         <Header>
-          <Title>To Do</Title>
+          <Title>{item.title}</Title>
 
           <IconWrapper>
             <Icon>
@@ -33,15 +33,10 @@ export const ColumnTask = ({ columnsLength }) => {
           </IconWrapper>
         </Header>
 
-        <TaskList columnsLength={columnsLength}>
+        <TaskList>
           {/* {cardsArray.map(item => (
             <Card  />
           ))} */}
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
         </TaskList>
       </Content>
 
