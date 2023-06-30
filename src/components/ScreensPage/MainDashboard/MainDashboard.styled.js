@@ -14,14 +14,14 @@ export const Wrapper = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    background-color: ${props => props.theme.column.scrollTrack};
+    border: 1px solid ${props => props.theme.column.scrollBorder};
     border-radius: 12px;
   }
 
   ::-webkit-scrollbar-thumb {
     border-radius: 12px;
-    background-color: #121212;
+    background-color: ${props => props.theme.column.scrollThumb};
   }
 `;
 
