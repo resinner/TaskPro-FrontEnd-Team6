@@ -1,6 +1,9 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { deleteDashboard } from 'redux/dashboards/dashboardsOperations';
+import {
+  deleteDashboard,
+  getDashboardById,
+} from 'redux/dashboards/dashboardsOperations';
 import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 import sprite from '../../../images/sprite.svg';
@@ -36,7 +39,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
   return (
     <>
       <Item className={activePojectIndex === index ? 'active' : ''}>
-        <StyledLink to={`${item._id}`}>
+        <StyledLink to={`${item.name}`}>
           <Board>
             <BoardIcon className={activePojectIndex === index ? 'active' : ''}>
               <use href={sprite + item.icon} />
@@ -46,6 +49,7 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
               onClick={() => {
                 onActive(index);
                 dispatch(closeMenuMode());
+                dispatch(getDashboardById(item._id));
               }}
               className={activePojectIndex === index ? 'active' : ''}
             >
