@@ -142,7 +142,6 @@ export const AuthFormSubmitButton = styled.button`
   font-weight: 500;
   letter-spacing: -0.28px;
   color: ${props => props.theme.editProfileModal.buttonColor};
-  /* outline: none; */
 
   transition: all 150ms linear;
   cursor: pointer;

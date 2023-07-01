@@ -37,6 +37,7 @@ export const Aside = styled.div`
 `;
 
 export const Logo = styled(NavLink)`
+  position: relative;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -140,5 +141,25 @@ export const TextLogOut = styled.p`
 
   :hover {
     opacity: 0.5;
+  }
+`;
+
+export const IconClose = styled.svg`
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-45%);
+  width: 20px;
+  height: 20px;
+  stroke: ${props => props.theme.sidebar.iconClose};
+  fill: transparent;
+  transition: all 150ms linear;
+
+  :hover {
+    opacity: 0.5;
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: none;
   }
 `;
