@@ -44,3 +44,9 @@
 41. прописати refresh
 42. добавити FILTER
 43. card border proority overflow hidden(div? pseudelement)
+
+    background-color: ${props => props.priority === 'without' && 'rgba(255, 255,
+    255, 0.30)'}; background-color: ${props => props.priority === 'low' &&
+    'rgba(143, 161, 208, 1)'}; background-color: ${props => props.priority ===
+    'medium' && 'rgba(224, 156, 181, 1)'}; background-color: ${props =>
+    props.priority === 'high' && 'rgba(190, 219, 176, 1)'};

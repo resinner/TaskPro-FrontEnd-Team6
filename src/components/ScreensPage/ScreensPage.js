@@ -11,6 +11,7 @@ const ScreensPage = () => {
   const dispatch = useDispatch();
 
   const menuMode = useSelector(selectIsMenuOpen);
+  const currentBg = useSelector(state => state.dashboards.currentBg);
   const currentDashboard = useSelector(selectCurrentDashboard);
 
   const handleScreenClick = () => {
@@ -22,7 +23,8 @@ const ScreensPage = () => {
   return (
     <Wrapper
       onClick={handleScreenClick}
-      bgcUrl={currentDashboard?.backgroundURL}
+      bgcUrl={currentBg}
+      // bgcUrl={currentDashboard?.backgroundURL}
       isOpen={menuMode}
     >
       <HeaderDashboard children={currentDashboard?.name} />

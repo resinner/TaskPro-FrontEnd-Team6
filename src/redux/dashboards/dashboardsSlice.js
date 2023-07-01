@@ -28,6 +28,7 @@ const dashboardsSlice = createSlice({
     isLoading: false,
     error: null,
     columnsLength: 0,
+    currentBg: '',
   },
   extraReducers: builder => {
     builder
@@ -53,9 +54,8 @@ const dashboardsSlice = createSlice({
       .addCase(deleteDashboard.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-
         const index = state.dashboards.findIndex(
-          item => item._id === action.payload._id
+          item => item._id === action.payload.deletedBoard._id
         );
 
         state.dashboards.splice(index, 1);
@@ -90,6 +90,7 @@ const dashboardsSlice = createSlice({
           icon,
           backgroundURL,
         };
+        state.currentBg = backgroundURL;
       })
       // add columns
       .addCase(addColumn.pending, handlePending)
@@ -100,7 +101,7 @@ const dashboardsSlice = createSlice({
         state.error = null;
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      //  delete dashboard
+      //  delete column
       .addCase(deleteColumn.pending, handlePending)
       .addCase(deleteColumn.rejected, handleRejected)
       .addCase(deleteColumn.fulfilled, (state, action) => {

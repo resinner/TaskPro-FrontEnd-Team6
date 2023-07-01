@@ -13,6 +13,7 @@ export const CardWrapper = styled.div`
   min-height: 154px;
   border-radius: 8px;
   background-color: ${props => props.theme.column.backgroundMain};
+  overflow: hidden;
   /* border-left: 4px solid rgba(143, 161, 208, 1); */
 
   &::before {
@@ -22,9 +23,9 @@ export const CardWrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
     width: 4px;
-    height: 151px;
+    height: 100%;
     background-color: rgba(143, 161, 208, 1);
-    border-radius: 4px 0px 0px 4px;
+
   }
 `;
 
