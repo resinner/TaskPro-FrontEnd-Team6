@@ -1,7 +1,14 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Item = styled.li``;
+export const Item = styled.li`
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  user-select: none;
+`;
 
 export const StyledLink = styled(NavLink)`
   display: flex;
