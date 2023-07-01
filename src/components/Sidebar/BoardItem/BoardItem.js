@@ -36,9 +36,22 @@ const BoardItem = ({ item, index, onActive, activePojectIndex }) => {
     return str.splice(0, 10).join('') + '...';
   };
 
+  const handleDragStart = event => {
+    event.preventDefault();
+  };
+
+  const handleContextMenu = event => {
+    event.preventDefault();
+  };
+
   return (
     <>
-      <Item className={activePojectIndex === index ? 'active' : ''}>
+      <Item
+        className={activePojectIndex === index ? 'active' : ''}
+        draggable={false}
+        onDragStart={handleDragStart}
+        onContextMenu={handleContextMenu}
+      >
         <StyledLink to={`${item.name}`}>
           <Board>
             <BoardIcon className={activePojectIndex === index ? 'active' : ''}>
