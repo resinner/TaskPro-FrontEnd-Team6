@@ -10,9 +10,9 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #fff;
+  color: ${props => props.theme.modal.textMain};
   font-size: 18px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
@@ -36,23 +36,30 @@ export const TitleInput = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border: 1px solid ${props => props.theme.modal.buttonBackground};
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.modal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.modal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
   }
 `;
 
@@ -60,22 +67,27 @@ export const AuthFormSubmitButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #bedbb0;
+  background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
-  cursor: pointer;
 
   font-family: 'Poppins';
-  font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #161616;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: ${props => props.theme.modal.buttonText};
+
+  transition: all 150ms linear;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
+
 export const ButtonPlus = styled.div`
   display: flex;
   justify-content: center;
@@ -103,6 +115,7 @@ export const ErrorSection = styled(ErrorMessage)`
   font-weight: 500;
   letter-spacing: -0.36px;
 `;
+
 export const ModalForm = styled(Form)`
   margin: 0;
   width: 100%;

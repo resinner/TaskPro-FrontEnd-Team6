@@ -23,7 +23,9 @@ import {
   BtnLogOut,
   IconLogOut,
   TextLogOut,
+  IconClose,
 } from './Sidebar.styled';
+import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 export const Sidebar = () => {
   const dispatch = useDispatch();
@@ -32,9 +34,7 @@ export const Sidebar = () => {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleClose = () => setOpen(false);
 
   const setIconLogo = () => {
     if (activeUserTheme === 'dark' || activeUserTheme === 'light') {
@@ -53,6 +53,10 @@ export const Sidebar = () => {
           </IconLogo>
 
           <LogoText>Task Pro</LogoText>
+
+          <IconClose onClick={() => dispatch(closeMenuMode())}>
+            <use href={sprite + '#icon-x-close'} />
+          </IconClose>
         </Logo>
 
         <MyBoardsText>My boards</MyBoardsText>

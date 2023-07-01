@@ -62,6 +62,7 @@ export const theme = [
       projectIconHover: 'rgba(255, 255, 255, 1)',
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
+      iconClose: 'rgba(255, 255, 255, 1)',
     },
     editProfileModal: {
       background: 'rgba(21, 21, 21, 1)',
@@ -157,6 +158,7 @@ export const theme = [
       projectIconHover: 'rgba(22, 22, 22, 1)',
       projectBorder: 'rgba(190, 219, 176, 1)',
       iconLogout: 'rgba(190, 219, 176, 1)',
+      iconClose: 'rgba(22, 22, 22, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',
@@ -252,6 +254,7 @@ export const theme = [
       projectIconHover: 'rgba(255, 255, 255, 1)',
       projectBorder: 'rgba(255, 255, 255, 1)',
       iconLogout: 'rgba(255, 255, 255, 1)',
+      iconClose: 'rgba(255, 255, 255, 1)',
     },
     editProfileModal: {
       background: 'rgba(252, 252, 252, 1)',
