@@ -19,6 +19,16 @@ import {
 
 const Card = () => {
   // const formattedDate = cards.deadline.toLocaleDateString('en-US');
+
+  // const date = new Date();
+
+  // const options = {
+  //   year: 'numeric',
+  //   month: '2-digit',
+  //   day: '2-digit',
+  // };
+
+  // console.log('date', date.toLocaleString('en-US', options));
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const moveIconRef = useRef();
 
