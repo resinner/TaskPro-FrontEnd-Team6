@@ -46,17 +46,9 @@ export const ColumnTask = ({ item }) => {
           </Header>
 
           <TaskList>
-            {/* {cardsArray.map(item => (
-            <Card  />
-          ))} */}
-
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {item.cards.map(item => (
+              <Card />
+            ))}
           </TaskList>
         </Content>
 
