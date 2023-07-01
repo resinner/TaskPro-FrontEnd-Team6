@@ -7,6 +7,15 @@ import {
   updateUser,
 } from './authOperations';
 
+const handlePending = state => {
+  state.isLoading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.isLoading = false;
+  state.error = action.payload;
+};
+
 const initialState = {
   user: {
     name: null,
@@ -17,6 +26,7 @@ const initialState = {
   token: null,
   isLoggedIn: false,
   isLoading: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -26,15 +36,21 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       // register
+      .addCase(register.pending, handlePending)
+      .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
       // login
+      .addCase(logIn.pending, handlePending)
+      .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
       // logout
       .addCase(logOut.fulfilled, state => {
@@ -54,8 +70,10 @@ const authSlice = createSlice({
         state.user.avatarURL = avatarURL;
         state.isLoading = false;
       })
+      .addCase(updateUser.rejected, handleRejected)
       .addCase(updateUser.pending, state => {
         state.isLoading = true;
+        state.isLoading = false;
       });
   },
 });

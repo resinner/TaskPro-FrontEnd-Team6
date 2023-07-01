@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import {
@@ -14,6 +14,8 @@ import {
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
+import Loader from 'components/AuthPage/Loader';
+import { selectIsLoading } from 'redux/auth/authSelectors';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -37,6 +39,7 @@ const initialValues = {
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const loading = useSelector(selectIsLoading);
 
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
@@ -78,7 +81,9 @@ const LoginForm = () => {
           </AuthFormPasswordIcon>
         </AuthFormWrapper>
 
-        <AuthFormSubmitButton type="submit">Login now</AuthFormSubmitButton>
+        <AuthFormSubmitButton type="submit">
+          {loading ? <Loader /> : 'Login now'}
+        </AuthFormSubmitButton>
       </AuthForm>
     </Formik>
   );

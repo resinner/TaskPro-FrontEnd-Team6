@@ -67,6 +67,10 @@ export const AuthFormPasswordIcon = styled.span`
 `;
 
 export const AuthFormSubmitButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 49px;
   padding: 14px;
   border: none;
   margin-top: 10px;
