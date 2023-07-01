@@ -14,6 +14,9 @@ import {
 } from './RegisterForm.styled';
 
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import Loader from 'components/AuthPage/Loader';
+import { useSelector } from 'react-redux';
+import { selectIsLoading } from 'redux/auth/authSelectors';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -41,6 +44,7 @@ const initialValues = {
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectIsLoading);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleTogglePassword = () => {
@@ -105,7 +109,9 @@ const RegisterForm = () => {
           </AuthFormPasswordIcon>
         </AuthFormWrapper>
 
-        <AuthFormSubmitButton type="submit">Register now</AuthFormSubmitButton>
+        <AuthFormSubmitButton type="submit">
+          {loading ? <Loader /> : 'Register now'}
+        </AuthFormSubmitButton>
       </AuthForm>
     </Formik>
   );
