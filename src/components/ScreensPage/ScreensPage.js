@@ -5,14 +5,13 @@ import { closeMenuMode } from 'redux/menuMode/menuModeSlice';
 
 import HeaderDashboard from './HeaderDashboard/HeaderDashboard';
 import MainDashboard from './MainDashboard/MainDashboard';
-import { selectCurrentDashboard } from 'redux/dashboards/dashboardsSelectors';
 
 const ScreensPage = () => {
   const dispatch = useDispatch();
 
   const menuMode = useSelector(selectIsMenuOpen);
   const currentBg = useSelector(state => state.dashboards.currentBg);
-  const currentDashboard = useSelector(selectCurrentDashboard);
+  const currentName = useSelector(state => state.dashboards.currentName);
 
   const handleScreenClick = () => {
     if (menuMode) {
@@ -21,13 +20,8 @@ const ScreensPage = () => {
   };
 
   return (
-    <Wrapper
-      onClick={handleScreenClick}
-      bgcUrl={currentBg}
-      // bgcUrl={currentDashboard?.backgroundURL}
-      isOpen={menuMode}
-    >
-      <HeaderDashboard children={currentDashboard?.name} />
+    <Wrapper onClick={handleScreenClick} bgcUrl={currentBg} isOpen={menuMode}>
+      <HeaderDashboard children={currentName} />
 
       <MainDashboard />
     </Wrapper>

@@ -26,6 +26,7 @@ const MainDashboard = () => {
       <ContentWrapper>
         {columns &&
           columns.map(item => <ColumnTask key={item._id} item={item} />)}
+
         <AddButton openModal={handleOpen} />
       </ContentWrapper>
 
