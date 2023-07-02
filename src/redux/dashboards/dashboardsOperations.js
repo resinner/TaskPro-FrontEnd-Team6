@@ -175,3 +175,22 @@ export const editCard = createAsyncThunk(
     }
   }
 );
+
+export const changeColumn = createAsyncThunk(
+  'dashboards/changeColumn',
+  async ({ cardId, columnId, owner }, thunkAPI) => {
+    console.log('thunkAPI', cardId);
+    console.log('thunkAPICOlumn', columnId);
+    console.log('thunkAPIowner', owner);
+    try {
+      const { data } = await axios.patch(
+        `/api/card/${cardId}/owner/${columnId}`,
+        columnId
+      );
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

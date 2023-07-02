@@ -11,6 +11,7 @@ import {
   addCard,
   deleteCard,
   editCard,
+  changeColumn,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -203,6 +204,33 @@ const dashboardsSlice = createSlice({
           description,
           priority,
           deadline,
+        };
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      //  change column
+      .addCase(changeColumn.pending, handlePending)
+      .addCase(changeColumn.rejected, handleRejected)
+      .addCase(changeColumn.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const { _id, columnId, owner } = action.payload;
+
+        console.log('action.payload', _id);
+        console.log('action.payloadSA', columnId);
+        console.log('action.payloadowner', owner);
+
+        const indexColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === owner
+        );
+
+        const indexCard = state.currentDashboard.columns[
+          indexColumn
+        ].cards.findIndex(item => item._id === _id);
+
+        state.currentDashboard.columns[indexColumn].cards[indexCard] = {
+          ...state.currentDashboard.columns[indexColumn].cards[indexCard],
+          owner: columnId,
         };
         state.columnsLength = state.currentDashboard.columns.length;
       });

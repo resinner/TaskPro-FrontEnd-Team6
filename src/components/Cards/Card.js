@@ -78,7 +78,6 @@ const Card = ({ item }) => {
 
   return (
     <>
-      {' '}
       <CardWrapper priority={priority} expired={expiredCard}>
         <TopWrapper>
           <Title>{title}</Title>
@@ -112,7 +111,7 @@ const Card = ({ item }) => {
                 <use href={sprite + `#icon-arrow-circle-broken-right`} />
               </ActiveIcon>
 
-              {isPopupOpen && <CardmovePopup />}
+              {isPopupOpen && <CardmovePopup cardId={_id} />}
             </MoverWrapper>
 
             <ActiveIcon onClick={handleOpenCardModal} aria-label="edit icon">

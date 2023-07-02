@@ -48,3 +48,4 @@
 45. add card deadline placeholder
 46. filter widthout priority color : rgb(128, 128, 128)
 47. просрочена CArd
+48. карточка переміщається при оновленні
