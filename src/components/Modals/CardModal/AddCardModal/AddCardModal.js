@@ -24,6 +24,8 @@ import sprite from '../../../../images/sprite.svg';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'redux/dashboards/dashboardsOperations';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -32,7 +34,7 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
-const options = ['Without', 'Low', 'Medium', 'High'];
+const options = ['without', 'low', 'medium', 'high'];
 
 const months = [
   'January',
@@ -54,7 +56,8 @@ const month = months[today.getMonth()];
 const day = today.getDate();
 const formattedDate = `${month} ${day}`;
 
-const AddCardModal = () => {
+const AddCardModal = ({ columnId, closeModal }) => {
+  const dispatch = useDispatch();
   const [selectedLabel, setSelectedLabel] = useState(options[3]);
   const [startDate, setStartDate] = useState('');
   const customDate =
@@ -67,13 +70,16 @@ const AddCardModal = () => {
   const initialValues = {
     title: '',
     description: '',
-    label: selectedLabel,
-    deadline: customDate,
+    priority: selectedLabel,
   };
+  const deadline = startDate;
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { title, description, priority } = values;
+    dispatch(addCard({ columnId, title, description, priority, deadline }));
+
     resetForm();
+    closeModal();
   };
 
   return (
@@ -120,7 +126,7 @@ const AddCardModal = () => {
                     className={selectedLabel === el ? 'active' : ''}
                   />
 
-                  <DefaultRadioBtn type="radio" value={el} name="bgc" />
+                  <DefaultRadioBtn type="radio" value={el} name="priority" />
                 </Label>
               ))}
             </RadioBtnWrapper>

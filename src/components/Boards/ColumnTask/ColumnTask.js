@@ -18,14 +18,19 @@ import {
   Title,
   ContentWrapper,
 } from './ColumnTask.Styled';
+import AddCardModal from 'components/Modals/CardModal/AddCardModal/AddCardModal';
 
 export const ColumnTask = ({ item }) => {
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false);
+  const [openColumnModal, setOpenColumnModal] = useState(false);
+  const [openCardModal, setOpenCardModal] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleOpenColumnModal = () => setOpenColumnModal(true);
+  const handleCloseColumnModal = () => setOpenColumnModal(false);
+
+  const handleOpenCardModal = () => setOpenCardModal(true);
+  const handleCloseCardModal = () => setOpenCardModal(false);
 
   return (
     <Wrapper>
@@ -35,7 +40,7 @@ export const ColumnTask = ({ item }) => {
             <Title>{item.title}</Title>
 
             <IconWrapper>
-              <Icon onClick={handleOpen}>
+              <Icon onClick={handleOpenColumnModal}>
                 <use href={sprite + '#icon-pencil'} />
               </Icon>
 
@@ -45,14 +50,10 @@ export const ColumnTask = ({ item }) => {
             </IconWrapper>
           </Header>
 
-          <TaskList>
-            {item.cards.map(item => (
-              <Card />
-            ))}
-          </TaskList>
+          <TaskList>{item.cards && item.cards.map(item => <Card />)}</TaskList>
         </Content>
 
-        <Button>
+        <Button onClick={handleOpenCardModal}>
           <ButtonPlus>
             <PlusIcon>
               <use href={sprite + '#icon-plus'} />
@@ -61,12 +62,22 @@ export const ColumnTask = ({ item }) => {
           Add another card
         </Button>
       </ContentWrapper>
+      <BasicModal
+        open={openColumnModal}
+        closeModal={handleCloseColumnModal}
+        children={
+          <EditColumnModal
+            columnId={item._id}
+            closeModal={handleCloseColumnModal}
+          />
+        }
+      />
 
       <BasicModal
-        open={open}
-        closeModal={handleClose}
+        open={openCardModal}
+        closeModal={handleCloseCardModal}
         children={
-          <EditColumnModal columnId={item._id} closeModal={handleClose} />
+          <AddCardModal columnId={item._id} closeModal={handleCloseCardModal} />
         }
       />
     </Wrapper>

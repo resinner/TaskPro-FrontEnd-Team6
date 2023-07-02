@@ -18,8 +18,6 @@ import {
 } from './Card.styled';
 
 const Card = () => {
-  // const formattedDate = cards.deadline.toLocaleDateString('en-US');
-
   // const date = new Date();
 
   // const options = {
@@ -28,7 +26,6 @@ const Card = () => {
   //   day: '2-digit',
   // };
 
-  // console.log('date', date.toLocaleString('en-US', options));
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const moveIconRef = useRef();
 
@@ -69,16 +66,18 @@ const Card = () => {
   return (
     <CardWrapper>
       <TopWrapper>
-        <Title>Card Title{/* {cards.title} */}</Title>
+        <Title>Card Title{/* {card.title} */}</Title>
 
-        <Text>{checkTextLength(demoTextString)}</Text>
+        <Text>
+          {checkTextLength(demoTextString)} {/* {card.description} */}
+        </Text>
       </TopWrapper>
 
       <BottomWrapper>
         <Stats>
-          <Priority>Low</Priority>
+          <Priority>Low{/* {card.priority} */}</Priority>
 
-          <Deadline>12/05/2023</Deadline>
+          <Deadline>12/05/2023{/* {card.deadline} */}</Deadline>
         </Stats>
 
         <IconsGroup>

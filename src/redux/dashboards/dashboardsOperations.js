@@ -128,3 +128,38 @@ export const getColumnById = createAsyncThunk(
     }
   }
 );
+
+export const addCard = createAsyncThunk(
+  'dashboards/addCard',
+  async (
+    { columnId, title, description, priority, deadline, owner },
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await axios.post(`api/card/${columnId}`, {
+        title,
+        description,
+        priority,
+        deadline,
+        owner,
+      });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const deleteCard = createAsyncThunk(
+  'dashboards/deleteCard',
+  async (cardId, thunkAPI) => {
+    try {
+      const { data } = await axios.delete(`api/card/${cardId}`);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
