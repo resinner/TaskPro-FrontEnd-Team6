@@ -6,5 +6,3 @@ export const selectCurrentDashboard = state =>
 export const selectColumns = state => state.dashboards.currentDashboard.columns;
 
 export const selectColumnsLength = state => state.dashboards.columnsLength;
-
-export const MainCurva = state => state.dashboards.currentDashboard;
