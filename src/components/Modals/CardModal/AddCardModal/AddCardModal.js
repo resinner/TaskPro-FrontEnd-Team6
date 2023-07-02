@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addCard } from 'redux/dashboards/dashboardsOperations';
 import 'react-datepicker/dist/react-datepicker.css';
 import {
   FormWrapper,
@@ -22,11 +26,6 @@ import {
 } from '../CardModal.styled';
 import sprite from '../../../../images/sprite.svg';
 
-import { Formik } from 'formik';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { addCard } from 'redux/dashboards/dashboardsOperations';
-
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
   description: Yup.string()
@@ -34,7 +33,7 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
-const options = ['without', 'low', 'medium', 'high'];
+const options = ['low', 'medium', 'high', 'without'];
 
 const months = [
   'January',

@@ -6,6 +6,7 @@ import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddColumnModal from 'components/Modals/ColumnModal/AddColumnModal';
 import { useSelector } from 'react-redux';
 import {
+  MainCurva,
   selectColumns,
   selectColumnsLength,
   selectCurrentDashboard,
@@ -14,6 +15,9 @@ import {
 const MainDashboard = () => {
   const columnLength = useSelector(selectColumnsLength);
   const currentDashboard = useSelector(selectCurrentDashboard);
+  const curva = useSelector(MainCurva);
+
+  console.log(curva);
 
   const columns = useSelector(selectColumns);
   const [open, setOpen] = useState(false);

@@ -50,7 +50,10 @@ export const ColumnTask = ({ item }) => {
             </IconWrapper>
           </Header>
 
-          <TaskList>{item.cards && item.cards.map(item => <Card />)}</TaskList>
+          <TaskList>
+            {item.cards &&
+              item.cards.map(item => <Card key={item._id} item={item} />)}
+          </TaskList>
         </Content>
 
         <Button onClick={handleOpenCardModal}>

@@ -24,8 +24,15 @@ export const CardWrapper = styled.div`
     transform: translateY(-50%);
     width: 4px;
     height: 100%;
-    background-color: rgba(143, 161, 208, 1);
 
+    background-color: ${props =>
+      props.priority === 'without' && 'rgb(128, 128, 128)'};
+    background-color: ${props =>
+      props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
+    background-color: ${props =>
+      props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
+    background-color: ${props =>
+      props.priority === 'high' && 'rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -112,7 +119,15 @@ export const Priority = styled.p`
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: rgba(143, 161, 208, 1); // by priority
+
+    background-color: ${props =>
+      props.priority === 'without' && 'rgb(128, 128, 128)'};
+    background-color: ${props =>
+      props.priority === 'low' && 'rgba(143, 161, 208, 1)'};
+    background-color: ${props =>
+      props.priority === 'medium' && 'rgba(224, 156, 181, 1)'};
+    background-color: ${props =>
+      props.priority === 'high' && 'rgba(190, 219, 176, 1)'};
   }
 `;
 
