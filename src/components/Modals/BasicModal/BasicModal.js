@@ -24,7 +24,7 @@ const BasicModal = ({ children, name, open, closeModal }) => {
   }, [name]);
 
   return (
-    <div>
+    <div style={{ position: 'absolute' }}>
       <ModalWindow
         open={open}
         onClose={closeModal}

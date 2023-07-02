@@ -16,11 +16,19 @@ import {
   Deadline,
   ActiveIcon,
   MoverWrapper,
+  IconBellWrapper,
 } from './Card.styled';
 import { deleteCard } from 'redux/dashboards/dashboardsOperations';
+import BasicModal from 'components/Modals/BasicModal/BasicModal';
+import EditCardModal from 'components/Modals/CardModal/EditCardModal/EditCardModal';
 
 const Card = ({ item }) => {
   const dispatch = useDispatch();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const moveIconRef = useRef();
+  const [openCardModal, setOpenCardModal] = useState(false);
+  const handleOpenCardModal = () => setOpenCardModal(true);
+  const handleCloseCardModal = () => setOpenCardModal(false);
 
   const { title, _id, deadline, description, priority } = item;
 
@@ -30,13 +38,11 @@ const Card = ({ item }) => {
     day: '2-digit',
   };
 
+  const today = new Date().toLocaleString('en-GB', options);
   const parsedDate = new Date(deadline);
 
   const formatedDeadline =
     parsedDate && parsedDate.toLocaleString('en-GB', options);
-
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const moveIconRef = useRef();
 
   // toggle popup func
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
@@ -68,51 +74,68 @@ const Card = ({ item }) => {
     };
   }, []);
 
+  const expiredCard = today > formatedDeadline;
+
   return (
-    <CardWrapper priority={priority}>
-      <TopWrapper>
-        <Title>{title}</Title>
+    <>
+      {' '}
+      <CardWrapper priority={priority} expired={expiredCard}>
+        <TopWrapper>
+          <Title>{title}</Title>
 
-        <Text>{checkTextLength(description)}</Text>
-      </TopWrapper>
+          <Text>{checkTextLength(description)}</Text>
+        </TopWrapper>
 
-      <BottomWrapper>
-        <Stats>
-          <Priority priority={priority}>{priority}</Priority>
+        <BottomWrapper>
+          <Stats>
+            <Priority priority={priority}>{priority}</Priority>
 
-          <Deadline>{formatedDeadline}</Deadline>
-        </Stats>
+            <Deadline>{formatedDeadline}</Deadline>
+          </Stats>
 
-        <IconsGroup>
-          <IconBell aria-label="bell icon">
-            <use href={sprite + `#icon-bell`} />
-          </IconBell>
+          <IconsGroup>
+            {today === formatedDeadline && (
+              <>
+                <IconBell aria-label="bell icon">
+                  <use href={sprite + `#icon-bell`} />
+                </IconBell>
+                <IconBellWrapper></IconBellWrapper>
+              </>
+            )}
 
-          <MoverWrapper>
-            <ActiveIcon
-              ref={moveIconRef}
-              aria-label="move card icon"
-              onClick={handleIconMoveClick}
-            >
-              <use href={sprite + `#icon-arrow-circle-broken-right`} />
+            <MoverWrapper>
+              <ActiveIcon
+                ref={moveIconRef}
+                aria-label="move card icon"
+                onClick={handleIconMoveClick}
+              >
+                <use href={sprite + `#icon-arrow-circle-broken-right`} />
+              </ActiveIcon>
+
+              {isPopupOpen && <CardmovePopup />}
+            </MoverWrapper>
+
+            <ActiveIcon onClick={handleOpenCardModal} aria-label="edit icon">
+              <use href={sprite + `#icon-pencil`} />
             </ActiveIcon>
 
-            {isPopupOpen && <CardmovePopup />}
-          </MoverWrapper>
-
-          <ActiveIcon aria-label="edit icon">
-            <use href={sprite + `#icon-pencil`} />
-          </ActiveIcon>
-
-          <ActiveIcon
-            aria-label="edit icon"
-            onClick={() => dispatch(deleteCard(_id))}
-          >
-            <use href={sprite + `#icon-trash`} />
-          </ActiveIcon>
-        </IconsGroup>
-      </BottomWrapper>
-    </CardWrapper>
+            <ActiveIcon
+              aria-label="edit icon"
+              onClick={() => dispatch(deleteCard(_id))}
+            >
+              <use href={sprite + `#icon-trash`} />
+            </ActiveIcon>
+          </IconsGroup>
+        </BottomWrapper>
+      </CardWrapper>
+      <BasicModal
+        open={openCardModal}
+        closeModal={handleCloseCardModal}
+        children={
+          <EditCardModal card={item} closeModal={handleCloseCardModal} />
+        }
+      />
+    </>
   );
 };
 

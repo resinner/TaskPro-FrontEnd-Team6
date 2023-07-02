@@ -71,12 +71,17 @@ const AddCardModal = ({ columnId, closeModal }) => {
     description: '',
     priority: selectedLabel,
   };
-  const deadline = startDate;
+
+  let deadline = startDate;
 
   const handleSubmit = (values, { resetForm }) => {
     const { title, description, priority } = values;
-    dispatch(addCard({ columnId, title, description, priority, deadline }));
 
+    if (deadline === '') {
+      deadline = new Date().toISOString();
+    }
+
+    dispatch(addCard({ columnId, title, description, priority, deadline }));
     resetForm();
     closeModal();
   };
