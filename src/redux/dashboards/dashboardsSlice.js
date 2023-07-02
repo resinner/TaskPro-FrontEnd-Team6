@@ -30,6 +30,7 @@ const dashboardsSlice = createSlice({
     isLoading: false,
     error: null,
     columnsLength: 0,
+
     currentBg: '',
     currentText: '',
   },
@@ -68,6 +69,7 @@ const dashboardsSlice = createSlice({
         state.dashboards = [];
         state.error = null;
         state.isLoading = false;
+        state.currentDashboard = {};
       })
       // get by id
       .addCase(getDashboardById.pending, handlePending)
@@ -86,9 +88,11 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
         const { _id, name, icon, backgroundURL } = action.payload;
+
         const dashboardIndex = state.dashboards.findIndex(
           item => item._id === _id
         );
+
         state.dashboards[dashboardIndex] = {
           ...state.dashboards[dashboardIndex],
           name,
@@ -98,7 +102,7 @@ const dashboardsSlice = createSlice({
         state.currentName = name;
         state.currentBg = backgroundURL;
       })
-      // add columns
+      // add column
       .addCase(addColumn.pending, handlePending)
       .addCase(addColumn.rejected, handleRejected)
       .addCase(addColumn.fulfilled, (state, action) => {
@@ -136,12 +140,24 @@ const dashboardsSlice = createSlice({
 
         state.currentDashboard.columns[columnIndex].title = title;
       })
-      // add cards
+      // add card
       .addCase(addCard.pending, handlePending)
       .addCase(addCard.rejected, handleRejected)
       .addCase(addCard.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.currentDashboard.columns.cards.push(action.payload);
+
+        const index = state.currentDashboard.columns.findIndex(
+          item => item._id === action.payload.owner
+        );
+
+        if (!state.currentDashboard.columns[index].cards) {
+          state.currentDashboard.columns[index].cards = [];
+          state.currentDashboard.columns[index].cards.push(action.payload);
+          return;
+        }
+
+        state.currentDashboard.columns[index].cards.push(action.payload);
+
         state.error = null;
       })
       //  delete card
@@ -151,11 +167,15 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        const index = state.currentDashboard.columns.cards.findIndex(
-          item => item._id === action.payload._id
+        const indexColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === action.payload.owner
         );
 
-        state.currentDashboard.columns.splice(index, 1);
+        const indexCard = state.currentDashboard.columns[
+          indexColumn
+        ].cards.findIndex(item => item._id === action.payload._id);
+
+        state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
         state.columnsLength = state.currentDashboard.columns.length;
       });
   },

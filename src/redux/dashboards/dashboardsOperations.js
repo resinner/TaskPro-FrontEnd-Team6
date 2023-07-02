@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+// dashboards
 export const getAllDashboards = createAsyncThunk(
   'dashboards/fetchAllDashboards',
   async (_, thunkAPI) => {
@@ -74,6 +75,7 @@ export const editDashbord = createAsyncThunk(
   }
 );
 
+// column
 export const addColumn = createAsyncThunk(
   'dashboards/addColumn',
   async ({ dashboardId, title, owner }, thunkAPI) => {
@@ -116,19 +118,7 @@ export const editColumn = createAsyncThunk(
   }
 );
 
-export const getColumnById = createAsyncThunk(
-  'dashboards/getById',
-  async (columnId, thunkAPI) => {
-    try {
-      const { data } = await axios.get(`api/column/${columnId}`);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
+// cards
 export const addCard = createAsyncThunk(
   'dashboards/addCard',
   async (

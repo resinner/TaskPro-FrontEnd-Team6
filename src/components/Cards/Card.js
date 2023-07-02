@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import sprite from '../../images/sprite.svg';
 import CardmovePopup from './Popitem';
+import { useDispatch } from 'react-redux';
 
 import {
   Title,
@@ -16,15 +17,23 @@ import {
   ActiveIcon,
   MoverWrapper,
 } from './Card.styled';
+import { deleteCard } from 'redux/dashboards/dashboardsOperations';
 
-const Card = () => {
-  // const date = new Date();
+const Card = ({ item }) => {
+  const dispatch = useDispatch();
 
-  // const options = {
-  //   year: 'numeric',
-  //   month: '2-digit',
-  //   day: '2-digit',
-  // };
+  const { title, _id, deadline, description, priority } = item;
+
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  };
+
+  const parsedDate = new Date(deadline);
+
+  const formatedDeadline =
+    parsedDate && parsedDate.toLocaleString('en-GB', options);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const moveIconRef = useRef();
@@ -36,15 +45,11 @@ const Card = () => {
   const checkTextLength = text => {
     const str = text.split('');
 
-    if (str.length <= 88) {
+    if (str.length <= 80) {
       return str.join('');
     }
-    return str.splice(0, 88).join('') + '...';
+    return str.splice(0, 80).join('') + '...';
   };
-
-  // test text DONT DELETE
-  const demoTextString =
-    "Create a visually stunning and eye-catching watch dial design that embodies our brand's essence of sleek aesthetics and modern elegance. Your design should be unique, innovative, and reflective of the latest trends in watch design.";
 
   // backdrop closing popup func
   const handleOutsideClick = event => {
@@ -64,20 +69,18 @@ const Card = () => {
   }, []);
 
   return (
-    <CardWrapper>
+    <CardWrapper priority={priority}>
       <TopWrapper>
-        <Title>Card Title{/* {card.title} */}</Title>
+        <Title>{title}</Title>
 
-        <Text>
-          {checkTextLength(demoTextString)} {/* {card.description} */}
-        </Text>
+        <Text>{checkTextLength(description)}</Text>
       </TopWrapper>
 
       <BottomWrapper>
         <Stats>
-          <Priority>Low{/* {card.priority} */}</Priority>
+          <Priority priority={priority}>{priority}</Priority>
 
-          <Deadline>12/05/2023{/* {card.deadline} */}</Deadline>
+          <Deadline>{formatedDeadline}</Deadline>
         </Stats>
 
         <IconsGroup>
@@ -101,7 +104,10 @@ const Card = () => {
             <use href={sprite + `#icon-pencil`} />
           </ActiveIcon>
 
-          <ActiveIcon aria-label="edit icon">
+          <ActiveIcon
+            aria-label="edit icon"
+            onClick={() => dispatch(deleteCard(_id))}
+          >
             <use href={sprite + `#icon-trash`} />
           </ActiveIcon>
         </IconsGroup>

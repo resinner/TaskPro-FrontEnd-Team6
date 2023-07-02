@@ -9,9 +9,9 @@ export const Section = styled.div`
 `;
 
 export const SectionTitle = styled.h2`
-  color: #fff;
+  color: ${props => props.theme.modal.textMain};
   font-size: 18px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 24px;
@@ -39,23 +39,30 @@ export const TitleInput = styled(Field)`
   width: 100%;
   height: 49px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border: 1px solid ${props => props.theme.modal.buttonBackground};
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.modal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.modal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
   }
 `;
 
@@ -64,24 +71,33 @@ export const Textarea = styled(Field)`
   width: 100%;
   height: 154px;
   padding: 14px 18px;
-  background: #1f1f1f;
-  background-color: rgba(31, 31, 31, 1);
-  opacity: 0.4;
-  border: 1px solid #bedbb0;
-  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
-  border-radius: 8px;
-  font-weight: 400;
+
   font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  font-family: 'Poppins';
+  letter-spacing: -0.28px;
+
   margin-top: 14px;
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+
+  background-color: ${props => props.theme.modal.backgroundMain};
+  border: 1px solid ${props => props.theme.modal.buttonBackground};
+  box-shadow: 0px 4px 16px rgba(22, 22, 22, 0.08);
+  outline: none;
+  border-radius: 8px;
+
+  color: ${props => props.theme.modal.textMain};
+  transition: all 250ms ease;
+  opacity: 0.4;
 
   &::placeholder {
-    color: rgba(255, 255, 255, 1);
+    color: ${props => props.theme.modal.textMain};
     font-size: 14px;
-    font-family: Poppins;
+    font-family: 'Poppins';
     letter-spacing: -0.28px;
+  }
+
+  &:focus {
+    opacity: 1;
   }
 `;
 
@@ -89,21 +105,25 @@ export const AuthFormSubmitButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  cursor: pointer;
-
+  margin-top: 10px;
   padding: 14px;
   border: none;
-  background: #bedbb0;
+  background: ${props => props.theme.modal.buttonBackground};
   border-radius: 8px;
 
   font-family: 'Poppins';
-  font-weight: 500;
   font-size: 14px;
-  line-height: 21px;
-  text-align: center;
-  letter-spacing: -0.02em;
-  color: #161616;
+  font-family: Poppins;
+  font-weight: 500;
+  letter-spacing: -0.28px;
+  color: ${props => props.theme.modal.buttonText};
+
+  transition: all 150ms linear;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export const DefaultRadioBtn = styled(Field)`
@@ -122,9 +142,10 @@ export const DefaultRadioBtn = styled(Field)`
 `;
 
 export const FormTitle = styled.h3`
-  color: rgba(255, 255, 255, 0.5);
+  color: ${props => props.theme.modal.textSecondary};
   font-size: 12px;
-  font-family: Poppins;
+  font-family: 'Poppins';
+  font-weight: 400;
   letter-spacing: -0.24px;
   margin-bottom: 4px;
 `;
@@ -146,7 +167,7 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'without' && '2px solid rgba(255, 255, 255, 0.3)'};
+      props.value === 'without' && '2px solid rgb(128,128,128)'};
     border: ${props =>
       props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
@@ -156,6 +177,7 @@ export const Label = styled.label`
   }
 `;
 
+// need fix grey color
 export const LabelItem = styled.div`
   width: 14px;
   height: 14px;
@@ -166,8 +188,7 @@ export const LabelItem = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  background-color: ${props =>
-    props.value === 'without' && 'rgba(255, 255, 255, 0.30)'};
+  background-color: ${props => props.value === 'without' && 'rgb(128,128,128)'};
   background-color: ${props =>
     props.value === 'low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
@@ -195,6 +216,7 @@ export const ButtonPlus = styled.div`
   margin-right: 8px;
   padding: 7px;
 `;
+
 export const PlusIcon = styled.svg`
   width: 14px;
   height: 14px;
@@ -209,6 +231,7 @@ export const ErrorSection = styled(ErrorMessage)`
   font-weight: 500;
   letter-spacing: -0.36px;
 `;
+
 export const ModalForm = styled(Form)`
   margin: 0;
   width: 100%;
@@ -218,11 +241,16 @@ export const ModalForm = styled(Form)`
 
 export const Wrapper = styled.div`
   position: relative;
+  width: 233px;
+
   .react-datepicker {
+    overflow: hidden;
+
     margin-top: -28px;
     border-radius: 8px;
-    border: 1px solid #bedbb0;
-    background: #1f1f1f;
+    border: 1px solid ${props => props.theme.modal.buttonBackground};
+
+    background: ${props => props.theme.modal.backgroundMain};
     outline: none;
     width: 233px;
     position: absolute;
@@ -244,10 +272,15 @@ export const Wrapper = styled.div`
       overflow: hidden;
     }
 
+    &__navigation {
+      position: absolute;
+      top: 8px;
+    }
+
     &__navigation-icon {
       width: 4px;
       height: 8px;
-      color: rgba(190, 219, 176, 1);
+      color: ${props => props.theme.modal.textAccent};
     }
 
     &__month {
@@ -255,7 +288,7 @@ export const Wrapper = styled.div`
     }
 
     &__week {
-      color: #fff;
+      color: ${props => props.theme.modal.unactiveDay};
       font-size: 14px;
       font-family: Poppins;
       line-height: 18px;
@@ -267,48 +300,50 @@ export const Wrapper = styled.div`
     }
 
     &__day {
-      color: #fff;
+      width: 24px;
+      height: 24px;
+      color: ${props => props.theme.modal.textMain};
       font-size: 14px;
       font-family: Poppins;
       width: 1.5rem;
 
+      transition: all 250ms ease;
+
       &--today {
-        border: 1px solid #bedbb0;
+        color: ${props => props.theme.modal.today};
+        background: ${props => props.theme.modal.buttonBackground};
         border-radius: 50%;
       }
 
       &--outside-month {
-        color: rgba(255, 255, 255, 0.2);
-        font-size: 14px;
-        font-family: Poppins;
-        line-height: 18px;
-        letter-spacing: -0.28px;
+        width: 24px;
+        height: 24px;
+        color: ${props => props.theme.modal.unactiveDay};
       }
+
       &--keyboard-selected {
         border-radius: 24px;
-        background: #bedbb0;
-        color: #1f1f1f;
+        background: ${props => props.theme.modal.buttonBackground};
+        color: ${props => props.theme.modal.today};
       }
 
       &:hover {
         border-radius: 24px;
-        background: #bedbb0;
-        color: #1f1f1f;
+        background: ${props => props.theme.modal.buttonBackground};
+        color: ${props => props.theme.modal.today};
       }
     }
 
     &__day--disabled {
-      color: rgba(255, 255, 255, 0.2);
-      font-size: 14px;
-      font-family: Poppins;
-      line-height: 18px;
-      letter-spacing: -0.28px;
+      width: 24px;
+      height: 24px;
+      color: ${props => props.theme.modal.unactiveDay};
     }
 
     &__day--selected {
       border-radius: 24px;
-      background: #bedbb0;
-      color: #1f1f1f;
+      background: ${props => props.theme.modal.buttonBackground};
+      color: ${props => props.theme.modal.today};
     }
 
     &__triangle {
@@ -316,7 +351,7 @@ export const Wrapper = styled.div`
     }
 
     &__header {
-      background: #1f1f1f;
+      background-color: ${props => props.theme.modal.backgroundMain};
       width: 231px;
       border-bottom: none;
       padding: 18px 18px 14px;
@@ -326,21 +361,23 @@ export const Wrapper = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 9px;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      gap: 5px;
+      border-top: 1px solid ${props => props.theme.modal.unactiveDay};
+      padding-top: 14px;
     }
 
     &__day-name {
-      color: rgba(255, 255, 255, 0.5);
+      color: ${props => props.theme.modal.textSecondary};
       font-size: 14px;
-      font-family: Poppins;
+      font-family: 'Poppins';
+      font-style: normal;
       font-weight: 500;
+      line-height: normal;
       letter-spacing: -0.28px;
-      margin-bottom: 0;
     }
 
     &__current-month {
-      color: #fff;
+      color: ${props => props.theme.modal.textMain};
       font-size: 16px;
       font-family: Poppins;
       font-weight: 500;
@@ -353,7 +390,7 @@ export const Wrapper = styled.div`
 `;
 
 export const DateTitle = styled.div`
-  color: #bedbb0;
+  color: ${props => props.theme.modal.buttonBackground};
   font-size: 14px;
   font-family: Poppins;
   font-weight: 500;
