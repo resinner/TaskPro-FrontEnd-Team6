@@ -44,6 +44,7 @@
 41. прописати refresh
 42. добавити FILTER
 43. card border proority overflow hidden(div? pseudelement)
+44. перервірити columns length
 
     background-color: ${props => props.priority === 'without' && 'rgba(255, 255,
     255, 0.30)'}; background-color: ${props => props.priority === 'low' &&

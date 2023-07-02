@@ -8,6 +8,8 @@ import {
   addColumn,
   deleteColumn,
   editColumn,
+  addCard,
+  deleteCard,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -133,6 +135,28 @@ const dashboardsSlice = createSlice({
         );
 
         state.currentDashboard.columns[columnIndex].title = title;
+      })
+      // add cards
+      .addCase(addCard.pending, handlePending)
+      .addCase(addCard.rejected, handleRejected)
+      .addCase(addCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentDashboard.columns.cards.push(action.payload);
+        state.error = null;
+      })
+      //  delete card
+      .addCase(deleteCard.pending, handlePending)
+      .addCase(deleteCard.rejected, handleRejected)
+      .addCase(deleteCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const index = state.currentDashboard.columns.cards.findIndex(
+          item => item._id === action.payload._id
+        );
+
+        state.currentDashboard.columns.splice(index, 1);
+        state.columnsLength = state.currentDashboard.columns.length;
       });
   },
 });

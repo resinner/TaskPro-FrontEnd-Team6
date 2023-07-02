@@ -90,6 +90,7 @@ export const AuthFormSubmitButton = styled.button`
   justify-content: center;
   align-items: center;
   width: 100%;
+  cursor: pointer;
 
   padding: 14px;
   border: none;
@@ -145,13 +146,13 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'Without' && '2px solid rgba(255, 255, 255, 0.3)'};
+      props.value === 'without' && '2px solid rgba(255, 255, 255, 0.3)'};
     border: ${props =>
-      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
+      props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
-      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
+      props.value === 'medium' && '2px solid rgba(224, 156, 181, 1)'};
     border: ${props =>
-      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
+      props.value === 'high' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -271,6 +272,11 @@ export const Wrapper = styled.div`
       font-family: Poppins;
       width: 1.5rem;
 
+      &--today {
+        border: 1px solid #bedbb0;
+        border-radius: 50%;
+      }
+
       &--outside-month {
         color: rgba(255, 255, 255, 0.2);
         font-size: 14px;
@@ -352,4 +358,6 @@ export const DateTitle = styled.div`
   font-family: Poppins;
   font-weight: 500;
   letter-spacing: -0.28px;
+
+  cursor: pointer;
 `;
