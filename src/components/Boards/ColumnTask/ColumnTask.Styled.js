@@ -1,17 +1,18 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: space-between;
-  height: 100%;
-`;
+export const Wrapper = styled.div``;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: 14px;
+`;
+
+export const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 `;
 
 export const TaskList = styled.ul`
@@ -20,7 +21,7 @@ export const TaskList = styled.ul`
   flex-direction: column;
   width: 350px;
   gap: 8px;
-  height: 400px;
+  max-height: calc(154px * 2 + 8px);
   padding-right: 8px;
 
   overflow-y: scroll;
@@ -38,6 +39,18 @@ export const TaskList = styled.ul`
   ::-webkit-scrollbar-thumb {
     border-radius: 12px;
     background-color: ${props => props.theme.column.scrollThumb};
+  }
+
+  @media screen and (min-height: 780px) {
+    max-height: calc(154px * 3 + 16px);
+  }
+
+  @media screen and (min-height: 942px) {
+    max-height: calc(154px * 4 + 24px);
+  }
+
+  @media screen and (min-height: 1104px) {
+    max-height: calc(154px * 5 + 32px);
   }
 `;
 

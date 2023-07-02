@@ -16,6 +16,7 @@ import {
   Icon,
   Content,
   Title,
+  ContentWrapper,
 } from './ColumnTask.Styled';
 
 export const ColumnTask = ({ item }) => {
@@ -28,39 +29,38 @@ export const ColumnTask = ({ item }) => {
 
   return (
     <Wrapper>
-      <Content>
-        <Header>
-          <Title>{item.title}</Title>
+      <ContentWrapper>
+        <Content>
+          <Header>
+            <Title>{item.title}</Title>
 
-          <IconWrapper>
-            <Icon onClick={handleOpen}>
-              <use href={sprite + '#icon-pencil'} />
-            </Icon>
+            <IconWrapper>
+              <Icon onClick={handleOpen}>
+                <use href={sprite + '#icon-pencil'} />
+              </Icon>
 
-            <Icon onClick={() => dispatch(deleteColumn(item._id))}>
-              <use href={sprite + '#icon-trash'} />
-            </Icon>
-          </IconWrapper>
-        </Header>
+              <Icon onClick={() => dispatch(deleteColumn(item._id))}>
+                <use href={sprite + '#icon-trash'} />
+              </Icon>
+            </IconWrapper>
+          </Header>
 
-        <TaskList>
-          {/* {cardsArray.map(item => (
-            <Card  />
-          ))} */}
-          <Card />
-          <Card />
-          <Card />
-        </TaskList>
-      </Content>
+          <TaskList>
+            {item.cards.map(item => (
+              <Card />
+            ))}
+          </TaskList>
+        </Content>
 
-      <Button>
-        <ButtonPlus>
-          <PlusIcon>
-            <use href={sprite + '#icon-plus'} />
-          </PlusIcon>
-        </ButtonPlus>
-        Add another card
-      </Button>
+        <Button>
+          <ButtonPlus>
+            <PlusIcon>
+              <use href={sprite + '#icon-plus'} />
+            </PlusIcon>
+          </ButtonPlus>
+          Add another card
+        </Button>
+      </ContentWrapper>
 
       <BasicModal
         open={open}

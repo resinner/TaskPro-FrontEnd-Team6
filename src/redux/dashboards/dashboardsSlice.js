@@ -29,6 +29,7 @@ const dashboardsSlice = createSlice({
     error: null,
     columnsLength: 0,
     currentBg: '',
+    currentText: '',
   },
   extraReducers: builder => {
     builder
@@ -73,6 +74,8 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.currentDashboard = action.payload;
         state.error = null;
+        state.currentBg = action.payload.dashboard.backgroundURL;
+        state.currentName = action.payload.dashboard.name;
       })
       // edit dashboard
       .addCase(editDashbord.pending, handlePending)
@@ -90,6 +93,7 @@ const dashboardsSlice = createSlice({
           icon,
           backgroundURL,
         };
+        state.currentName = name;
         state.currentBg = backgroundURL;
       })
       // add columns
