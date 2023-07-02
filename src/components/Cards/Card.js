@@ -16,11 +16,14 @@ import {
   Deadline,
   ActiveIcon,
   MoverWrapper,
+  IconBellWrapper,
 } from './Card.styled';
 import { deleteCard } from 'redux/dashboards/dashboardsOperations';
 
 const Card = ({ item }) => {
   const dispatch = useDispatch();
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const moveIconRef = useRef();
 
   const { title, _id, deadline, description, priority } = item;
 
@@ -30,13 +33,11 @@ const Card = ({ item }) => {
     day: '2-digit',
   };
 
+  const today = new Date().toLocaleString('en-GB', options);
   const parsedDate = new Date(deadline);
 
   const formatedDeadline =
     parsedDate && parsedDate.toLocaleString('en-GB', options);
-
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const moveIconRef = useRef();
 
   // toggle popup func
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
@@ -68,8 +69,10 @@ const Card = ({ item }) => {
     };
   }, []);
 
+  const expiredCard = today > formatedDeadline;
+
   return (
-    <CardWrapper priority={priority}>
+    <CardWrapper priority={priority} expired={expiredCard}>
       <TopWrapper>
         <Title>{title}</Title>
 
@@ -84,9 +87,14 @@ const Card = ({ item }) => {
         </Stats>
 
         <IconsGroup>
-          <IconBell aria-label="bell icon">
-            <use href={sprite + `#icon-bell`} />
-          </IconBell>
+          {today === formatedDeadline && (
+            <>
+              <IconBell aria-label="bell icon">
+                <use href={sprite + `#icon-bell`} />
+              </IconBell>
+              <IconBellWrapper></IconBellWrapper>
+            </>
+          )}
 
           <MoverWrapper>
             <ActiveIcon

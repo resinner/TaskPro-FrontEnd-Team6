@@ -16,6 +16,8 @@ export const CardWrapper = styled.div`
   overflow: hidden;
   /* border-left: 4px solid rgba(143, 161, 208, 1); */
 
+  opacity: ${props => (props.expired ? 0.4 : 1)};
+
   &::before {
     content: '';
     position: absolute;
@@ -176,12 +178,20 @@ export const ActiveIcon = styled.svg`
   }
 `;
 
-export const IconBell = styled.svg`
+export const IconBellWrapper = styled.div`
   height: 16px;
   width: 16px;
-  fill: transparent;
-  stroke: ${props => props.theme.sidebar.projectIcon};
+  background-color: rgba(190, 219, 176, 1);
+  filter: blur(5.5px);
+`;
 
+export const IconBell = styled.svg`
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  stroke: rgba(190, 219, 176, 1);
+  fill: transparent;
+  filter: none;
   transition: all 150ms linear;
 `;
 
