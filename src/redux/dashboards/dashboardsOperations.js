@@ -153,3 +153,25 @@ export const deleteCard = createAsyncThunk(
     }
   }
 );
+
+export const editCard = createAsyncThunk(
+  'dashboards/editCard',
+  async (
+    { cardId, title, description, priority, deadline, owner },
+    thunkAPI
+  ) => {
+    try {
+      const { data } = await axios.put(`api/card/${cardId}`, {
+        title,
+        description,
+        priority,
+        deadline,
+        owner,
+      });
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -24,6 +24,8 @@ import sprite from '../../../../images/sprite.svg';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { editCard } from 'redux/dashboards/dashboardsOperations';
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required!'),
@@ -32,30 +34,13 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
-const options = ['Without', 'Low', 'Medium', 'High'];
+const options = ['low', 'medium', 'high', 'without'];
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+const EditCardModal = ({ card, closeModal }) => {
+  const dispatch = useDispatch();
+  const { _id, title, deadline, description, priority } = card;
 
-const today = new Date();
-const month = months[today.getMonth()];
-const day = today.getDate();
-const formattedDate = `${month} ${day}`;
-
-const EditCardModal = () => {
-  const [selectedLabel, setSelectedLabel] = useState(options[3]);
+  const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
   const customDate =
     startDate !== ''
@@ -64,16 +49,41 @@ const EditCardModal = () => {
         }/${startDate.getFullYear()}`
       : null;
 
-  const initialValues = {
-    title: '',
-    description: '',
-    label: selectedLabel,
-    deadline: customDate,
+  const dateOptions = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
   };
 
+  const dateForEdit = new Date(deadline);
+  const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
+
+  const initialValues = {
+    title,
+    description,
+    priority: selectedLabel,
+  };
+
+  let editedDeadline = startDate;
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
+    const { title, description, priority } = values;
+
+    if (editedDeadline === '') {
+      editedDeadline = deadline;
+    }
+
+    dispatch(
+      editCard({
+        cardId: _id,
+        title,
+        description,
+        priority,
+        deadline: editedDeadline,
+      })
+    );
     resetForm();
+    closeModal();
   };
 
   return (
@@ -120,7 +130,7 @@ const EditCardModal = () => {
                     className={selectedLabel === el ? 'active' : ''}
                   />
 
-                  <DefaultRadioBtn type="radio" value={el} name="bgc" />
+                  <DefaultRadioBtn type="radio" value={el} name="priority" />
                 </Label>
               ))}
             </RadioBtnWrapper>
@@ -131,7 +141,8 @@ const EditCardModal = () => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {startDate !== '' ? customDate : `Today, ${formattedDate}`}
+              {/* {startDate} */}
+              {startDate !== '' ? customDate : dateLabel}
             </DateTitle>
             <Wrapper>
               <DatePicker

@@ -10,6 +10,7 @@ import {
   editColumn,
   addCard,
   deleteCard,
+  editCard,
 } from './dashboardsOperations';
 import { logOut } from 'redux/auth/authOperations';
 
@@ -176,6 +177,33 @@ const dashboardsSlice = createSlice({
         ].cards.findIndex(item => item._id === action.payload._id);
 
         state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
+        state.columnsLength = state.currentDashboard.columns.length;
+      })
+      //  edit card
+      .addCase(editCard.pending, handlePending)
+      .addCase(editCard.rejected, handleRejected)
+      .addCase(editCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+
+        const { _id, title, description, priority, deadline, owner } =
+          action.payload;
+
+        const indexColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === owner
+        );
+
+        const indexCard = state.currentDashboard.columns[
+          indexColumn
+        ].cards.findIndex(item => item._id === _id);
+
+        state.currentDashboard.columns[indexColumn].cards[indexCard] = {
+          ...state.currentDashboard.columns[indexColumn].cards[indexCard],
+          title,
+          description,
+          priority,
+          deadline,
+        };
         state.columnsLength = state.currentDashboard.columns.length;
       });
   },

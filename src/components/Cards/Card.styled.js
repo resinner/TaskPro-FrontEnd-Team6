@@ -205,9 +205,9 @@ export const MoverWrapper = styled.div`
 // popup items
 export const PopupWrapper = styled.ul`
   position: absolute;
-  top: 120%;
+  bottom: 130%;
   left: 50%;
-  transform: translateX(-55%);
+  transform: translateX(-60%);
   display: inline-flex;
   min-width: 160px;
   padding: 18px;
