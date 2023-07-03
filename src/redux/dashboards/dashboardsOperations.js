@@ -1,13 +1,12 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import instance from 'redux/auth/authOperations';
 
 // dashboards
 export const getAllDashboards = createAsyncThunk(
   'dashboards/fetchAllDashboards',
   async (_, thunkAPI) => {
     try {
-      const { data } = await axios.get('api/dashboard');
-
+      const { data } = await instance.get('api/dashboard');
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -19,7 +18,7 @@ export const addDashboard = createAsyncThunk(
   'dashboards/addDashboard',
   async ({ name, icon, backgroundURL, owner }, thunkAPI) => {
     try {
-      const { data } = await axios.post('api/dashboard', {
+      const { data } = await instance.post('api/dashboard', {
         name,
         icon,
         backgroundURL,
@@ -37,7 +36,7 @@ export const deleteDashboard = createAsyncThunk(
   'dashboards/deleteDashboard',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/dashboard/${dashboardId}`);
+      const { data } = await instance.delete(`api/dashboard/${dashboardId}`);
 
       return data;
     } catch (error) {
@@ -50,7 +49,7 @@ export const getDashboardById = createAsyncThunk(
   'dashboards/getById',
   async (dashboardId, thunkAPI) => {
     try {
-      const { data } = await axios.get(`api/dashboard/${dashboardId}`);
+      const { data } = await instance.get(`api/dashboard/${dashboardId}`);
 
       return data;
     } catch (error) {
@@ -63,7 +62,7 @@ export const editDashbord = createAsyncThunk(
   'dashboards/editDashbord',
   async ({ dashboardId, updatedData }, thunkAPI) => {
     try {
-      const { data } = await axios.put(
+      const { data } = await instance.put(
         `api/dashboard/${dashboardId}`,
         updatedData
       );
@@ -80,7 +79,7 @@ export const addColumn = createAsyncThunk(
   'dashboards/addColumn',
   async ({ dashboardId, title, owner }, thunkAPI) => {
     try {
-      const { data } = await axios.post(`api/column/${dashboardId}`, {
+      const { data } = await instance.post(`api/column/${dashboardId}`, {
         title,
         owner,
       });
@@ -96,7 +95,7 @@ export const deleteColumn = createAsyncThunk(
   'dashboards/deleteColumn',
   async (columnId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/column/${columnId}`);
+      const { data } = await instance.delete(`api/column/${columnId}`);
 
       return data;
     } catch (error) {
@@ -109,7 +108,7 @@ export const editColumn = createAsyncThunk(
   'dashboards/editColumn',
   async ({ columnId, title }, thunkAPI) => {
     try {
-      const { data } = await axios.put(`api/column/${columnId}`, { title });
+      const { data } = await instance.put(`api/column/${columnId}`, { title });
 
       return data;
     } catch (error) {
@@ -126,7 +125,7 @@ export const addCard = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const { data } = await axios.post(`api/card/${columnId}`, {
+      const { data } = await instance.post(`api/card/${columnId}`, {
         title,
         description,
         priority,
@@ -145,7 +144,7 @@ export const deleteCard = createAsyncThunk(
   'dashboards/deleteCard',
   async (cardId, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`api/card/${cardId}`);
+      const { data } = await instance.delete(`api/card/${cardId}`);
 
       return data;
     } catch (error) {
@@ -161,7 +160,7 @@ export const editCard = createAsyncThunk(
     thunkAPI
   ) => {
     try {
-      const { data } = await axios.put(`api/card/${cardId}`, {
+      const { data } = await instance.put(`api/card/${cardId}`, {
         title,
         description,
         priority,
@@ -180,7 +179,7 @@ export const changeColumn = createAsyncThunk(
   'dashboards/changeColumn',
   async ({ cardId, columnId, currentOwner }, thunkAPI) => {
     try {
-      const { data } = await axios.patch(
+      const { data } = await instance.patch(
         `/api/card/${cardId}/owner/${columnId}`
       );
 
