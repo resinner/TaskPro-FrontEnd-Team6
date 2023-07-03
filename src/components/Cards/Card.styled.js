@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-// витягнути пропси і прокинути динамічні кольори бордів (пріоритетність)
 export const CardWrapper = styled.div`
   position: relative;
   display: flex;
@@ -14,7 +13,6 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   background-color: ${props => props.theme.column.backgroundMain};
   overflow: hidden;
-  /* border-left: 4px solid rgba(143, 161, 208, 1); */
 
   opacity: ${props => (props.expired ? 0.4 : 1)};
 
@@ -181,15 +179,15 @@ export const ActiveIcon = styled.svg`
 export const IconBellWrapper = styled.div`
   height: 16px;
   width: 16px;
-  background-color: rgba(190, 219, 176, 1);
-  filter: blur(5.5px);
+  background-color: ${props => props.theme.themePopup.backgroundBell};
+  filter: ${props => props.theme.themePopup.filterBell};
 `;
 
 export const IconBell = styled.svg`
   position: absolute;
   height: 16px;
   width: 16px;
-  stroke: rgba(190, 219, 176, 1);
+  stroke: ${props => props.theme.themePopup.strokeBell};
   fill: transparent;
   filter: none;
   transition: all 150ms linear;
@@ -208,7 +206,6 @@ export const PopupWrapper = styled.ul`
   bottom: 130%;
   left: 50%;
   transform: translateX(-60%);
-  display: inline-flex;
   min-width: 160px;
   padding: 18px;
   flex-direction: column;
@@ -219,6 +216,14 @@ export const PopupWrapper = styled.ul`
   box-shadow: 0px 4px 16px 0px ${props => props.theme.themePopup.boxShadow};
   gap: 4px;
   z-index: 99;
+
+  overflow-y: scroll;
+  scroll-behavior: auto;
+  max-height: 112px;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 `;
 
 export const PopupItem = styled.li`

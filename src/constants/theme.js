@@ -17,6 +17,9 @@ export const theme = [
       background: 'rgba(21, 21, 21, 1)',
       border: 'rgba(190, 219, 176, 1)',
       boxShadow: 'rgba(17, 17, 17, 0.10)',
+      filterBell: 'blur(5.5px)',
+      strokeBell: 'rgba(190, 219, 176, 1)',
+      backgroundBell: 'rgba(190, 219, 176, 1)',
     },
     needHelp: {
       background: 'rgba(31, 31, 31, 1)',
@@ -115,6 +118,9 @@ export const theme = [
       background: 'rgba(252, 252, 252, 1)',
       border: 'rgba(190, 219, 176, 1)',
       boxShadow: 'rgba(17, 17, 17, 0.10)',
+      filterBell: 'blur(9.5px)',
+      strokeBell: 'rgba(190, 219, 176, 1)',
+      backgroundBell: 'transparent',
     },
     needHelp: {
       background: 'rgba(246, 246, 247, 1)',
@@ -213,6 +219,9 @@ export const theme = [
       background: 'rgba(252, 252, 252, 1)',
       border: 'rgba(236, 237, 253, 1)',
       boxShadow: 'rgba(17, 17, 17, 0.10)',
+      filterBell: 'blur(7.5px)',
+      strokeBell: 'rgba(82, 85, 188, 1)',
+      backgroundBell: 'transparent',
     },
     needHelp: {
       background: 'rgba(236, 237, 253, 0.4)',
