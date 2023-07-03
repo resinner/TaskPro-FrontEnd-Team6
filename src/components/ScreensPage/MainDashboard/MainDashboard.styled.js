@@ -8,6 +8,8 @@ export const Wrapper = styled.div`
   height: 100%;
   margin-bottom: 8px;
 
+  user-select: none;
+
   ::-webkit-scrollbar {
     height: 12px;
     width: calc(100% - 24px);
