@@ -82,6 +82,7 @@ const dashboardsSlice = createSlice({
         state.error = null;
         state.currentBg = action.payload.dashboard.backgroundURL;
         state.currentName = action.payload.dashboard.name;
+        state.columnsLength = action.payload.columns.length;
       })
       // edit dashboard
       .addCase(editDashbord.pending, handlePending)
@@ -154,8 +155,8 @@ const dashboardsSlice = createSlice({
 
         if (!state.currentDashboard.columns[index].cards) {
           state.currentDashboard.columns[index].cards = [];
-          state.currentDashboard.columns[index].cards.push(action.payload);
-          return;
+          // state.currentDashboard.columns[index].cards.push(action.payload);
+          // return;
         }
 
         state.currentDashboard.columns[index].cards.push(action.payload);
@@ -207,32 +208,49 @@ const dashboardsSlice = createSlice({
         };
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      //  change column
+      // //  change column
       .addCase(changeColumn.pending, handlePending)
       .addCase(changeColumn.rejected, handleRejected)
       .addCase(changeColumn.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
 
-        const { _id, columnId, owner } = action.payload;
+        // console.log('action.payload.currentOwner', action.payload.currentOwner);
+        // console.log('action.payload.columnId', action.payload.columnId);
+        // console.log('first', action.payload.data);
 
-        console.log('action.payload', _id);
-        console.log('action.payloadSA', columnId);
-        console.log('action.payloadowner', owner);
+        const currenColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === action.payload.currentOwner
+        );
 
-        const indexColumn = state.currentDashboard.columns.findIndex(
-          item => item._id === owner
+        const incomingColumn = state.currentDashboard.columns.findIndex(
+          item => item._id === action.payload.columnId
         );
 
         const indexCard = state.currentDashboard.columns[
-          indexColumn
-        ].cards.findIndex(item => item._id === _id);
+          currenColumn
+        ].cards.findIndex(item => item._id === action.payload.data._id);
 
-        state.currentDashboard.columns[indexColumn].cards[indexCard] = {
-          ...state.currentDashboard.columns[indexColumn].cards[indexCard],
-          owner: columnId,
-        };
-        state.columnsLength = state.currentDashboard.columns.length;
+        const kekew = state.currentDashboard.columns[
+          currenColumn
+        ].cards.findIndex(item => item);
+
+        // console.log('kekew', kekew);
+        // console.log('currenColumn', currenColumn);
+        // console.log('indexColumn', incomingColumn);
+        // console.log('indexCard', indexCard);
+
+        state.currentDashboard.columns[currenColumn].cards.splice(indexCard, 1);
+
+        if (!state.currentDashboard.columns[incomingColumn].cards) {
+          state.currentDashboard.columns[incomingColumn].cards = [];
+        }
+
+        state.currentDashboard.columns[incomingColumn].cards?.splice(
+          kekew,
+          0,
+          action.payload.data
+        );
       });
   },
 });

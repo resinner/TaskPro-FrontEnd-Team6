@@ -111,7 +111,7 @@ const Card = ({ item }) => {
                 <use href={sprite + `#icon-arrow-circle-broken-right`} />
               </ActiveIcon>
 
-              {isPopupOpen && <CardmovePopup cardId={_id} />}
+              {isPopupOpen && <CardmovePopup card={item} />}
             </MoverWrapper>
 
             <ActiveIcon onClick={handleOpenCardModal} aria-label="edit icon">

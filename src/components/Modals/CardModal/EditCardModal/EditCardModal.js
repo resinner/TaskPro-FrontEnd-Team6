@@ -34,6 +34,12 @@ const validationSchema = Yup.object().shape({
     .required('Description is required'),
 });
 
+const dateOptions = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+};
+
 const options = ['low', 'medium', 'high', 'without'];
 
 const EditCardModal = ({ card, closeModal }) => {
@@ -43,17 +49,7 @@ const EditCardModal = ({ card, closeModal }) => {
   const [selectedLabel, setSelectedLabel] = useState(priority);
   const [startDate, setStartDate] = useState('');
   const customDate =
-    startDate !== ''
-      ? `${startDate.getDate()}/0${
-          startDate.getMonth() + 1
-        }/${startDate.getFullYear()}`
-      : null;
-
-  const dateOptions = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  };
+    startDate !== '' ? startDate.toLocaleString('en-GB', dateOptions) : null;
 
   const dateForEdit = new Date(deadline);
   const dateLabel = dateForEdit.toLocaleString('en-GB', dateOptions);
