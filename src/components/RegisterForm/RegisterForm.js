@@ -53,7 +53,6 @@ const RegisterForm = () => {
 
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
-    console.log(name, email, password);
 
     dispatch(
       register({

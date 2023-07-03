@@ -5,6 +5,7 @@ import {
   logOut,
   changeTheme,
   updateUser,
+  refreshCurrentUser,
 } from './authOperations';
 
 const handlePending = state => {
@@ -48,7 +49,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.token = action.payload.token;
+        state.token = action.payload.accessToken;
         state.isLoggedIn = true;
         state.isLoading = false;
       })
@@ -62,6 +63,19 @@ const authSlice = createSlice({
       .addCase(changeTheme.fulfilled, (state, action) => {
         state.user.theme = action.payload.theme;
       })
+      // refresh
+      .addCase(refreshCurrentUser.pending, state => {
+        state.isRefreshing = true;
+      })
+      .addCase(refreshCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshCurrentUser.rejected, state => {
+        state.isRefreshing = false;
+      })
+      // user update
       .addCase(updateUser.rejected, handleRejected)
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {

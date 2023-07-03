@@ -109,7 +109,6 @@ const dashboardsSlice = createSlice({
           icon,
           backgroundURL,
         };
-        console.log(backgroundURL);
         state.currentName = name;
         state.currentBg = backgroundURL;
       })
