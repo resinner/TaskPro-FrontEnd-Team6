@@ -3,7 +3,7 @@
 1. 💚 full vierport width container yes/no ?
 2. 💚 full vierport width header yes/no ?
 3. 💚 full vewiport width sidebar yes/no ?
-4. 💥 фікс вибора пріорітета (svg(filter modal/ card)) ???????
+4. 💚 фікс вибора пріорітета (svg(filter modal/ card)) ???????
 5. 💚 фікс вибора бекграунда
 6. 💚 провалідувати модалки (+/-)
 7. 💚 заглушка на фото юзера на три теми (+)
@@ -37,8 +37,8 @@
 35. 💚 mainDashboard length
 36. 💚 add/edit modal styles
 37. 💚 add another card button style dowwwn
-38. 💥 прокинути спінер на Suspens
-39. 💥 добавитт спінер ага
+38. 💚 прокинути спінер на Suspens
+39. 💚 добавитт спінер ага
 40. 💥 ловити помилки запитів і виводити їх ??????????
 41. 💥 прописати refresh
 42. 💚 добавити FILTER
@@ -49,4 +49,4 @@
 47. 💚 просрочена CArd
 48. 💚 карточка переміщається при оновленні
 49. 💚 змінити стилі для колокольчикашс
-50. eye logir / register form
+50. 💚 eye logir / register form

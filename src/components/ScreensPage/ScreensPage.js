@@ -10,8 +10,8 @@ const ScreensPage = () => {
   const dispatch = useDispatch();
 
   const menuMode = useSelector(selectIsMenuOpen);
-  const currentBg = useSelector(state => state.dashboards.currentBg);
-  const currentName = useSelector(state => state.dashboards.currentName);
+  const currentBg = useSelector(state => state?.dashboards?.currentBg);
+  const currentName = useSelector(state => state?.dashboards?.currentName);
 
   const handleScreenClick = () => {
     if (menuMode) {

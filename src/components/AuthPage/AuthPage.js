@@ -9,6 +9,7 @@ import {
   ModalNavItem,
   WelcomeWrapper,
 } from './AuthPage.styled';
+import Loader from './Loader';
 
 const AuthPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const AuthPage = () => {
         {id === 'login' && <LoginForm />}
         {id === 'register' && <RegisterForm />}
 
-        <Suspense fallback="Loading">
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </Modal>
