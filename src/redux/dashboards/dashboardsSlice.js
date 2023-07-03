@@ -80,9 +80,9 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.currentDashboard = action.payload;
         state.error = null;
-        state.currentBg = action.payload.dashboard.backgroundURL;
-        state.currentName = action.payload.dashboard.name;
-        state.columnsLength = action.payload.columns.length;
+        state.currentBg = action.payload?.dashboard?.backgroundURL;
+        state.currentName = action.payload?.dashboard?.name;
+        state.columnsLength = action.payload?.columns?.length;
       })
       // edit dashboard
       .addCase(editDashbord.pending, handlePending)

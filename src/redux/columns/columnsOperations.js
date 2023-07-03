@@ -1,11 +1,11 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import instance from 'redux/auth/authOperations';
 
 export const addColumn = createAsyncThunk(
   'columns/addColumn',
   async ({ dashboardId, title, owner }, thunkAPI) => {
     try {
-      const { data } = await axios.post(`api/column/${dashboardId}`, {
+      const { data } = await instance.post(`api/column/${dashboardId}`, {
         title,
         owner,
       });
