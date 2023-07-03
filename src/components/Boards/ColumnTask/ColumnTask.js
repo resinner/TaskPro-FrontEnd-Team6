@@ -52,7 +52,7 @@ export const ColumnTask = ({ item }) => {
 
           <TaskList>
             {item.cards &&
-              item.cards.map(item => <Card key={item._id} item={item} />)}
+              item.cards.map(el => <Card key={el._id} item={el} />)}
           </TaskList>
         </Content>
 

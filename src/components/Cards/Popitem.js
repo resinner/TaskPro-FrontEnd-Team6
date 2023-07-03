@@ -5,7 +5,7 @@ import { selectColumns } from 'redux/dashboards/dashboardsSelectors';
 import { useDispatch } from 'react-redux';
 import { changeColumn } from 'redux/dashboards/dashboardsOperations';
 
-const CardmovePopup = ({ cardId }) => {
+const CardmovePopup = ({ card }) => {
   const dispatch = useDispatch();
   const colmuns = useSelector(selectColumns);
   // text cutting func
@@ -18,17 +18,18 @@ const CardmovePopup = ({ cardId }) => {
     return str.splice(0, 8).join('') + '...';
   };
 
-  const handleChangeColumn = (cardId, columnId) => {
-    console.log('cardID', cardId);
-    console.log('columnId', columnId);
-    dispatch(changeColumn({ cardId, columnId }));
+  const handleChangeColumn = (cardId, columnId, currentOwner) => {
+    // console.log('cardId', cardId);
+    // console.log('columnId', columnId);
+    // console.log('currentOwner', currentOwner);
+    dispatch(changeColumn({ cardId, columnId, currentOwner }));
   };
 
   return (
     <PopupWrapper>
       {colmuns.map(item => (
         <PopupItem
-          onClick={() => handleChangeColumn(cardId, item._id)}
+          onClick={() => handleChangeColumn(card._id, item._id, card.owner)}
           key={item._id}
         >
           <PopupText>{checkTextLength(item.title)}</PopupText>
