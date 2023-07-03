@@ -1,7 +1,7 @@
+import React, { useState, useRef } from 'react';
 import AddButton from 'components/Boards/AddButton/AddButton';
 import { ColumnTask } from 'components/Boards/ColumnTask/ColumnTask';
 import { ContentWrapper, Wrapper } from './MainDashboard.styled';
-import { useState } from 'react';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import AddColumnModal from 'components/Modals/ColumnModal/AddColumnModal';
 import { useSelector } from 'react-redux';
@@ -14,16 +14,65 @@ import {
 const MainDashboard = () => {
   const columnLength = useSelector(selectColumnsLength);
   const currentDashboard = useSelector(selectCurrentDashboard);
-
   const columns = useSelector(selectColumns);
-  const [open, setOpen] = useState(false);
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const scrollRef = useRef(null);
+  const [startX, setStartX] = useState(0);
+
+  const handleOpen = () => {
+    setOpen(true);
+    setIsDragging(false);
+  };
+
+  const handleCloseModal = () => {
+    setOpen(false);
+    setIsDragging(true);
+  };
+
+  const handleMouseDown = e => {
+    if (e.button === 0) {
+      const target = e.target.tagName.toLowerCase();
+      if (target !== 'input' && target !== 'textarea') {
+        setIsDragging(true);
+        setStartX(e.pageX - scrollRef.current.offsetLeft);
+      }
+    }
+  };
+
+  const handleMouseMove = e => {
+    if (!isDragging || open) return;
+
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 1;
+    const newScrollLeft = scrollRef.current.scrollLeft - walk;
+
+    const smoothScroll = () => {
+      scrollRef.current.scrollLeft +=
+        (newScrollLeft - scrollRef.current.scrollLeft) * 0.1;
+      if (Math.abs(newScrollLeft - scrollRef.current.scrollLeft) > 0.5) {
+        requestAnimationFrame(smoothScroll);
+      }
+    };
+
+    requestAnimationFrame(smoothScroll);
+  };
+
+  const handleMouseUp = e => {
+    if (e.button === 0) {
+      setIsDragging(false);
+    }
+  };
 
   return (
-    <Wrapper length={columnLength}>
-      <ContentWrapper>
+    <Wrapper length={columnLength} ref={scrollRef}>
+      <ContentWrapper
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+      >
         {columns &&
           columns.map(item => <ColumnTask key={item._id} item={item} />)}
 
@@ -32,11 +81,11 @@ const MainDashboard = () => {
 
       <BasicModal
         open={open}
-        closeModal={handleClose}
+        closeModal={handleCloseModal}
         children={
           <AddColumnModal
             dashboardId={currentDashboard?._id}
-            closeModal={handleClose}
+            closeModal={handleCloseModal}
           />
         }
       />

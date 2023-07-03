@@ -19,6 +19,7 @@ import {
   ContentWrapper,
 } from './ColumnTask.Styled';
 import AddCardModal from 'components/Modals/CardModal/AddCardModal/AddCardModal';
+import { useSelector } from 'react-redux';
 
 export const ColumnTask = ({ item }) => {
   const dispatch = useDispatch();
@@ -26,11 +27,18 @@ export const ColumnTask = ({ item }) => {
   const [openColumnModal, setOpenColumnModal] = useState(false);
   const [openCardModal, setOpenCardModal] = useState(false);
 
+  const selectedPriority = useSelector(
+    state => state.dashboards.selectedPriority
+  );
+
   const handleOpenColumnModal = () => setOpenColumnModal(true);
   const handleCloseColumnModal = () => setOpenColumnModal(false);
 
   const handleOpenCardModal = () => setOpenCardModal(true);
   const handleCloseCardModal = () => setOpenCardModal(false);
+
+  const filteredColumn =
+    item.cards && item.cards.filter(item => item.priority === selectedPriority);
 
   return (
     <Wrapper>
@@ -51,8 +59,15 @@ export const ColumnTask = ({ item }) => {
           </Header>
 
           <TaskList>
-            {item.cards &&
-              item.cards.map(el => <Card key={el._id} item={el} />)}
+            {selectedPriority === 'show all'
+              ? item.cards &&
+                item.cards.map(el => (
+                  <Card key={el._id} item={el} columnName={item.title} />
+                ))
+              : filteredColumn &&
+                filteredColumn.map(el => (
+                  <Card key={el._id} item={el} columnName={item.title} />
+                ))}
           </TaskList>
         </Content>
 

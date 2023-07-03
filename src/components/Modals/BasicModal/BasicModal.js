@@ -23,8 +23,12 @@ const BasicModal = ({ children, name, open, closeModal }) => {
     handleBtnClick(name);
   }, [name]);
 
+  const handleModalClick = e => {
+    e.stopPropagation();
+  };
+
   return (
-    <div style={{ position: 'absolute' }}>
+    <div style={{ position: 'absolute' }} onMouseDown={handleModalClick}>
       <ModalWindow
         open={open}
         onClose={closeModal}

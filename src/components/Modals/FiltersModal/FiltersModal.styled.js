@@ -12,7 +12,7 @@ export const Section = styled.div`
 export const SectionTitle = styled.h2`
   color: ${props => props.theme.modal.textMain};
   font-size: 18px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.36px;
   margin-bottom: 14px;
@@ -43,7 +43,7 @@ export const FormWrapper = styled.div`
 export const FormTitle = styled.h3`
   color: ${props => props.theme.modal.textMain};
   font-size: 14px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   letter-spacing: -0.28px;
   margin-bottom: 14px;
@@ -63,7 +63,7 @@ export const BgItem = styled.div`
   outline: none;
   width: 28px;
   height: 28px;
-  background-image: url(${props => props.url});
+  background-color: ${props => props.theme.modal.iconDefault};
   background-position: center;
   background-size: contain;
 
@@ -125,7 +125,7 @@ export const RadioBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 12px;
 `;
 
@@ -133,7 +133,7 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   position: relative;
-  width: 14px;
+  width: 16px;
   height: 14px;
   border-radius: 14px;
 
@@ -141,13 +141,13 @@ export const Label = styled.label`
 
   &.active {
     border: ${props =>
-      props.value === 'Without' && '2px solid rgba(255, 255, 255, 0.3)'};
+      props.value === 'without' && '2px solid rgb(128, 128, 128)'};
     border: ${props =>
-      props.value === 'Low' && '2px solid rgba(143, 161, 208, 1)'};
+      props.value === 'low' && '2px solid rgba(143, 161, 208, 1)'};
     border: ${props =>
-      props.value === 'Medium' && '2px solid rgba(224, 156, 181, 1)'};
+      props.value === 'medium' && '2px solid rgba(224, 156, 181, 1)'};
     border: ${props =>
-      props.value === 'High' && '2px solid rgba(190, 219, 176, 1)'};
+      props.value === 'high' && '2px solid rgba(190, 219, 176, 1)'};
   }
 `;
 
@@ -161,13 +161,13 @@ export const LabelItem = styled.div`
   transform: translate(-50%, -50%);
 
   background-color: ${props =>
-    props.value === 'Without' && 'rgba(255, 255, 255, 0.30)'};
+    props.value === 'without' && 'rgb(128, 128, 128)'};
   background-color: ${props =>
-    props.value === 'Low' && 'rgba(143, 161, 208, 1)'};
+    props.value === 'low' && 'rgba(143, 161, 208, 1)'};
   background-color: ${props =>
-    props.value === 'Medium' && 'rgba(224, 156, 181, 1)'};
+    props.value === 'medium' && 'rgba(224, 156, 181, 1)'};
   background-color: ${props =>
-    props.value === 'High' && 'rgba(190, 219, 176, 1)'};
+    props.value === 'high' && 'rgba(190, 219, 176, 1)'};
 
   transition: all 250ms linear;
 
@@ -184,11 +184,12 @@ export const LabetlText = styled.p`
   font-size: 12px;
   font-family: Poppins;
   letter-spacing: -0.24px;
-  /* margin-left: 26px; */
 
   &.active {
     color: ${props => props.theme.modal.textMain};
   }
+
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`

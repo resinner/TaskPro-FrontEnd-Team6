@@ -57,10 +57,8 @@ export const AuthFormField = styled(Field)`
 
 export const AuthFormPasswordIcon = styled.span`
   position: absolute;
-
-  top: 50%;
+  bottom: 15px;
   right: 18px;
-  transform: translateY(-50%);
   color: #fff;
   opacity: 0.4;
   cursor: pointer;

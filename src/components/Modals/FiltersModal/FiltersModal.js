@@ -17,13 +17,21 @@ import {
   ModalForm,
 } from './FiltersModal.styled';
 
-import defaultImg from '../defImg.png';
 import data from '../background.json';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { selectPriority } from 'redux/dashboards/dashboardsSlice';
+import { editDashbord } from 'redux/dashboards/dashboardsOperations';
+import { useSelector } from 'react-redux';
+import { selectCurrentDashboard } from 'redux/dashboards/dashboardsSelectors';
 
-const options = ['Without', 'Low', 'Medium', 'High'];
+const options = ['without', 'low', 'medium', 'high'];
 
 const FiltersModal = () => {
+  const dispatch = useDispatch();
+
+  const currentDashboard = useSelector(selectCurrentDashboard);
+
   const [selectedBg, setSelectedBg] = useState('');
   const [selectedLabel, setSelectedLabel] = useState('');
 
@@ -34,6 +42,16 @@ const FiltersModal = () => {
 
   const handleLabelSelection = el => {
     setSelectedLabel(el);
+  };
+
+  const changeBgUrl = el => {
+    const updatedData = { backgroundURL: el };
+    dispatch(
+      editDashbord({
+        dashboardId: currentDashboard._id,
+        updatedData,
+      })
+    );
   };
 
   const handleBgSelection = el => {
@@ -48,12 +66,13 @@ const FiltersModal = () => {
         <ModalForm>
           <FormWrapper>
             <FormTitle>Backgraunds </FormTitle>
+
             <BgWrapper>
               {data.map((el, idx) => (
                 <div key={idx}>
                   <BgItem
-                    url={defaultImg}
                     onClick={() => handleBgSelection(el.url)}
+                    onMouseDown={() => changeBgUrl(el.url)}
                     className={selectedBg === el.url ? 'active' : ''}
                   >
                     {el.url !== '' && (
@@ -74,11 +93,13 @@ const FiltersModal = () => {
           <FormWrapper>
             <FormTitle>Label color</FormTitle>
 
-            <ShowAllLabel>Show all</ShowAllLabel>
+            <ShowAllLabel onClick={() => dispatch(selectPriority('show all'))}>
+              Show all
+            </ShowAllLabel>
 
             <RadioBtnWrapper>
               {options.map((el, idx) => (
-                <Wrapper key={idx}>
+                <Wrapper key={idx} onClick={() => dispatch(selectPriority(el))}>
                   <Label
                     value={el}
                     className={selectedLabel === el ? 'active' : ''}
@@ -90,8 +111,11 @@ const FiltersModal = () => {
                     />
                     <DefaultRadioBtn type="radio" value={el} name="label" />
                   </Label>
+
                   <LabetlText className={selectedLabel === el ? 'active' : ''}>
-                    {el === 'Without' ? `${el} priority` : el}
+                    {el === 'without'
+                      ? `${el[0].toUpperCase() + el.slice(1)} priority`
+                      : el[0].toUpperCase() + el.slice(1)}
                   </LabetlText>
                 </Wrapper>
               ))}

@@ -16,7 +16,7 @@ const unsetAuthHeader = () => {
 };
 
 instance.interceptors.response.use(response => response, async (error) => {
-  if (error.response.status == 401) {
+  if (error.response.status === 401) {
     const refreshToken = localStorage.getItem("refreshToken");
     try {
       const { data } = await instance.post("api/users/refresh", { refreshToken })
