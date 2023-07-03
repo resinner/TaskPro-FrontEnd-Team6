@@ -17,7 +17,6 @@ import {
   ErrorSection,
   ModalForm,
 } from '../BoardModal.styled';
-import defaultImg from '../../defImg.png';
 import data from '../../background.json';
 import sprite from '../../../../images/sprite.svg';
 
@@ -113,7 +112,6 @@ const EditBoardModal = ({ closeModal, item }) => {
               {data.map((el, idx) => (
                 <label key={idx}>
                   <BgcItem
-                    url={defaultImg}
                     onClick={() => handleBgSelection(el.url)}
                     className={selectedBg === el.url ? 'active' : ''}
                   >

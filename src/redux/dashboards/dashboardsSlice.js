@@ -32,9 +32,14 @@ const dashboardsSlice = createSlice({
     isLoading: false,
     error: null,
     columnsLength: 0,
-
     currentBg: '',
-    currentText: '',
+    currentName: '',
+    selectedPriority: 'show all',
+  },
+  reducers: {
+    selectPriority(state, action) {
+      state.selectedPriority = action.payload;
+    },
   },
   extraReducers: builder => {
     builder
@@ -83,6 +88,7 @@ const dashboardsSlice = createSlice({
         state.currentBg = action.payload.dashboard.backgroundURL;
         state.currentName = action.payload.dashboard.name;
         state.columnsLength = action.payload.columns.length;
+        state.selectedPriority = 'show all';
       })
       // edit dashboard
       .addCase(editDashbord.pending, handlePending)
@@ -102,6 +108,7 @@ const dashboardsSlice = createSlice({
           icon,
           backgroundURL,
         };
+        console.log(backgroundURL);
         state.currentName = name;
         state.currentBg = backgroundURL;
       })
@@ -155,8 +162,6 @@ const dashboardsSlice = createSlice({
 
         if (!state.currentDashboard.columns[index].cards) {
           state.currentDashboard.columns[index].cards = [];
-          // state.currentDashboard.columns[index].cards.push(action.payload);
-          // return;
         }
 
         state.currentDashboard.columns[index].cards.push(action.payload);
@@ -215,10 +220,6 @@ const dashboardsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
 
-        // console.log('action.payload.currentOwner', action.payload.currentOwner);
-        // console.log('action.payload.columnId', action.payload.columnId);
-        // console.log('first', action.payload.data);
-
         const currenColumn = state.currentDashboard.columns.findIndex(
           item => item._id === action.payload.currentOwner
         );
@@ -235,11 +236,6 @@ const dashboardsSlice = createSlice({
           currenColumn
         ].cards.findIndex(item => item);
 
-        // console.log('kekew', kekew);
-        // console.log('currenColumn', currenColumn);
-        // console.log('indexColumn', incomingColumn);
-        // console.log('indexCard', indexCard);
-
         state.currentDashboard.columns[currenColumn].cards.splice(indexCard, 1);
 
         if (!state.currentDashboard.columns[incomingColumn].cards) {
@@ -254,5 +250,7 @@ const dashboardsSlice = createSlice({
       });
   },
 });
+
+export const { selectPriority } = dashboardsSlice.actions;
 
 export const dashboardsReducer = dashboardsSlice.reducer;

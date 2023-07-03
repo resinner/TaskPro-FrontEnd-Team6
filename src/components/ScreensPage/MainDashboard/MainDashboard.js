@@ -14,8 +14,9 @@ import {
 const MainDashboard = () => {
   const columnLength = useSelector(selectColumnsLength);
   const currentDashboard = useSelector(selectCurrentDashboard);
-
   const columns = useSelector(selectColumns);
+
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
