@@ -232,7 +232,7 @@ const dashboardsSlice = createSlice({
           currenColumn
         ].cards.findIndex(item => item._id === action.payload.data._id);
 
-        const kekew = state.currentDashboard.columns[
+        const position = state.currentDashboard.columns[
           currenColumn
         ].cards.findIndex(item => item);
 
@@ -243,7 +243,7 @@ const dashboardsSlice = createSlice({
         }
 
         state.currentDashboard.columns[incomingColumn].cards?.splice(
-          kekew,
+          position,
           0,
           action.payload.data
         );

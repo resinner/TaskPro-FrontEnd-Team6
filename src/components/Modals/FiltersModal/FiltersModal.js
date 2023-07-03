@@ -113,7 +113,9 @@ const FiltersModal = () => {
                   </Label>
 
                   <LabetlText className={selectedLabel === el ? 'active' : ''}>
-                    {el === 'Without' ? `${el} priority` : el}
+                    {el === 'without'
+                      ? `${el[0].toUpperCase() + el.slice(1)} priority`
+                      : el[0].toUpperCase() + el.slice(1)}
                   </LabetlText>
                 </Wrapper>
               ))}

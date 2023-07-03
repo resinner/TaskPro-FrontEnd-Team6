@@ -125,7 +125,7 @@ export const RadioBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 12px;
 `;
 
@@ -133,7 +133,7 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   position: relative;
-  width: 14px;
+  width: 16px;
   height: 14px;
   border-radius: 14px;
 

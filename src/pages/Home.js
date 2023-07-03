@@ -11,9 +11,11 @@ import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
+import Loader from 'components/AuthPage/Loader';
 
 const Home = () => {
   const dispatch = useDispatch();
+
   const activeUserTheme = useSelector(selectUserTheme);
 
   const selectThemeIndex = () => {
@@ -37,7 +39,7 @@ const Home = () => {
 
         <Sidebar />
 
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </Container>

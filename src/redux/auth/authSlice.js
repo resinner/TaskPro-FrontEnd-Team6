@@ -62,17 +62,14 @@ const authSlice = createSlice({
       .addCase(changeTheme.fulfilled, (state, action) => {
         state.user.theme = action.payload.theme;
       })
+      .addCase(updateUser.rejected, handleRejected)
+      .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
         const { name, email, password, avatarURL } = action.payload;
         state.user.name = name;
         state.user.email = email;
         state.user.password = password;
         state.user.avatarURL = avatarURL;
-        state.isLoading = false;
-      })
-      .addCase(updateUser.rejected, handleRejected)
-      .addCase(updateUser.pending, state => {
-        state.isLoading = true;
         state.isLoading = false;
       });
   },
