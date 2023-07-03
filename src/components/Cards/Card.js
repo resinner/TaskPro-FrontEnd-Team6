@@ -22,7 +22,7 @@ import { deleteCard } from 'redux/dashboards/dashboardsOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import EditCardModal from 'components/Modals/CardModal/EditCardModal/EditCardModal';
 
-const Card = ({ item }) => {
+const Card = ({ item, columnName }) => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const moveIconRef = useRef();
@@ -111,7 +111,9 @@ const Card = ({ item }) => {
                 <use href={sprite + `#icon-arrow-circle-broken-right`} />
               </ActiveIcon>
 
-              {isPopupOpen && <CardmovePopup card={item} />}
+              {isPopupOpen && (
+                <CardmovePopup card={item} columnName={columnName} />
+              )}
             </MoverWrapper>
 
             <ActiveIcon onClick={handleOpenCardModal} aria-label="edit icon">

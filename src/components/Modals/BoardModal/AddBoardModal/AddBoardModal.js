@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
 import { addDashboard } from 'redux/dashboards/dashboardsOperations';
 
-// import { Notify } from 'notiflix';
-
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -26,7 +24,6 @@ import {
   ModalForm,
 } from '../BoardModal.styled';
 
-import defaultImg from '../../defImg.png';
 import data from '../../background.json';
 import sprite from '../../../../images/sprite.svg';
 
@@ -138,7 +135,6 @@ const AddBoardModal = ({ closeModal }) => {
               {data.map((el, idx) => (
                 <label key={idx}>
                   <BgcItem
-                    url={defaultImg}
                     onClick={() => handleBgSelection(el.url)}
                     className={selectedBg === el.url ? 'active' : ''}
                   >
