@@ -184,11 +184,12 @@ export const LabetlText = styled.p`
   font-size: 12px;
   font-family: Poppins;
   letter-spacing: -0.24px;
-  /* margin-left: 26px; */
 
   &.active {
     color: ${props => props.theme.modal.textMain};
   }
+
+  cursor: pointer;
 `;
 
 export const Wrapper = styled.div`
