@@ -119,11 +119,13 @@ const EditCardModal = ({ card, closeModal }) => {
                   key={idx}
                   value={el}
                   className={selectedLabel === el ? 'active' : ''}
+                  id="labelOut"
                 >
                   <LabelItem
                     onClick={() => setSelectedLabel(el)}
                     value={el}
                     className={selectedLabel === el ? 'active' : ''}
+                    id="labelIn"
                   />
 
                   <DefaultRadioBtn type="radio" value={el} name="priority" />
@@ -137,7 +139,6 @@ const EditCardModal = ({ card, closeModal }) => {
             <DateTitle
               onClick={() => document.querySelector('.input-ref').click()}
             >
-              {/* {startDate} */}
               {startDate !== '' ? customDate : dateLabel}
             </DateTitle>
             <Wrapper>
@@ -147,6 +148,7 @@ const EditCardModal = ({ card, closeModal }) => {
                 timeFormat="dd/MM/yyyy"
                 selected={startDate}
                 onChange={date => setStartDate(date)}
+                id="datePicker"
               />
             </Wrapper>
           </FormWrapper>

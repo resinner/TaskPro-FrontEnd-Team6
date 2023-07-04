@@ -125,11 +125,13 @@ const AddCardModal = ({ columnId, closeModal }) => {
                   key={idx}
                   value={el}
                   className={selectedLabel === el ? 'active' : ''}
+                  id="labelOut"
                 >
                   <LabelItem
                     onClick={() => setSelectedLabel(el)}
                     value={el}
                     className={selectedLabel === el ? 'active' : ''}
+                    id="in"
                   />
 
                   <DefaultRadioBtn type="radio" value={el} name="priority" />
@@ -152,6 +154,7 @@ const AddCardModal = ({ columnId, closeModal }) => {
                 timeFormat="dd/MM/yyyy"
                 selected={startDate}
                 onChange={date => setStartDate(date)}
+                id="datePicker"
               />
             </Wrapper>
           </FormWrapper>

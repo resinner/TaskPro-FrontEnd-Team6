@@ -40,6 +40,12 @@ export const ColumnTask = ({ item }) => {
   const filteredColumn =
     item.cards && item.cards.filter(item => item.priority === selectedPriority);
 
+  const columnLength = item.cards && item.cards.length;
+  const fileteredColumnLength = filteredColumn && filteredColumn.length;
+
+  const condition =
+    selectedPriority === 'show all' ? columnLength : fileteredColumnLength;
+
   return (
     <Wrapper>
       <ContentWrapper>
@@ -58,7 +64,7 @@ export const ColumnTask = ({ item }) => {
             </IconWrapper>
           </Header>
 
-          <TaskList>
+          <TaskList length={condition}>
             {selectedPriority === 'show all'
               ? item.cards &&
                 item.cards.map(el => (
