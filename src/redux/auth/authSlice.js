@@ -6,6 +6,7 @@ import {
   changeTheme,
   updateUser,
   refreshCurrentUser,
+  needHelp,
 } from './authOperations';
 
 const handlePending = state => {
@@ -84,6 +85,12 @@ const authSlice = createSlice({
         state.user.email = email;
         state.user.password = password;
         state.user.avatarURL = avatarURL;
+        state.isLoading = false;
+      })
+      //need Help
+      .addCase(needHelp.rejected, handleRejected)
+      .addCase(needHelp.pending, handlePending)
+      .addCase(needHelp.fulfilled, (state, action) => {
         state.isLoading = false;
       });
   },

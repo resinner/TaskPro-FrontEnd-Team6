@@ -39,8 +39,8 @@
 37. 💚 add another card button style dowwwn
 38. 💚 прокинути спінер на Suspens
 39. 💚 добавитт спінер ага
-40. 💥 ловити помилки запитів і виводити їх ??????????
-41. 💥 прописати refresh
+40. 💚 ловити помилки запитів і виводити їх ??????????
+41. 💚 прописати refresh
 42. 💚 добавити FILTER
 43. 💚 card border proority overflow hidden(div? pseudelement)
 44. 💚 перервірити columns length

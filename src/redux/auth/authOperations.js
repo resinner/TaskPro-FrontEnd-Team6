@@ -130,4 +130,18 @@ export const updateUser = createAsyncThunk(
   }
 );
 
+export const needHelp = createAsyncThunk(
+  'auth/needHelp',
+  async (credintials, thunkAPI) => {
+    console.log('credintials', credintials);
+    try {
+      const { data } = await instance.post('api/users/help', credintials);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export default instance;
