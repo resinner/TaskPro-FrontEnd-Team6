@@ -13,6 +13,7 @@ const setAuthHeader = token => {
 const unsetAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
 };
+
 instance.interceptors.response.use(
   response => response,
   async error => {
@@ -24,7 +25,7 @@ instance.interceptors.response.use(
         });
         setAuthHeader(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
-        localStorage.setItem('accessToken', data.accessToken)
+        localStorage.setItem('accessToken', data.accessToken);
         error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
@@ -63,7 +64,7 @@ export const logIn = createAsyncThunk(
       const { data } = await instance.post('api/users/login', credentials);
       setAuthHeader(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
-      localStorage.setItem('accessToken', data.accessToken)
+      localStorage.setItem('accessToken', data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -74,6 +75,8 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('api/users/logout');
+    localStorage.clear('refreshToken');
+    localStorage.clear('accessToken');
     unsetAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
