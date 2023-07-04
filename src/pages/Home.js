@@ -48,6 +48,7 @@ const Home = () => {
 
     dispatch(getDashboardById(activeBoard[0]?._id));
     navigate(`/home/${activeBoard[0]?.name}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
