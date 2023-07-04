@@ -99,13 +99,18 @@ const FiltersModal = () => {
 
             <RadioBtnWrapper>
               {options.map((el, idx) => (
-                <Wrapper key={idx} onClick={() => dispatch(selectPriority(el))}>
+                <Wrapper
+                  key={idx}
+                  onClick={() => {
+                    handleLabelSelection(el);
+                    dispatch(selectPriority(el));
+                  }}
+                >
                   <Label
                     value={el}
                     className={selectedLabel === el ? 'active' : ''}
                   >
                     <LabelItem
-                      onClick={() => handleLabelSelection(el)}
                       value={el}
                       className={selectedLabel === el ? 'active' : ''}
                     />

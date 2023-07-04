@@ -11,6 +11,8 @@ import {
 } from './NeedHelpModal.styled';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { needHelp } from 'redux/auth/authOperations';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -22,7 +24,12 @@ const initialValues = {
 };
 
 const NeedHelpModal = ({ closeModal }) => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
+    const { email, comment } = values;
+    const updateDate = { email, comment };
+    dispatch(needHelp(updateDate));
     resetForm();
     closeModal();
   };
