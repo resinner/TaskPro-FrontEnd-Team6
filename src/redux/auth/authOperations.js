@@ -13,7 +13,6 @@ const setAuthHeader = token => {
 const unsetAuthHeader = () => {
   instance.defaults.headers.common.Authorization = '';
 };
-
 instance.interceptors.response.use(
   response => response,
   async error => {
@@ -25,6 +24,7 @@ instance.interceptors.response.use(
         });
         setAuthHeader(data.accessToken);
         localStorage.setItem('refreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken)
         error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
@@ -63,6 +63,7 @@ export const logIn = createAsyncThunk(
       const { data } = await instance.post('api/users/login', credentials);
       setAuthHeader(data.accessToken);
       localStorage.setItem('refreshToken', data.refreshToken);
+      localStorage.setItem('accessToken', data.accessToken)
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -82,18 +83,17 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
-
-    if (persistedToken === null) {
+    // const state = thunkAPI.getState();
+    // const persistedToken = state.auth.token;
+    // console.log(persistedToken)
+    const accessToken = localStorage.getItem('accessToken');
+    setAuthHeader(accessToken);
+    if (accessToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-
-    setAuthHeader(persistedToken);
-
     try {
       const { data } = await instance.get('api/users/current');
-
+      // setAuthHeader(data.accessToken)
       return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);
