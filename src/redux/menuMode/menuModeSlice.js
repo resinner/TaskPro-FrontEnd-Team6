@@ -16,7 +16,7 @@ export const menuModeSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      // logout
+
       .addCase(logOut.fulfilled, state => {
         state.isMenuOpen = false;
       });

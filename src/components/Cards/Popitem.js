@@ -11,7 +11,7 @@ const CardmovePopup = ({ card, columnName }) => {
 
   const filteredColumnNames = columns.filter(item => item.title !== columnName);
 
-  // text cutting func
+
   const checkTextLength = text => {
     const str = text && text.split('');
 

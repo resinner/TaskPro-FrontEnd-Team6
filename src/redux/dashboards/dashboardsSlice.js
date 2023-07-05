@@ -43,7 +43,7 @@ const dashboardsSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      // fetch dashboard
+
       .addCase(getAllDashboards.pending, handlePending)
       .addCase(getAllDashboards.rejected, handleRejected)
       .addCase(getAllDashboards.fulfilled, (state, action) => {
@@ -51,7 +51,7 @@ const dashboardsSlice = createSlice({
         state.dashboards = action.payload;
         state.error = null;
       })
-      // add dashboard
+
       .addCase(addDashboard.pending, handlePending)
       .addCase(addDashboard.rejected, handleRejected)
       .addCase(addDashboard.fulfilled, (state, action) => {
@@ -59,7 +59,7 @@ const dashboardsSlice = createSlice({
         state.dashboards.push(action.payload);
         state.error = null;
       })
-      //  delete dashboard
+
       .addCase(deleteDashboard.pending, handlePending)
       .addCase(deleteDashboard.rejected, handleRejected)
       .addCase(deleteDashboard.fulfilled, (state, action) => {
@@ -71,14 +71,14 @@ const dashboardsSlice = createSlice({
 
         state.dashboards.splice(index, 1);
       })
-      // log out
+
       .addCase(logOut.fulfilled, state => {
         state.dashboards = [];
         state.error = null;
         state.isLoading = false;
         state.currentDashboard = {};
       })
-      // get by id
+
       .addCase(getDashboardById.pending, handlePending)
       .addCase(getDashboardById.rejected, handleRejected)
       .addCase(getDashboardById.fulfilled, (state, action) => {
@@ -91,7 +91,7 @@ const dashboardsSlice = createSlice({
         state.columnsLength = action.payload?.columns?.length;
         state.selectedPriority = 'show all';
       })
-      // edit dashboard
+  
       .addCase(editDashbord.pending, handlePending)
       .addCase(editDashbord.rejected, handleRejected)
       .addCase(editDashbord.fulfilled, (state, action) => {
@@ -112,7 +112,7 @@ const dashboardsSlice = createSlice({
         state.currentName = name;
         state.currentBg = backgroundURL;
       })
-      // add column
+
       .addCase(addColumn.pending, handlePending)
       .addCase(addColumn.rejected, handleRejected)
       .addCase(addColumn.fulfilled, (state, action) => {
@@ -121,7 +121,7 @@ const dashboardsSlice = createSlice({
         state.error = null;
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      //  delete column
+
       .addCase(deleteColumn.pending, handlePending)
       .addCase(deleteColumn.rejected, handleRejected)
       .addCase(deleteColumn.fulfilled, (state, action) => {
@@ -135,7 +135,7 @@ const dashboardsSlice = createSlice({
         state.currentDashboard.columns.splice(index, 1);
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      // edit column
+
       .addCase(editColumn.pending, handlePending)
       .addCase(editColumn.rejected, handleRejected)
       .addCase(editColumn.fulfilled, (state, action) => {
@@ -150,7 +150,7 @@ const dashboardsSlice = createSlice({
 
         state.currentDashboard.columns[columnIndex].title = title;
       })
-      // add card
+
       .addCase(addCard.pending, handlePending)
       .addCase(addCard.rejected, handleRejected)
       .addCase(addCard.fulfilled, (state, action) => {
@@ -168,7 +168,7 @@ const dashboardsSlice = createSlice({
 
         state.error = null;
       })
-      //  delete card
+
       .addCase(deleteCard.pending, handlePending)
       .addCase(deleteCard.rejected, handleRejected)
       .addCase(deleteCard.fulfilled, (state, action) => {
@@ -186,7 +186,7 @@ const dashboardsSlice = createSlice({
         state.currentDashboard.columns[indexColumn].cards.splice(indexCard, 1);
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      //  edit card
+
       .addCase(editCard.pending, handlePending)
       .addCase(editCard.rejected, handleRejected)
       .addCase(editCard.fulfilled, (state, action) => {
@@ -213,7 +213,7 @@ const dashboardsSlice = createSlice({
         };
         state.columnsLength = state.currentDashboard.columns.length;
       })
-      // //  change column
+
       .addCase(changeColumn.pending, handlePending)
       .addCase(changeColumn.rejected, handleRejected)
       .addCase(changeColumn.fulfilled, (state, action) => {

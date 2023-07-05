@@ -37,7 +37,7 @@ const authSlice = createSlice({
 
   extraReducers: builder => {
     builder
-      // register
+
       .addCase(register.pending, handlePending)
       .addCase(register.rejected, handleRejected)
       .addCase(register.fulfilled, (state, action) => {
@@ -45,7 +45,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      // login
+
       .addCase(logIn.pending, handlePending)
       .addCase(logIn.rejected, handleRejected)
       .addCase(logIn.fulfilled, (state, action) => {
@@ -54,17 +54,17 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      // logout
+
       .addCase(logOut.fulfilled, state => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
       })
-      // theme changer
+
       .addCase(changeTheme.fulfilled, (state, action) => {
         state.user.theme = action.payload.theme;
       })
-      // refresh
+
       .addCase(refreshCurrentUser.pending, state => {
         state.isRefreshing = true;
       })
@@ -76,7 +76,7 @@ const authSlice = createSlice({
       .addCase(refreshCurrentUser.rejected, state => {
         state.isRefreshing = false;
       })
-      // user update
+
       .addCase(updateUser.rejected, handleRejected)
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action) => {
@@ -87,7 +87,7 @@ const authSlice = createSlice({
         state.user.avatarURL = avatarURL;
         state.isLoading = false;
       })
-      //need Help
+
       .addCase(needHelp.rejected, handleRejected)
       .addCase(needHelp.pending, handlePending)
       .addCase(needHelp.fulfilled, (state, action) => {

@@ -44,10 +44,10 @@ const Card = ({ item, columnName }) => {
   const formatedDeadline =
     parsedDate && parsedDate.toLocaleString('en-GB', options);
 
-  // toggle popup func
+
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
 
-  // text cutting func
+
   const checkTextLength = text => {
     const str = text.split('');
 
@@ -57,7 +57,7 @@ const Card = ({ item, columnName }) => {
     return str.splice(0, 80).join('') + '...';
   };
 
-  // backdrop closing popup func
+
   const handleOutsideClick = event => {
     const path = event.composedPath();
 

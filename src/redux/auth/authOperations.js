@@ -52,7 +52,6 @@ export const register = createAsyncThunk(
         return data;
       }
     } catch (error) {
-      console.log(error)
       toast.error(error.response.data.message)
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -88,9 +87,6 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const persistedToken = state.auth.token;
-    // console.log(persistedToken)
     const accessToken = localStorage.getItem('accessToken');
     setAuthHeader(accessToken);
     if (accessToken === null) {
@@ -98,7 +94,6 @@ export const refreshCurrentUser = createAsyncThunk(
     }
     try {
       const { data } = await instance.get('api/users/current');
-      // setAuthHeader(data.accessToken)
       return data;
     } catch (error) {
       thunkAPI.rejectWithValue(error.message);
@@ -135,7 +130,6 @@ export const updateUser = createAsyncThunk(
 export const needHelp = createAsyncThunk(
   'auth/needHelp',
   async (credintials, thunkAPI) => {
-    console.log('credintials', credintials);
     try {
       const { data } = await instance.post('api/users/help', credintials);
 

@@ -117,7 +117,6 @@ export const editColumn = createAsyncThunk(
   }
 );
 
-// cards
 export const addCard = createAsyncThunk(
   'dashboards/addCard',
   async (

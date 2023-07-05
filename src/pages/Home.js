@@ -8,7 +8,7 @@ import { selectUserTheme } from 'redux/auth/authSelectors';
 import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
 import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
 
-// components
+
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
