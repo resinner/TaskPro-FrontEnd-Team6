@@ -2,13 +2,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'constants/theme';
-import { selectUserTheme } from 'redux/auth/authSelectors';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
-import {
-  getAllDashboards,
-  getDashboardById,
-} from 'redux/dashboards/dashboardsOperations';
+import { selectUserTheme } from 'redux/auth/authSelectors';
+import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
+import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
 
 // components
 import Header from 'components/Header/Header';
@@ -16,15 +14,11 @@ import { Container } from 'components/Container/Container.styled';
 import { Sidebar } from 'components/Sidebar/Sidebar';
 import Loader from 'components/AuthPage/Loader';
 import Start from 'components/Start/Start';
-import { selectAllDashboards } from 'redux/dashboards/dashboardsSelectors';
 
 const Home = () => {
   const dispatch = useDispatch();
   const dashboards = useSelector(selectAllDashboards);
-  const navigate = useNavigate();
   const activeUserTheme = useSelector(selectUserTheme);
-
-  const activeBoard = dashboards.filter(item => item.name === 'Spearhead');
 
   const selectThemeIndex = () => {
     if (activeUserTheme === 'dark') {
@@ -40,17 +34,6 @@ const Home = () => {
     dispatch(getAllDashboards());
   }, [dispatch]);
 
-  useEffect(() => {
-    // console.log('adasdas');
-    // if (!activeBoard.legth) {
-    //   return;
-    // }
-
-    dispatch(getDashboardById(activeBoard[0]?._id));
-    navigate(`/home/${activeBoard[0]?.name}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
   return (
     <ThemeProvider theme={theme[selectThemeIndex()]}>
       <Container>
@@ -58,13 +41,13 @@ const Home = () => {
 
         <Sidebar />
 
-        {dashboards.length !== 0 ? (
+        {dashboards.length !== 0 && (
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-        ) : (
-          <Start />
         )}
+
+        {dashboards.length === 0 && <Start />}
       </Container>
     </ThemeProvider>
   );
