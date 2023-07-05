@@ -26,6 +26,9 @@ export const TaskList = styled.ul`
 
   overflow-y: scroll;
 
+  overflow-y: ${props => (props.length < 3 ? 'hidden' : 'scroll')};
+  width: ${props => (props.length < 3 ? '342px' : '350px')};
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -43,14 +46,20 @@ export const TaskList = styled.ul`
 
   @media screen and (min-height: 780px) {
     max-height: calc(154px * 3 + 16px);
+    overflow-y: ${props => (props.length < 4 ? 'hidden' : 'scroll')};
+    width: ${props => (props.length < 4 ? '342px' : '350px')};
   }
 
   @media screen and (min-height: 942px) {
     max-height: calc(154px * 4 + 24px);
+    overflow-y: ${props => (props.length < 5 ? 'hidden' : 'scroll')};
+    width: ${props => (props.length < 5 ? '342px' : '350px')};
   }
 
   @media screen and (min-height: 1104px) {
     max-height: calc(154px * 5 + 32px);
+    overflow-y: ${props => (props.length < 6 ? 'hidden' : 'scroll')};
+    width: ${props => (props.length < 6 ? '342px' : '350px')};
   }
 `;
 
