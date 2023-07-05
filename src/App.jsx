@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import { lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 

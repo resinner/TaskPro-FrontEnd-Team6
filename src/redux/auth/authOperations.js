@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 const instance = axios.create({
   baseURL: 'https://taskproapi-ukbi.onrender.com/',
 });
@@ -41,17 +42,18 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await instance.post('api/users/register', credentials);
-
       if (res.status === 201) {
         const { email, password } = credentials;
         const { data } = await instance.post('api/users/login', {
           email,
           password,
-        });
+        })
         setAuthHeader(data.accessToken);
         return data;
       }
     } catch (error) {
+      console.log(error)
+      toast.error(error.response.data.message)
       return thunkAPI.rejectWithValue(error.message);
     }
   }

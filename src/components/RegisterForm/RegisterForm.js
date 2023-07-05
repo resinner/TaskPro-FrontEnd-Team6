@@ -50,10 +50,8 @@ const RegisterForm = () => {
   const handleTogglePassword = () => {
     setShowPassword(!showPassword);
   };
-
   const onSubmit = (values, { resetForm }) => {
     const { name, email, password } = values;
-
     dispatch(
       register({
         name,
@@ -61,7 +59,6 @@ const RegisterForm = () => {
         password,
       })
     );
-
     resetForm();
   };
 
