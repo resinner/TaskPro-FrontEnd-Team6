@@ -16,6 +16,7 @@ export const Wrapper = styled.div`
   padding: 14px 20px 0 20px;
 
   margin-left: ${props => (props.isOpen ? '225px' : '0')};
+  opacity: ${props => (props.isOpen ? '0.6' : '1')};
   transition: all 250ms linear;
 
   @media screen and (min-width: 768px) {
@@ -30,5 +31,3 @@ export const Wrapper = styled.div`
     margin-left: 260px;
   }
 `;
-
-
