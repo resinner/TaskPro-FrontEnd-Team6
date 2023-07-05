@@ -1,6 +1,6 @@
 import { Outlet, useParams } from 'react-router-dom';
 import { Suspense } from 'react';
-
+import { ToastContainer } from 'react-toastify';
 import RegisterForm from 'components/RegisterForm/RegisterForm';
 import LoginForm from 'components/LoginForm/LoginForm';
 import {
@@ -16,6 +16,7 @@ const AuthPage = () => {
 
   return (
     <WelcomeWrapper>
+      < ToastContainer />
       <Modal>
         <ModalNav>
           <ModalNavItem to="/auth/register">Registration</ModalNavItem>

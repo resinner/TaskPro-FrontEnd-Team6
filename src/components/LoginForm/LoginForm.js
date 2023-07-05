@@ -16,6 +16,8 @@ import * as Yup from 'yup';
 import { logIn } from 'redux/auth/authOperations';
 import Loader from 'components/AuthPage/Loader';
 import { selectIsLoading } from 'redux/auth/authSelectors';
+import { toast } from 'react-toastify';
+
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Email is required'),
@@ -45,9 +47,12 @@ const LoginForm = () => {
     setShowPassword(!showPassword);
   };
 
-  const onSubmit = (values, { resetForm }) => {
+  const onSubmit = async (values, { resetForm }) => {
     const { email, password } = values;
-    dispatch(logIn({ email, password }));
+    const data = await dispatch(logIn({ email, password }));
+    if (data.error.message === "Rejected") {
+      toast.error("Email or password is wrong")
+    }
     resetForm();
   };
 
