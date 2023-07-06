@@ -36,7 +36,7 @@ Our Team(and main roles):
 5. Anna Sobova - Frontend developer
 6.
 7. Ivan Tkachuk - Frontend developer
-8.
+8. Bogdan Kaleniuk - Frontend developer
 9. Maksym Tykhoniuk - Frontend developer
 10. Olexandr Tkachuk - Frontend developer
 11. Roman Dutkevych - Backend developer
