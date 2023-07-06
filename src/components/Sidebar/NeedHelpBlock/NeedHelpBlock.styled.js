@@ -33,7 +33,7 @@ export const Image = styled.img`
 `;
 
 export const Text = styled.p`
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-size: 14px;
   line-height: 1.42;
   letter-spacing: -0.28px;
@@ -69,7 +69,7 @@ export const CircleIcon = styled.svg`
 `;
 
 export const ButtonText = styled.p`
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-weight: 500;
   color: ${props => props.theme.needHelp.textMain};
   font-size: 12px;
