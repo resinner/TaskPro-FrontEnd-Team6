@@ -40,6 +40,6 @@ Our Team(and main roles):
 9. Maksym Tykhoniuk - Frontend developer
 10. Olexandr Tkachuk - Frontend developer
 11. Roman Dutkevych - Backend developer
-12.
+12. Viktoria Sazan - Frontend developer
 13.
 14.
