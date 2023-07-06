@@ -31,12 +31,12 @@ Our Team(and main roles):
 
 1. Pavlo Baryshnikov - Team Lead / Frontend developer
 2.
-3.
+3. 
 4.
 5.
 6.
 7.
-8.
+8. Olexandr Tkachuk - Frontend developer
 9. Roman Dutkevych - Backend developer
 10.
 11.
