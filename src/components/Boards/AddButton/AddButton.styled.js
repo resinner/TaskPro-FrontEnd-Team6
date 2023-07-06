@@ -54,7 +54,7 @@ export const Icon = styled.svg`
 export const Text = styled.p`
   color: ${props => props.theme.addColumnButton.color};
   font-size: 14px;
-  font-family: Poppins;
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
   line-height: normal;
