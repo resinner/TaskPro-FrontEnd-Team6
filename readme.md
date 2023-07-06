@@ -34,7 +34,7 @@ Our Team(and main roles):
 3. Vasyl Bondarenko - Backend developer
 4. Oleksandra Ilchenko - Backend and Frontend developer
 5. Anna Sobova - Frontend developer
-6.
+6. Natalia Moskvychova - Frontend developer
 7. Ivan Tkachuk - Frontend developer
 8. Bogdan Kaleniuk - Frontend developer
 9. Maksym Tykhoniuk - Frontend developer
