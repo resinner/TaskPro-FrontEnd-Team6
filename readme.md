@@ -31,7 +31,7 @@ Our Team(and main roles):
 
 1. Pavlo Baryshnikov - Team Lead / Frontend developer
 2.
-3.
+3. Vasyl Bondarenko - Backend developer
 4.
 5.
 6.
