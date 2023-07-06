@@ -35,7 +35,7 @@ Our Team(and main roles):
 4.
 5.
 6.
-7.
+7. Ivan Tkachuk - Frontend developer
 8.
 9. Roman Dutkevych - Backend developer
 10.
