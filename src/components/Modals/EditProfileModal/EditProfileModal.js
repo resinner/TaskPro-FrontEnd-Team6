@@ -169,7 +169,7 @@ const EditProfileModal = ({ closeModal }) => {
               type={showPassword ? 'text' : 'password'}
               id="password"
               name="password"
-              placeholder="Change a password"
+              placeholder="Password is required"
             />
             <AuthFormPasswordIcon onClick={handleTogglePassword}>
               {showPassword ? <AiOutlineEyeInvisible /> : <AiOutlineEye />}

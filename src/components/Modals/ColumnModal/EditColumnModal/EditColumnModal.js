@@ -19,12 +19,13 @@ import {
 const validationSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
 });
-const initialValues = {
-  title: '',
-};
 
-const EditColumnModal = ({ columnId, closeModal }) => {
+const EditColumnModal = ({ title, columnId, closeModal }) => {
   const dispatch = useDispatch();
+
+  const initialValues = {
+    title,
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     const { title } = values;
