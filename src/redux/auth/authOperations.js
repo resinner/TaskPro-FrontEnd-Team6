@@ -19,14 +19,14 @@ instance.interceptors.response.use(
   response => response,
   async error => {
     if (error.response.status === 401) {
-      const refreshToken = localStorage.getItem('refreshToken');
+      const refreshToken = sessionStorage.getItem('refreshToken');
       try {
         const { data } = await instance.post('api/users/refresh', {
           refreshToken,
         });
         setAuthHeader(data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
-        localStorage.setItem('accessToken', data.accessToken);
+        sessionStorage.setItem('refreshToken', data.refreshToken);
+        sessionStorage.setItem('accessToken', data.accessToken);
         error.config.headers.common.authorization = `Bearer ${data.accessToken}`;
         return instance(error.config);
       } catch (error) {
@@ -47,12 +47,12 @@ export const register = createAsyncThunk(
         const { data } = await instance.post('api/users/login', {
           email,
           password,
-        })
+        });
         setAuthHeader(data.accessToken);
         return data;
       }
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -63,9 +63,11 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const { data } = await instance.post('api/users/login', credentials);
+
       setAuthHeader(data.accessToken);
-      localStorage.setItem('refreshToken', data.refreshToken);
-      localStorage.setItem('accessToken', data.accessToken);
+
+      sessionStorage.setItem('refreshToken', data.refreshToken);
+      sessionStorage.setItem('accessToken', data.accessToken);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -76,8 +78,8 @@ export const logIn = createAsyncThunk(
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await instance.post('api/users/logout');
-    localStorage.clear('refreshToken');
-    localStorage.clear('accessToken');
+    sessionStorage.clear('refreshToken');
+    sessionStorage.clear('accessToken');
     unsetAuthHeader();
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
@@ -87,11 +89,13 @@ export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
 export const refreshCurrentUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const accessToken = localStorage.getItem('accessToken');
-    setAuthHeader(accessToken);
+    const accessToken = await sessionStorage.getItem('accessToken');
+
     if (accessToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
+
+    setAuthHeader(accessToken);
     try {
       const { data } = await instance.get('api/users/current');
       return data;

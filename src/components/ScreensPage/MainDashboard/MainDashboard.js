@@ -42,26 +42,8 @@ const MainDashboard = () => {
     }
   };
 
-  // const handleMouseMove = e => {
-  //   if (!isDragging || open) return;
-
-  //   const x = e.pageX - scrollRef.current.offsetLeft;
-  //   const walk = (x - startX) * 1;
-  //   const newScrollLeft = scrollRef.current.scrollLeft - walk;
-
-  //   const smoothScroll = () => {
-  //     scrollRef.current.scrollLeft +=
-  //       (newScrollLeft - scrollRef.current.scrollLeft) * 0.1;
-  //     if (Math.abs(newScrollLeft - scrollRef.current.scrollLeft) > 0.5) {
-  //       requestAnimationFrame(smoothScroll);
-  //     }
-  //   };
-
-  //   requestAnimationFrame(smoothScroll);
-  // };
-
   const handleMouseMove = e => {
-    if (!isDragging || open) return; 
+    if (!isDragging || open) return;
     const x = e.pageX - scrollRef.current.offsetLeft;
     const walk = (x - startX) * 0.05;
     scrollRef.current.scrollLeft = scrollRef.current.scrollLeft - walk;
