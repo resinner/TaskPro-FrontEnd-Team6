@@ -4,6 +4,7 @@ import CardmovePopup from './Popitem';
 import { useDispatch } from 'react-redux';
 
 import {
+  DelayIcon,
   Title,
   CardWrapper,
   Text,
@@ -17,20 +18,26 @@ import {
   ActiveIcon,
   MoverWrapper,
   IconBellWrapper,
+  PopupWrapper,
+  PopupItem,
+  PopupText,
 } from './Card.styled';
-import { deleteCard } from 'redux/dashboards/dashboardsOperations';
+import { deleteCard, editCard } from 'redux/dashboards/dashboardsOperations';
 import BasicModal from 'components/Modals/BasicModal/BasicModal';
 import EditCardModal from 'components/Modals/CardModal/EditCardModal/EditCardModal';
 
 const Card = ({ item, columnName }) => {
   const dispatch = useDispatch();
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [delayPopup, setDelayPopup] = useState(false);
   const moveIconRef = useRef();
   const [openCardModal, setOpenCardModal] = useState(false);
   const handleOpenCardModal = () => setOpenCardModal(true);
   const handleCloseCardModal = () => setOpenCardModal(false);
 
   const { title, _id, deadline, description, priority } = item;
+
+  const delayOptions = [1, 3, 5, 7];
 
   const options = {
     year: 'numeric',
@@ -44,9 +51,7 @@ const Card = ({ item, columnName }) => {
   const formatedDeadline =
     parsedDate && parsedDate.toLocaleString('en-GB', options);
 
-
   const handleIconMoveClick = () => setIsPopupOpen(!isPopupOpen);
-
 
   const checkTextLength = text => {
     const str = text.split('');
@@ -56,7 +61,6 @@ const Card = ({ item, columnName }) => {
     }
     return str.splice(0, 80).join('') + '...';
   };
-
 
   const handleOutsideClick = event => {
     const path = event.composedPath();
@@ -75,6 +79,23 @@ const Card = ({ item, columnName }) => {
   }, []);
 
   const expiredCard = today > formatedDeadline;
+
+  const handleDelayPopup = () => {
+    console.log('asdasdasd');
+    setDelayPopup(prev => !prev);
+    console.log('delayPopup in func', delayPopup);
+  };
+
+  const handleDeadline = (deadline, delay) => {
+    const date = new Date(deadline);
+    date.setDate(date.getDate() + delay);
+
+    dispatch(
+      editCard({ cardId: _id, title, description, priority, deadline: date })
+    );
+
+    setDelayPopup(prev => !prev);
+  };
 
   return (
     <>
@@ -102,6 +123,11 @@ const Card = ({ item, columnName }) => {
               </>
             )}
 
+            {today > formatedDeadline && (
+              <>
+                <DelayIcon onClick={handleDelayPopup} />
+              </>
+            )}
             <MoverWrapper>
               <ActiveIcon
                 ref={moveIconRef}
@@ -111,15 +137,28 @@ const Card = ({ item, columnName }) => {
                 <use href={sprite + `#icon-arrow-circle-broken-right`} />
               </ActiveIcon>
 
+              {delayPopup && (
+                <PopupWrapper>
+                  {delayOptions.map((item, idx) => (
+                    <PopupItem
+                      onClick={() => handleDeadline(deadline, item)}
+                      key={idx}
+                    >
+                      <PopupText>
+                        {item > 1 ? `${item} days delay` : `${item} day delay`}{' '}
+                      </PopupText>
+                    </PopupItem>
+                  ))}
+                </PopupWrapper>
+              )}
+
               {isPopupOpen && (
                 <CardmovePopup card={item} columnName={columnName} />
               )}
             </MoverWrapper>
-
             <ActiveIcon onClick={handleOpenCardModal} aria-label="edit icon">
               <use href={sprite + `#icon-pencil`} />
             </ActiveIcon>
-
             <ActiveIcon
               aria-label="edit icon"
               onClick={() => dispatch(deleteCard(_id))}
