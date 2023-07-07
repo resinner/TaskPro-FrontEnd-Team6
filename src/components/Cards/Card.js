@@ -81,9 +81,7 @@ const Card = ({ item, columnName }) => {
   const expiredCard = today > formatedDeadline;
 
   const handleDelayPopup = () => {
-    console.log('asdasdasd');
     setDelayPopup(prev => !prev);
-    console.log('delayPopup in func', delayPopup);
   };
 
   const handleDeadline = (deadline, delay) => {
