@@ -91,7 +91,7 @@ const dashboardsSlice = createSlice({
         state.columnsLength = action.payload?.columns?.length;
         state.selectedPriority = 'show all';
       })
-  
+
       .addCase(editDashbord.pending, handlePending)
       .addCase(editDashbord.rejected, handleRejected)
       .addCase(editDashbord.fulfilled, (state, action) => {

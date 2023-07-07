@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { AiOutlineClockCircle } from 'react-icons/ai';
 
 export const CardWrapper = styled.div`
   position: relative;
@@ -155,6 +156,12 @@ export const Deadline = styled.div`
 `;
 
 // icons
+
+export const DelayIcon = styled(AiOutlineClockCircle)`
+  color: ${props => props.theme.column.textSecondary};
+  cursor: pointer;
+`;
+
 export const IconsGroup = styled.div`
   display: flex;
   flex-direction: row;

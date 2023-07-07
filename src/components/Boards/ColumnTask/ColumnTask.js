@@ -91,6 +91,7 @@ export const ColumnTask = ({ item }) => {
         closeModal={handleCloseColumnModal}
         children={
           <EditColumnModal
+            title={item.title}
             columnId={item._id}
             closeModal={handleCloseColumnModal}
           />
