@@ -15,14 +15,14 @@ export const Wrapper = styled.button`
 export const Text = styled.span`
   font-family: Poppins;
   color: ${props => props.theme.themePopup.textMain};
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.28px;
 `;
 
 export const Icon = styled.svg`
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   stroke: ${props => props.theme.themePopup.icon};
   transition: all 250ms linear;
   fill: transparent;

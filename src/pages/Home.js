@@ -2,10 +2,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'constants/theme';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { Suspense, useEffect } from 'react';
 import { selectUserTheme } from 'redux/auth/authSelectors';
-import { getAllDashboards } from 'redux/dashboards/dashboardsOperations';
+import {
+  getAllDashboards,
+  getDashboardById,
+} from 'redux/dashboards/dashboardsOperations';
 
 import Header from 'components/Header/Header';
 import { Container } from 'components/Container/Container.styled';
@@ -15,6 +18,7 @@ import Loader from 'components/AuthPage/Loader';
 const Home = () => {
   const dispatch = useDispatch();
   const activeUserTheme = useSelector(selectUserTheme);
+  const navigate = useNavigate();
 
   const selectThemeIndex = () => {
     if (activeUserTheme === 'dark') {
@@ -27,7 +31,14 @@ const Home = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllDashboards());
+    dispatch(getAllDashboards()).then(data => {
+      if (data.payload.length === 0) {
+        return;
+      }
+
+      dispatch(getDashboardById(data.payload[0]._id));
+      navigate(`/home/${data.payload[0].name}`);
+    });
   }, [dispatch]);
 
   return (

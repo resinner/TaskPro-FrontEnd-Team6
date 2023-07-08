@@ -24,18 +24,20 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const initialState = {
+  dashboards: [],
+  currentDashboard: {},
+  isLoading: false,
+  error: null,
+  columnsLength: 0,
+  currentBg: '',
+  currentName: '',
+  selectedPriority: 'show all',
+};
+
 const dashboardsSlice = createSlice({
   name: 'dashboards',
-  initialState: {
-    dashboards: [],
-    currentDashboard: {},
-    isLoading: false,
-    error: null,
-    columnsLength: 0,
-    currentBg: '',
-    currentName: '',
-    selectedPriority: 'show all',
-  },
+  initialState,
   reducers: {
     selectPriority(state, action) {
       state.selectedPriority = action.payload;
