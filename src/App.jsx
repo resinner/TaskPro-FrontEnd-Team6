@@ -13,9 +13,9 @@ import { selectIsRefreshing } from 'redux/auth/authSelectors';
 import { refreshCurrentUser } from 'redux/auth/authOperations';
 import Loader from 'components/AuthPage/Loader';
 
-const HomePage = lazy(() => import('./pages/HomePage/Home'));
-const AuthPage = lazy(() => import('./pages/AuthPage/Auth'));
-const WelcomePage = lazy(() => import('./pages/WelcomePage/Welcome'));
+const HomePage = lazy(() => import('./pages/Home'));
+const AuthPage = lazy(() => import('./pages/Auth'));
+const WelcomePage = lazy(() => import('./pages/Welcome'));
 const ScreenPage = lazy(() => import('./components/ScreensPage/ScreensPage'));
 
 export const App = () => {
