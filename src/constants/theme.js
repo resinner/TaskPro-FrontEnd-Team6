@@ -207,7 +207,7 @@ export const theme = [
       background: 'rgba(236, 237, 253, 1)',
     },
     header: {
-      background: 'rgb(233, 248, 248)',
+      background: 'rgba(252, 252, 252, 1)',
       userName: 'rgba(22, 22, 22, 1)',
       menuIcon: 'rgba(22, 22, 22, 1)',
     },
