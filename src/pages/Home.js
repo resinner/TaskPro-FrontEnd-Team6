@@ -39,6 +39,7 @@ const Home = () => {
       dispatch(getDashboardById(data.payload[0]._id));
       navigate(`/home/${data.payload[0].name}`);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   return (
